@@ -14,6 +14,9 @@ function MainNavigation() {
           <li>
             <Link href='/new-meetup'>Add New Meetup</Link>
           </li>
+          <li>
+            <Link href='/sign'>登入註冊</Link>
+          </li>
         </ul>
       </nav>
     </header>

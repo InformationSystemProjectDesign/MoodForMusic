@@ -1,10 +1,31 @@
+@font-face {
+  font-family: 'NotoSerifTC';
+  src:  url('../fonts/NotoSerifTC-Black.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Bold.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-ExtraLight.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Light.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Medium.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Regular.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Medium.otf') format("truetype"),
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    margin:0;
+  font-family: NotoSerifTC !important;
+  margin: 0;
+  background: radial-gradient(
+        106.18% 350.13% at -1.35% 2.84%,
+        #fade7b 0%,
+        #fee48a 14.59%,
+        rgba(236, 236, 161, 0.809721) 32.26%,
+        rgba(210, 248, 193, 0.546875) 53.21%,
+        rgba(128, 210, 181, 0.293965) 77.26%,
+        rgba(33, 166, 167, 0.15) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    #ffffff;
 }
 
 a {
@@ -15,3 +36,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
