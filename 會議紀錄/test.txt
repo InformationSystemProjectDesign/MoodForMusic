@@ -1,0 +1,5 @@
+1.	PPT和手冊要記得給老師看
+2.	跟學長拿開發範例
+3.	從Dcard和ptt的文章爬文取代使用者自己輸入文章
+4.	上傳GitHub的參考文章：
+https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows
