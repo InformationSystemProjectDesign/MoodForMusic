@@ -1,0 +1,15 @@
+前端先串API
+後端研究AI
+
+前端先用next.js寫註冊功能和後端串接
+
+AI文章轉；推薦歌詞的code
+https://codeantenna.com/a/by5RfIFZDR
+
+首要目標：串接前後端的code
+
+GitHub用fork共同開發
+（陳姵蓉先研究怎麼做，再傳到群組）
+
+6/29 21:00 5人討論
+7/19 21:00和學長討論
