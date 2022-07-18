@@ -1,8 +1,10 @@
+import Router, { useRouter } from "next/router";
 import Head from "next/head";
 import { MongoClient } from "mongodb";
+import LoginForm from "../../components/meetups/LoginForm";
 
 import { Fragment } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 
 // const DUMMY_MEETUPS = [
 //   {
@@ -23,85 +25,40 @@ import Link from "next/link";
 //   },
 // ];
 
-function SignPage(props) {
+function SignPage() {
+  const router = useRouter();
+
+  async function LoginHandler(enteredLoginData) {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify(enteredLoginData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    router.push("/");
+  }
+
   return (
     <Fragment>
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       <Head>
-        <title>註冊</title>
+        <title>登入</title>
         <meta
           name="description"
-          content="Browse a huge list of active React meetups!"
+          content="Login for the React meetups!"
         />
       </Head>
       
-      {/* 註冊表單 */}
-      <div class="flex items-center justify-center p-12 pt-0">
-        <div class="mx-auto w-full max-w-[550px]">
-          <form action="https://formbold.com/s/FORM_ID" method="POST">
-            <label
-              for="name"
-              class="mb-3 block text-center text-3xl font-bold"
-            >
-              登入
-            </label>
-            
-            {/* 帳號 */}
-            <div class="mb-5">              
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="帳號"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
-              />
-            </div>
-
-            {/* 密碼 */}
-            <div class="mb-5">              
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="密碼"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
-              />
-            </div>
-
-            {/* 登入btn */}
-            <div class="mb-5">
-              <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                登入
-              </button>
-            </div>
-
-            {/* Google登入btn */}
-            <div class="mb-5">
-              <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                以Google帳號登入
-              </button>
-            </div>
-
-            <label
-              for="name"
-              class="mb-3 block text-center text-base font-bold"
-            >
-              還沒註冊?
-            </label>
-
-            {/* 註冊btn */}
-            <div class="mb-5">
-              <Link href="sign/register" passHref>
-                <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                  註冊
-                </button>
-              </Link>
-            </div>
-
-          </form>
-        </div>
-      </div>
+      {/* 登入表單 */}
+      <LoginForm onLogin={LoginHandler} />
+      
     </Fragment>
   );
 }
