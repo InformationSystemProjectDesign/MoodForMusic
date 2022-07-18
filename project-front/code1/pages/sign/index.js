@@ -2,6 +2,7 @@ import Head from "next/head";
 import { MongoClient } from "mongodb";
 
 import { Fragment } from "react";
+import Link from "next/link";
 
 // const DUMMY_MEETUPS = [
 //   {
@@ -91,9 +92,11 @@ function SignPage(props) {
 
             {/* 註冊btn */}
             <div class="mb-5">
-              <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                註冊
-              </button>
+              <Link href="sign/register" passHref>
+                <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                  註冊
+                </button>
+              </Link>
             </div>
 
           </form>
