@@ -3,7 +3,7 @@ import {MongoClient} from 'mongodb';
 // /api/new-meetup
 // POST /api/new-meetup
 
-async function Registerhandler(req, res) {
+async function ChangePasswordhandler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
 
@@ -11,9 +11,9 @@ async function Registerhandler(req, res) {
     const client =  await MongoClient.connect('mongodb+srv://happyday99:happy@cluster0.pflxs.mongodb.net/meetups?retryWrites=true&w=majority');
     const db = client.db();
 
-    const registerCollection = db.collection('register');
+    const ChangePasswordCollection = db.collection('ChangePassword');
 
-    const result = await registerCollection.insertOne(data);
+    const result = await ChangePasswordCollection.insertOne(data);
 
     console.log(result);
 
@@ -23,4 +23,4 @@ async function Registerhandler(req, res) {
   }
 }
 
-export default Registerhandler;
+export default ChangePasswordhandler;

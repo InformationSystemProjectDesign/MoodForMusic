@@ -1,8 +1,12 @@
+import Router, { useRouter } from "next/router";
 import Head from "next/head";
 import { MongoClient } from "mongodb";
-
+import LoginForm from "../../components/meetups/LoginForm";
+import Link from 'next/link';
 import { Fragment } from "react";
-import Link from "next/link";
+
+// import Link from "next/link";
+
 
 // const DUMMY_MEETUPS = [
 //   {
@@ -23,19 +27,42 @@ import Link from "next/link";
 //   },
 // ];
 
-function SignPage(props) {
+function SignPage() {
+  const router = useRouter();
+
+  async function LoginHandler(enteredLoginData) {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify(enteredLoginData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    router.push("/");
+  }
+
   return (
     <Fragment>
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       <Head>
-        <title>註冊</title>
+        <title>登入</title>
         <meta
           name="description"
-          content="Browse a huge list of active React meetups!"
+          content="Login for the React meetups!"
         />
       </Head>
       
+
+      {/* 登入表單 */}
+      <LoginForm onLogin={LoginHandler} />
+      
+
       {/* 註冊表單 */}
       <div class="flex items-center justify-center p-12 pt-0">
         <div class="mx-auto w-full max-w-[550px]">
@@ -102,6 +129,7 @@ function SignPage(props) {
           </form>
         </div>
       </div>
+
     </Fragment>
   );
 }
