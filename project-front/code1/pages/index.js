@@ -4,6 +4,7 @@ import { MongoClient } from "mongodb";
 import MeetupList from "..//components/meetups/MeetupList";
 import { Fragment } from "react";
 
+
 // const DUMMY_MEETUPS = [
 //   {
 //     id: "m1",
