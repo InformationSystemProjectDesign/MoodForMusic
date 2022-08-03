@@ -1,49 +1,24 @@
-import Router, { useRouter } from "next/router";
-import Head from "next/head";
-import { MongoClient } from "mongodb";
-import LoginForm from "../../components/meetups/LoginForm";
-
+import { useRef } from 'react';
 import { Fragment } from "react";
+import Head from "next/head";
+import Link from 'next/link';
 
-// import Link from "next/link";
+function LoginForm() {
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
 
+  function submitHandler(event) {
+    event.preventDefault();
 
-// const DUMMY_MEETUPS = [
-//   {
-//     id: "m1",
-//     title: "A First App",
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/%E7%8E%89%E5%B1%B1%E4%B8%BB%E5%B3%B0_01.jpg/1536px-%E7%8E%89%E5%B1%B1%E4%B8%BB%E5%B3%B0_01.jpg",
-//     address: "Some address 5, 12345 Some City",
-//     description: "This is a first meetup!",
-//   },
-//   {
-//     id: "m2",
-//     title: "A Second App",
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Yushan_main_east_peak%2BHuang_Chung_Yu%E9%BB%83%E4%B8%AD%E4%BD%91%2B9030.png/1920px-Yushan_main_east_peak%2BHuang_Chung_Yu%E9%BB%83%E4%B8%AD%E4%BD%91%2B9030.png",
-//     address: "Some address 10, 12345 Some City",
-//     description: "This is a second meetup!",
-//   },
-// ];
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
 
-function SignPage() {
-  const router = useRouter();
+    const LoginData = {
+      email: enteredEmail,
+      password: enteredPassword,
+    };
 
-  async function LoginHandler(enteredLoginData) {
-    const response = await fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify(enteredLoginData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await response.json();
-
-    console.log(data);
-
-    router.push("/");
+    console.log(LoginData);
   }
 
   return (
@@ -54,16 +29,11 @@ function SignPage() {
         <title>登入</title>
         <meta
           name="description"
-          content="Login for the React meetups!"
+          content="Browse a huge list of active React meetups!"
         />
       </Head>
       
-
       {/* 登入表單 */}
-      <LoginForm onLogin={LoginHandler} />
-      
-
-      {/* 註冊表單 */}
       <div class="flex items-center justify-center p-12 pt-0">
         <div class="mx-auto w-full max-w-[550px]">
           <form action="https://formbold.com/s/FORM_ID" method="POST">
@@ -77,10 +47,10 @@ function SignPage() {
             {/* 帳號 */}
             <div class="mb-5">              
               <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="帳號"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="帳號（電子郵件）"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
               />
             </div>
@@ -88,9 +58,9 @@ function SignPage() {
             {/* 密碼 */}
             <div class="mb-5">              
               <input
-                type="email"
-                name="email"
-                id="email"
+                type="password"
+                name="password"
+                id="password"
                 placeholder="密碼"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
@@ -129,47 +99,8 @@ function SignPage() {
           </form>
         </div>
       </div>
-
     </Fragment>
   );
 }
 
-// export async function getServerSideProps(context) {
-//   const req = context.req;
-//   const res = context.res;
-
-//   // fetch dada from an API
-//   return {
-//     props: {
-//       meetups: DUMMY_MEETUPS,
-//     },
-//   };
-// }
-
-export async function getStaticProps() {
-  // fetch dada from an API
-  const client = await MongoClient.connect(
-    "mongodb+srv://happyday99:happy@cluster0.pflxs.mongodb.net/meetups?retryWrites=true&w=majority"
-  );
-  const db = client.db();
-
-  const meetupsCollection = db.collection("meetups");
-
-  const meetups = await meetupsCollection.find().toArray();
-
-  client.close();
-
-  return {
-    props: {
-      meetups: meetups.map((meetup) => ({
-        title: meetup.title,
-        address: meetup.address,
-        image: meetup.image,
-        id: meetup._id.toString(),
-      })),
-    },
-    revalidate: 10, //10秒就重抓資料一次
-  };
-}
-
-export default SignPage;
+export default LoginForm; 
