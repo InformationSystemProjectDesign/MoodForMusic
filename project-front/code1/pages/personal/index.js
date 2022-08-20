@@ -1,7 +1,7 @@
 import Router, { useRouter } from "next/router";
 import Head from "next/head";
 import { MongoClient } from "mongodb";
-import LoginForm from "../../components/meetups/LoginForm";
+import PersonalForm from "../../components/meetups/PersonalForm";
 import Link from 'next/link';
 import { Fragment } from "react";
 
@@ -27,13 +27,13 @@ import { Fragment } from "react";
 //   },
 // ];
 
-function SignPage() {
+function PersonalPage() {
   const router = useRouter();
 
-  async function LoginHandler(enteredLoginData) {
-    const response = await fetch("/api/login", {
+  async function PersonalHandler(enteredPersonalData) {
+    const response = await fetch("/api/personal", {
       method: "POST",
-      body: JSON.stringify(enteredLoginData),
+      body: JSON.stringify(enteredPersonalData),
       headers: {
         "Content-Type": "application/json",
       },
@@ -51,7 +51,7 @@ function SignPage() {
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       <Head>
-        <title>登入</title>
+        <title>個人天地</title>
         <meta
           name="description"
           content="Login for the React meetups!"
@@ -59,8 +59,8 @@ function SignPage() {
       </Head>
       
 
-      {/* 登入表單 */}
-      <LoginForm onLogin={LoginHandler} />
+      {/* 個人表單 */}
+      <PersonalForm onLogin={PersonalHandler} />
       
       
     </Fragment>
@@ -105,4 +105,4 @@ export async function getStaticProps() {
   };
 }
 
-export default SignPage;
+export default PersonalPage;
