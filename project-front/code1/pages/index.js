@@ -4,6 +4,7 @@ import { MongoClient } from "mongodb";
 import MeetupList from "..//components/meetups/MeetupList";
 import { Fragment } from "react";
 
+
 // const DUMMY_MEETUPS = [
 //   {
 //     id: "m1",
@@ -27,7 +28,7 @@ function HomePage(props) {
   return (
     <Fragment>
       <Head>
-        <title>React Meetups</title>
+        <title>知音</title>
         <meta
           name="description"
           content="Browse a huge list of active React meetups!"
