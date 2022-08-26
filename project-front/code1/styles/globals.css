@@ -19,6 +19,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
   font-family: Simsun !important;
   /* font-family: abc !important; */
   margin: 0;
@@ -33,6 +34,7 @@ body {
       )
       /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
     #ffffff;
+  /* background-repeat: repeat-y; */
 }
 
 a {
