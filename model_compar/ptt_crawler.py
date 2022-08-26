@@ -5,14 +5,15 @@ from opencc import OpenCC
 cc = OpenCC('t2s')
 
 urls = [
-    "https://www.dcard.tw/f/relationship/p/239711333",
+    "https://www.ptt.cc/bbs/Gossiping/M.1660978617.A.B52.html",
     ]
 # "https://www.dcard.tw/f/relationship/p/186420174"
 
 def getWord(url):
     #建立一個Request 物件，附加Request Headers 的資訊
     request = req.Request(url, headers={
-        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36"
+        "cookie":"over18=1",
+        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
     })
     with req.urlopen(request) as response:
         data = response.read().decode("utf-8")
@@ -23,19 +24,40 @@ def getWord(url):
 
     import bs4
     root = bs4.BeautifulSoup(data, "html.parser") # 讓beautifulSoup協助我們解析HTML格式文件
-    titles = root.find("div", class_ = "sc-ba53eaa8-0 iSPQdL") # 用列表顯示全部爬蟲下來的標題
-    # print(titles)
+    titles = root.find("div", class_ = "bbs-screen bbs-content").text # 用爬蟲抓內文
     
-    for title in titles:
-        result = title.text.strip().replace('\n', '').replace(' ', '')
-        print(result)
-        # print("---------------我是分隔線------------------")
-        # print(cc.convert(result))
-        # convert_chi = cc.convert(result)
-        # with open("dcard_couple1.txt", mode="a", encoding="utf-8") as file:
-        #     file.write(result + '\n')
-        #     file.write('\n' + "-------------" + '\n')
-        #     file.write(convert_chi + '\n')
+    #去除掉 target_content
+    target_content = '※ 發信站: 批踢踢實業坊(ptt.cc),'
+    content = titles.split(target_content)
+    
+    #去除掉 作者 看板 標題 時間
+    results = root.select('span.article-meta-value')
+
+    if len(results)>3:
+        #作者 看板 標題 時間
+        firstLine = "作者" + results[0].text + "看板" + results[1].text + "標題" + results[2].text + "時間" + results[3].text
+
+    content = content[0].split(firstLine)
+    
+    #去除掉文末 --
+    main_content = content[1].replace('--', '')
+
+    #去除掉換行
+    main_content = main_content.replace('\n', '')
+    
+    #印出內文
+    print(main_content)
+
+    # for title in titles:
+    #     result = title.text.strip().replace('\n', '').replace(' ', '')
+    #     print(result)
+    #     print("---------------我是分隔線------------------")
+    #     print(cc.convert(result))
+    #     convert_chi = cc.convert(result)
+    #     with open("dcard_couple1.txt", mode="a", encoding="utf-8") as file:
+    #         file.write(result + '\n')
+    #         file.write('\n' + "-------------" + '\n')
+    #         file.write(convert_chi + '\n')
 
     # with open("dcard_couple.txt", mode="a", encoding="utf-8") as file，dcard_couple是存放文章的檔案，此檔案會跟這個py檔放在同一層，也就是在同個資料夾中
     # titles代表div標籤
