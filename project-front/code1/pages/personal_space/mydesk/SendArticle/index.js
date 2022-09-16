@@ -1,7 +1,7 @@
 import Router, { useRouter } from "next/router";
 import { Fragment } from "react";
 import Head from "next/head";
-import SendArticleForm from "../../../components/meetups/SendArticleForm";
+import SendArticleForm from "../../../../components/meetups/SendArticleForm";
 import { MongoClient } from "mongodb";
 
 function SendArticlePage() {
