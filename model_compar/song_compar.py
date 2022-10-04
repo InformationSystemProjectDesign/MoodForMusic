@@ -44,12 +44,13 @@ def dcardCraw(url):
     # utf-8(比較省空間)有部分的漢字不能轉換所以要用GB18030編碼
 
     root = bs4.BeautifulSoup(data, "html.parser") # 讓beautifulSoup協助我們解析HTML格式文件
+    # dcard標籤會不定時更換須注意
     titles = root.find("div", class_ = "sc-ba53eaa8-0 hKkUKs") # 用列表顯示全部爬蟲下來的標題
     # print(titles)
     
     for title in titles:
         result = title.text.strip().replace('\n', '').replace(' ', '')
-        print(result)
+        print(result) #印出內文
     
     return result
 
@@ -95,7 +96,7 @@ def pttCraw(url):
 
 
 def find_song(url):
-    train=pd.read_csv('done_2021-10to11.csv') # 歌曲資料
+    train=pd.read_csv('done_2021-08to12.csv') # 歌曲資料
     
     if url[12:15] == "dca":
         article = dcardCraw(url)
@@ -116,4 +117,10 @@ def find_song(url):
         i+=1
     print('配適度:',highpri,'歌手:',train.singer.iloc[num],'歌名:',train.name.iloc[num], '情緒:',train.moodCat.iloc[num])
 
-find_song('https://www.ptt.cc/bbs/Gossiping/M.1663310433.A.822.html')
+# find_song('https://www.dcard.tw/f/relationship/p/238632575')
+find_song("https://www.ptt.cc/bbs/Gossiping/M.1664530650.A.4E3.html")
+
+# 需pip install
+# pip install requests
+# pip install beautifulSoup4
+# pip install selenium(不一定需要)
