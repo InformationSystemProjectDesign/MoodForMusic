@@ -49,7 +49,7 @@ function RegisterForm() {
             >
               註冊
             </label>
-            <div class="w-full rounded-md border border-[#000000] border-[3px] py-3 px-6 text-base outline-none focus:border-gray-800  focus:shadow-md">
+            <div class="w-full rounded-md py-3 px-6 text-base outline-none focus:border-gray-800  focus:shadow-md">
             {/* 使用者名稱 */}
             <div class="mb-5">              
               <input
