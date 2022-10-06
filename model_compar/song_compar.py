@@ -3,7 +3,12 @@ import urllib.request as req
 import numpy as np
 from scipy.linalg import norm
 import pandas as pd
-import bs4
+import bs4, random, requests
+
+# 載入 Selenium 相關模組
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 def tfidf_similarity(s1, s2):
     def add_space(s):
@@ -30,31 +35,43 @@ def movestopwords(sentence):
                 outstr += word
     return outstr
 
+# 設定Chrome Driver 的執行檔路徑
+chrome_options = Options()
+chrome_options.add_argument("--incognito") # 啟動進入無痕模式
+chrome_options.add_argument("--window-size=1,1") # 頁面長度寬度調整
+# chrome_options.add_argument('--headless')  # 啟動Headless 無頭(隱藏瀏覽器)
+
+# 隱藏"Chrome正在受到自動軟體的控制"
+chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+chrome_options.add_experimental_option('useAutomationExtension', False)
+
+chrome_options.add_argument('--disable-gpu') #關閉GPU 避免某些系統或是網頁出錯
+chrome_options.add_argument('--hide-scrollbars')     # 隱藏滾動條, 應對一些特殊頁面
+chrome_options.chrome_executable_path = "C:\\Users\\student\\Desktop\\model_compar\\chromedriver.exe"
+
+#建立 Driver 物件實體，用程式操作瀏覽器運作
+driver = webdriver.Chrome(chrome_options = chrome_options)
+driver.minimize_window() #視窗縮小化
+
 # ppt和dcard的判斷
 def dcardCraw(url):
-    #建立一個Request 物件，附加Request Headers 的資訊
-    request = req.Request(url, headers={
-        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36"
-    })
-    with req.urlopen(request) as response:
-        data = response.read().decode("utf-8")
-
-    # print(data)
-    #「解析」原始碼，取得每篇文章的問題
-    # utf-8(比較省空間)有部分的漢字不能轉換所以要用GB18030編碼
-
-    root = bs4.BeautifulSoup(data, "html.parser") # 讓beautifulSoup協助我們解析HTML格式文件
-    # dcard標籤會不定時更換須注意
-    titles = root.find("div", class_ = "sc-ba53eaa8-0 hKkUKs") # 用列表顯示全部爬蟲下來的標題
-    # print(titles)
+    driver.get(url)
+    data = driver.page_source #取得網頁的原始碼
+    
+    # 讓beautifulSoup協助我們解析HTML格式文件
+    root = bs4.BeautifulSoup(data, "html.parser")
+    # dcard標籤會不定時更換須注意，用列表顯示全部爬蟲下來的標題
+    titles = root.find("div", class_ = "sc-ba53eaa8-0 hKkUKs")
     
     for title in titles:
         result = title.text.strip().replace('\n', '').replace(' ', '')
         print(result) #印出內文
     
+    driver.close()
     return result
 
 def pttCraw(url):
+    driver.close()
     #建立一個Request 物件，附加Request Headers 的資訊
     request = req.Request(url, headers={
         "cookie":"over18=1",
@@ -94,6 +111,34 @@ def pttCraw(url):
     
     return main_content
 
+class YoutubeSpider():
+    def __init__(self, api_key):
+        self.base_url = "https://www.googleapis.com/youtube/v3/search?type=video&part=snippet&maxResults=1"
+        self.api_key = api_key
+
+    def get_html_to_json(self, path):
+        """組合 URL 後 GET 網頁並轉換成 JSON"""
+        api_url = f"{self.base_url}&key={self.api_key}{path}"
+        r = requests.get(api_url)
+        if r.status_code == requests.codes.ok:
+            data = r.json()
+        else:
+            data = None
+        return data
+    
+    def get_ytSearch(self, theKey):
+        path = f'&q={theKey}'
+        data = self.get_html_to_json(path)
+        
+        try:
+            uploads_id = data['items'][0]['id']['videoId']
+            # uploads_id = data #輸出是dict
+        except KeyError:
+            uploads_id = None
+        return uploads_id
+    
+YOUTUBE_API_KEY = "AIzaSyBKdJO0Q7tS8jQyuZUx0kNmgFD2L73Bn1E"
+youtube_spider = YoutubeSpider(YOUTUBE_API_KEY)
 
 def find_song(url):
     train=pd.read_csv('done_2021-08to12.csv') # 歌曲資料
@@ -115,7 +160,14 @@ def find_song(url):
             highpri=tfidf_similarity(text, article)
             num=i
         i+=1
+        
+    author = train.singer.iloc[num]
+    songName = train.name.iloc[num]
+    youtube_theKey = author + ' ' + songName  # 孫凱旋 專屬
+    uploads_id = youtube_spider.get_ytSearch(youtube_theKey)   
+    
     print('配適度:',highpri,'歌手:',train.singer.iloc[num],'歌名:',train.name.iloc[num], '情緒:',train.moodCat.iloc[num])
+    print("連結:https://www.youtube.com/watch?v="+uploads_id)
 
 # find_song('https://www.dcard.tw/f/relationship/p/238632575')
 find_song("https://www.ptt.cc/bbs/Gossiping/M.1664530650.A.4E3.html")
