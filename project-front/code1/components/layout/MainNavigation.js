@@ -17,9 +17,7 @@ function MainNavigation() {
           <li>
             <Link href='/personal'>個人天地</Link>
           </li>
-          <li>
-            <Link href='/sign'>登入註冊</Link>
-          </li>
+          
         </ul>
       </nav>
     </header>

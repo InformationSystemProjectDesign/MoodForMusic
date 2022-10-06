@@ -1,41 +1,42 @@
 import Head from "next/head";
 import { MongoClient } from "mongodb";
 
-import MeetupList from "..//components/meetups/MeetupList";
+import IndexForm from "../components/meetups/IndexForm";
 import { Fragment } from "react";
 
 
-// const DUMMY_MEETUPS = [
-//   {
-//     id: "m1",
-//     title: "A First App",
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/%E7%8E%89%E5%B1%B1%E4%B8%BB%E5%B3%B0_01.jpg/1536px-%E7%8E%89%E5%B1%B1%E4%B8%BB%E5%B3%B0_01.jpg",
-//     address: "Some address 5, 12345 Some City",
-//     description: "This is a first meetup!",
-//   },
-//   {
-//     id: "m2",
-//     title: "A Second App",
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Yushan_main_east_peak%2BHuang_Chung_Yu%E9%BB%83%E4%B8%AD%E4%BD%91%2B9030.png/1920px-Yushan_main_east_peak%2BHuang_Chung_Yu%E9%BB%83%E4%B8%AD%E4%BD%91%2B9030.png",
-//     address: "Some address 10, 12345 Some City",
-//     description: "This is a second meetup!",
-//   },
-// ];
+// /api/new-meetup
+// POST /api/new-meetup
 
 function HomePage(props) {
+
+  async function IndexHandler(enteredIndexData) {
+    const response = await fetch("/api/index", {
+      method: "POST",
+      body: JSON.stringify(enteredIndexData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    router.push("/");
+  }
+
   return (
     <Fragment>
-      <Head>
-        <title>知音</title>
-        <meta
-          name="description"
-          content="Browse a huge list of active React meetups!"
-        />
-      </Head>
-      <MeetupList meetups={props.meetups} />
-    </Fragment>
+        <Head>
+          <title>首頁</title>
+          <meta
+            name="description"
+            content="Register for the React Meetups!"
+          />
+        </Head>
+        <IndexForm onIndex={IndexHandler} />
+      </Fragment>
   );
 }
 
