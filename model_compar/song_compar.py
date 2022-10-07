@@ -3,7 +3,7 @@ import urllib.request as req
 import numpy as np
 from scipy.linalg import norm
 import pandas as pd
-import bs4, random, requests
+import bs4, requests
 
 # 載入 Selenium 相關模組
 from selenium import webdriver
@@ -35,26 +35,25 @@ def movestopwords(sentence):
                 outstr += word
     return outstr
 
-# 設定Chrome Driver 的執行檔路徑
-chrome_options = Options()
-chrome_options.add_argument("--incognito") # 啟動進入無痕模式
-chrome_options.add_argument("--window-size=1,1") # 頁面長度寬度調整
-# chrome_options.add_argument('--headless')  # 啟動Headless 無頭(隱藏瀏覽器)
-
-# 隱藏"Chrome正在受到自動軟體的控制"
-chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-chrome_options.add_experimental_option('useAutomationExtension', False)
-
-chrome_options.add_argument('--disable-gpu') #關閉GPU 避免某些系統或是網頁出錯
-chrome_options.add_argument('--hide-scrollbars')     # 隱藏滾動條, 應對一些特殊頁面
-chrome_options.chrome_executable_path = "C:\\Users\\student\\Desktop\\model_compar\\chromedriver.exe"
-
-#建立 Driver 物件實體，用程式操作瀏覽器運作
-driver = webdriver.Chrome(chrome_options = chrome_options)
-driver.minimize_window() #視窗縮小化
-
 # ppt和dcard的判斷
 def dcardCraw(url):
+    # 設定Chrome Driver 的執行檔路徑
+    options = Options()
+    options.add_argument("--incognito") # 啟動進入無痕模式
+    options.add_argument("--window-size=1,1") # 頁面長度寬度調整
+    # chrome_options.add_argument('--headless')  # 啟動Headless 無頭(隱藏瀏覽器)
+
+    # 隱藏"Chrome正在受到自動軟體的控制"
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+
+    options.add_argument('--disable-gpu') #關閉GPU 避免某些系統或是網頁出錯
+    options.add_argument('--hide-scrollbars')     # 隱藏滾動條, 應對一些特殊頁面
+    options.chrome_executable_path = "C:\\Users\\student\\Desktop\\model_compar\\chromedriver.exe"
+    
+    #建立 Driver 物件實體，用程式操作瀏覽器運作
+    driver = webdriver.Chrome(options = options)
+    driver.minimize_window() #視窗縮小化
     driver.get(url)
     data = driver.page_source #取得網頁的原始碼
     
@@ -71,7 +70,6 @@ def dcardCraw(url):
     return result
 
 def pttCraw(url):
-    driver.close()
     #建立一個Request 物件，附加Request Headers 的資訊
     request = req.Request(url, headers={
         "cookie":"over18=1",
@@ -169,10 +167,11 @@ def find_song(url):
     print('配適度:',highpri,'歌手:',train.singer.iloc[num],'歌名:',train.name.iloc[num], '情緒:',train.moodCat.iloc[num])
     print("連結:https://www.youtube.com/watch?v="+uploads_id)
 
-# find_song('https://www.dcard.tw/f/relationship/p/238632575')
-find_song("https://www.ptt.cc/bbs/Gossiping/M.1664530650.A.4E3.html")
+
+find_song('https://www.dcard.tw/f/relationship/p/238632575')
+# find_song("https://www.ptt.cc/bbs/Gossiping/M.1664530650.A.4E3.html")
 
 # 需pip install
 # pip install requests
 # pip install beautifulSoup4
-# pip install selenium(不一定需要)
+# pip install selenium
