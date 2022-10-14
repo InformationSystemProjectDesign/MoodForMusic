@@ -78,7 +78,7 @@ function IndexForm() {
 
           {/* 登入btn */}
           <div>
-            <Link href="register/after_login" passHref>
+            <Link href="personal_space" passHref>
               <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
                 登入
               </button>

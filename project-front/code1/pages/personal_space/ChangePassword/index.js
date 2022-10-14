@@ -1,7 +1,7 @@
 import Router, { useRouter } from "next/router";
 import { Fragment } from "react";
 import Head from "next/head";
-import RegisterForm from "../../../../components/meetups/ChangePasswordForm";
+import RegisterForm from "../../../components/meetups/ChangePasswordForm";
 import { MongoClient } from "mongodb";
 
 function ChangePasswordPage() {

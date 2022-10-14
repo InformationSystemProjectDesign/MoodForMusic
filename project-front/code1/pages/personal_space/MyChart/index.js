@@ -1,16 +1,16 @@
 import Router, { useRouter } from "next/router";
 import { Fragment } from "react";
 import Head from "next/head";
-import RegisterForm from "../../components/meetups/After_loginForm";
+import MyChartForm from "../../../components/meetups/MyChartForm";
 import { MongoClient } from "mongodb";
 
-function after_loginPage() {
+function MyChartPage() {
     const router = useRouter();
   
-    async function after_loginHandler(enteredafter_loginData) {
-      const response = await fetch("/api/after_login", {
+    async function MyChartHandler(enteredMyChardata) {
+      const response = await fetch("/api/mychart", {
         method: "POST",
-        body: JSON.stringify(enteredafter_loginData),
+        body: JSON.stringify(enteredMyChardata),
         headers: {
           "Content-Type": "application/json",
         },
@@ -26,13 +26,13 @@ function after_loginPage() {
     return (
       <Fragment>
         <Head>
-          <title>登入後導向頁面</title>
+          <title>註冊</title>
           <meta
             name="description"
             content="Register for the React Meetups!"
           />
         </Head>
-        <RegisterForm onafter_login={after_loginHandler} />
+        <MyChartForm onMyChart={MyChartHandler} />
       </Fragment>
     );
   }
@@ -63,4 +63,4 @@ function after_loginPage() {
       };
     }
   
-  export default after_loginPage;
+  export default MyChartPage;

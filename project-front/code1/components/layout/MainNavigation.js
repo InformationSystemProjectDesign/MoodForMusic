@@ -17,6 +17,9 @@ function MainNavigation() {
           <li>
             <Link href='/personal'>個人天地</Link>
           </li>
+          <li>
+            <Link href='/'>登出</Link>
+          </li>
           
         </ul>
       </nav>
