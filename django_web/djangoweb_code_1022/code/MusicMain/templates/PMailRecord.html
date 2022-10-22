@@ -1,0 +1,269 @@
+<!DOCTYPE html> <!-- 信件點選後會進入信件內容 -->
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/PMailRecord.css' %}" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div class="p-mail-record p-mail-record-block layout"> <style>.p-mail-record-block.layout{ min-height:0px;}</style>
+      <div style="display: flex;
+      /* flex-direction: row;
+      align-items: flex-start;
+      padding: 10px; */
+      gap: 10px;
+      
+      width: 100%;
+      height: 100%;
+      
+      background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+      class="p-mail-record-block1 layout">
+        <div class="p-mail-record-flex layout">
+          <div class="p-mail-record-flex1 layout">
+            <div class="index-flex1-item" style="margin-top:-25px; margin-left:-10px;">
+                <img src={% static 'img/logo_plus.png' %} width="69%;">
+            </div>
+            <div class="p-mail-record-flex1-spacer"></div>
+            <div class="p-mail-record-flex1-item">
+              <h1 class="p-mail-record-big-title layout">
+                <a href="{% url 'index' %}" style="text-decoration:none; color:#000;">首頁</a>
+              </h1>
+            </div>
+            <div class="p-mail-record-flex1-spacer1"></div>
+            <div class="p-mail-record-flex1-item">
+              <h1 class="p-mail-record-big-title layout">
+                <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a>
+              </h1>
+            </div>
+            <div class="p-mail-record-flex1-spacer2"></div>
+            <div class="p-mail-record-flex1-item">
+              <h1 class="p-mail-record-big-title layout">
+                <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+              </h1>
+            </div>
+          </div>
+          <hr class="p-mail-record-line layout" style="height:1px; margin-top:19.5px;"/>
+          <div class="p-mail-record-flex2 layout">
+            <div class="p-mail-record-flex2-item">
+              <h1 class="p-mail-record-big-title layout1" style="margin-left:-200px;">
+                <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+              </h1>
+            </div>
+            <div class="p-mail-record-flex2-spacer"></div>
+            <div class="p-mail-record-flex2-item1">
+              <div class="p-mail-record-image3 layout" style="margin-left:-187px;">
+                <img src={% static 'img/leftArrow.png' %} width="100%">
+              </div>
+            </div>
+            <div class="p-mail-record-flex2-spacer1"></div>
+            <div class="p-mail-record-flex2-item"><h1 class="p-mail-record-big-title layout2" style="margin-left:-1150px;">信件紀錄</h1></div>
+          </div>
+          <div class="p-mail-record-flex3 layout">
+            <form action="" method="post" id="searchTime" name="searchTime">
+              {% csrf_token %}
+              <div class="p-mail-record-flex3-item">
+                <div class="p-mail-record-cover-block3 layout" style="width:161px;"> <!-- style="position:absolute; width:161px;" -->
+                  <input type="button" name="newTOold" id="newTOold" value="最新 → 最舊" style="width: 157px; height:40px; font-size:25px;border-radius: 7px;border: none;"> <!-- onclick="ChangeDisabled(1)" -->
+                  {% comment %} <style > .is_clickedd{background-color:#808080;} </style> {% endcomment %}
+                  {% comment %} <h1 class="p-mail-record-big-title2 layout" style="width:32%; margin:1px 57.61% 0px 4.15%; font-size:25px;">最新</h1>
+                  <h1 class="p-mail-record-big-title2 layout1" style="width:32%; margin:3px 7.07% 6px 60.7%; font-size:25px;">最舊</h1>
+                  <div class="p-mail-record-icon layout" style="margin-left: 60px;">
+                    <img src={% static 'img/rightArrow.png' %} width="100%">
+                  </div> {% endcomment %}
+                </div>
+              </div>
+              {% comment %} <div class="p-mail-record-flex3-spacer"></div> {% endcomment %}
+              <div class="p-mail-record-flex3-item">
+                <div class="p-mail-record-cover-block2 layout" style="width:161px; margin:-44px 0px 0px 175px;">
+                  <input type="button" name="oldTOnew" id="oldTOnew" value="最舊 → 最新" style="width: 157px; height:40px; font-size:25px;border-radius: 7px;border: none;">
+                  {% comment %} <h1 class="p-mail-record-big-title2 layout" style="width:32%; margin:0px 57.61% 0px 4.15%; font-size:25px;">最舊</h1>
+                  <h1 class="p-mail-record-big-title2 layout2" style="width:32%; margin:3px 7.07% 6px 60.7%; font-size:25px;">最新</h1>
+                  <div class="p-mail-record-icon layout" style="margin-left: 60px;">
+                    <img src={% static 'img/rightArrow.png' %} width="100%">
+                  </div> {% endcomment %}
+                </div>
+              </div>
+            </form>
+
+            <div class="p-mail-record-flex3-spacer1"></div>
+            <div class="p-mail-record-flex3-item">
+              <div class="p-mail-record-cover-block5 layout" style="background:#000;">
+                <h1 class="p-mail-record-big-title2 layout3" style="margin:1px 5px 5px 4px;">熱門排行榜</h1>
+              </div>
+            </div>
+            <div class="p-mail-record-flex3-spacer2"></div>
+            <div class="p-mail-record-flex3-item">
+              <div class="p-mail-record-cover-block1 layout" style="height:43px;">
+                {% comment %} <h1 class="p-mail-record-big-title2 layout4">心情分類</h1> {% endcomment %}
+                <select style="margin-left:4px; width:160px; font-size:30px; background-color:#0000; border:none">
+                  <option>心情分類</option>
+                  <option>開心</option>
+                  <option>生氣</option>
+                  <option>難過</option>
+                  <option>害怕</option>
+                  <option>愛</option>
+                  <option>恨</option>
+                </select>
+                <div class="p-board-cover-block1-spacer"></div>
+                <div class="p-mail-record-cover-block1-spacer"></div>
+                {% comment %} <div class="p-mail-record-cover-block1-item">
+                  <div class="p-mail-record-image1 layout">
+                    <img src={% static 'img/rightArrow.png' %} width="100%">
+                  </div>
+                </div> {% endcomment %}
+              </div>
+            </div>
+            <div class="p-mail-record-flex3-spacer3"></div>
+
+            <div class="p-mail-record-flex3-item1">
+              <div class="p-mail-record-cover-block layout" style="height:43px;">
+                <form action="" method="post">
+                  {% csrf_token %}
+                  <input name="searchSong" id="searchSong" type="text" placeholder="搜尋..." style="height: 39px; width: 95px; font-size: 18px;border-radius: 5px;border: none;">
+                  <button type="submit" name="searchsub" style="width: 34px; height: 41px; position: absolute; background-color:#0000; border:none;margin-left: -4px;">
+                    <div class="p-board-icon layout" style="float:left;position: absolute; margin:-12px 0px 0px 0px;">
+                      <img src={% static 'img/searchIcon.png' %} width="75%">
+                    </div>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="p-mail-record-flex3-spacer"></div>
+            <div class="p-mail-record-flex3-item2">
+              <div class="p-mail-record-cover-block4 layout">
+                <h1 class="p-mail-record-big-title2 layout5" style="margin:2px 3.5px 4px 2.5px;">
+                  <a href="{% url 'draftRecord' %}" style="text-decoration:none; color:#000;">草稿</a> 
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-mail-record-flex23 layout"><style>.p-mail-record-flex23.layout{width:1020px; display: inline-block; margin:60px 4.03% 0px 11.26%; /* max-width */}</style>
+            {% for article in article_close %}
+              <div class="p-mail-record-flex23-item1"><style>.p-mail-record-flex23-item1{margin:50px 0px 0px 46px; float:left; position:relative;}</style>
+                <div class="p-mail-record-cover-block11 layout1"><style>.p-mail-record-cover-block11.layout1{width:256px; float:left;}</style>
+                  <a href="/mailContent/{{ article.article_id }}" style="text-decoration:none; color:#000;">
+                    <div class="p-mail-record-flex27 layout">
+                      <div class="p-mail-record-cover-block10 layout">
+                        <h1 class="p-mail-record-big-title1 layout">{{ article.song_id }}</h1><style>.p-mail-record-big-title1.layout{overflow:hidden; white-space: nowrap; text-overflow: ellipsis;}</style>
+                      </div>
+                      <h1 class="p-mail-record-big-title10 layout">{{ article.article_context }}</h1><style>.p-mail-record-big-title10.layout{overflow:hidden; white-space: nowrap; text-overflow: ellipsis;font-size:18px;}</style>
+                      <div class="p-mail-record-flex28 layout">
+                        <div class="p-mail-record-flex28-item">
+                          <div class="p-mail-record-flex6 layout">
+                            <h3 class="p-mail-record-subtitle layout" style="margin:0px 10px 0px 0px;">{{ article.nick_name }}</h3>
+                            <h5 class="p-mail-record-highlights layout" style="font-size:14.7px;">{{ article.rectime }}</h5>
+                          </div>
+                        </div>
+                        <div class="p-mail-record-flex28-spacer"></div>
+                        <div class="p-mail-record-flex28-item1">
+                          <div class="p-mail-record-cover-block9 layout">
+                            <h4 class="p-mail-record-highlights1 layout2" style="margin:9px 5px 10px 17px;">{{ article.sencla }}</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="p-mail-record-flex23-spacer1"></div>
+            {% endfor %}
+          </div>
+
+          <div class="p-mail-record-flex23-item2" style="flex:0px;">
+            <div class="p-mail-record-cover-group layout" style="margin:-35px 0px 0px 1120px;">
+              <button onclick="topFunction()" id="myBtn" title="Gotop" style="border-radius: 35px; border-color: #0000; width:70px;">
+                <div class="p-mail-record-image2 layout">
+                  <img src={% static 'img/upArrow.png' %} width="100%">
+                </div>
+                <div class="p-mail-record-icon2 layout">
+                  <img src={% static 'img/circle.png' %} width="100%">
+                </div>
+                <h2 class="p-mail-record-medium-title layout" style="margin:23.5px 10.5px 12.5px 10px;">TOP</h2>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+
+      {% comment %} $.ajaxSetup({
+        data:{csrfmiddlewaretoken:'{{ csrf_token }}'},
+      }); {% endcomment %}
+
+      {% for message in messages %}
+        alert('{{ message }}')
+      {% endfor %}
+
+      {% comment %} function ChangeDisabled(value){ 
+        if(value == '1'){ // 當按下篩選
+          let changeColor = document.getElementById('newTOold');
+          changeColor.style.background= '#808080';
+        }else{
+          let changeColor = document.getElementById('newTOold');
+          changeColor.style.background= '#F0F0F0';
+        }
+      } {% endcomment %}
+
+      {% comment %} document.querySelector('#newTOold').addEventListener('click', () => {
+        let changeColor = document.getElementById('newTOold');
+        changeColor.style.background= '#808080';
+
+        let formData = $('#searchTime').serializeArray();
+        
+        let data = {}
+        for (const field of formData) {
+            data[field.name] = field.value;
+        }
+        
+        // console.log(data)
+        fetch('/pMailRecord/pNewTOold/', {
+            body: JSON.stringify(data),
+            headers: {
+                'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                'content-type': 'application/json'
+            },
+            method: 'POST'
+        }).then(async (response) => {
+          let data = await response.json();
+            if ('redirect' in data) {
+              window.location.href = data.redirect;
+            }
+        });
+      }); {% endcomment %}
+
+      {% comment %} $("#oldTOnew").click(function(){ //最舊到最新
+        // article_close = models.Article.objects.filter(draft_context='', sendmail = 'False', email_id = user_email).order_by('rectime')
+      }); {% endcomment %}
+
+
+      // 重置scrollTop這個變數的值
+      function topFunction() {
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+    </script>
+    {% comment %} <script src="{% static 'js/searchTime.js' %}"></script> {% endcomment %}
+
+  </body>
+</html>

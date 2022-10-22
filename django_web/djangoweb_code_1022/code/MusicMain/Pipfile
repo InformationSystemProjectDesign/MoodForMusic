@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+asgiref = "*"
+django = "*"
+psycopg2 = "*"
+pytz = "*"
+sqlparse = "*"
+typing-extensions = "*"
+djangorestframework = "*"
+djangorestframework-simplejwt = "*"
+mysqlclient = "*"
+numpy = "*"
+pandas = "*"
+beautifulsoup4 = "*"
+requests = "*"
+selenium = "*"
+sklearn-features = "*"
+drf-yasg = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

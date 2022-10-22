@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Profile.css' %}" />
+
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/px2code/posize/build/v1.00.5.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div class="profile profile-block layout"> <style>.profile.profile-block.layout{ min-height:0px;}</style>
+      <div style="display: flex;
+      /* flex-direction: row;
+      align-items: flex-start;
+      padding: 10px; */
+      gap: 10px;
+      
+      width: 100%;
+      height: 100%;
+      
+      background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+      class="profile-block1 layout">
+        <div class="profile-flex layout">
+          <div class="profile-flex1 layout">
+            <div class="index-flex1-item" style="margin-top:-25px; margin-left:-10px;">
+              <img src={% static 'img/logo_plus.png' %} width="69%;">
+            </div>
+            <div class="profile-flex1-spacer"></div>
+            <div class="profile-flex1-item">
+              <h1 class="profile-big-title layout">
+                <a href="{% url 'index' %}" style="text-decoration:none; color:#000;">首頁</a>
+              </h1>
+            </div>
+            <div class="profile-flex1-spacer1"></div>
+            <div class="profile-flex1-item">
+              <h1 class="profile-big-title layout">
+                <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a>
+              </h1>
+            </div>
+            <div class="profile-flex1-spacer2"></div>
+            <div class="profile-flex1-item">
+              <h1 class="profile-big-title layout">
+                <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+              </h1>
+            </div>
+          </div>
+          <hr class="profile-line layout" style="height:1px; margin-top:19.5px;"/>
+          <div class="profile-flex2 layout">
+            <div class="profile-flex2-item">
+              <div class="profile-cover-block layout">
+                <h1 class="profile-hero-title1-box layout"><pre class="profile-hero-title1" style="font-size:51px;"> 我的書桌 </pre></h1>
+                  <div class="profile-cover-group1 layout">
+                    <a href="/pWrite" style="text-decoration:none; color:#000;">
+                      <h1 class="profile-big-title1 layout" style="width:30%;">寫信</h1>
+                      <div class="profile-box1 layout" style="background-color:#0000;"></div>
+                    </a>
+                  </div>
+                  <div class="profile-cover-group1 layout1">
+                    <a href="{% url 'pMailRecord' %}" style="text-decoration:none; color:#000;">
+                      <h1 class="profile-big-title1 layout1" style="width:48%;">信件紀錄</h1>
+                      <div class="profile-box1 layout" style="background-color:#0000;"></div>
+                    </a>
+                  </div>
+                <div class="profile-cover-block-item">
+                  <div class="profile-cover-group layout">
+                    <h1 class="profile-big-title1 layout2" style="width:72%;">留言回覆紀錄</h1>
+                    <div class="profile-box1 layout" style="background-color:#000;"></div>
+                    <px-posize
+                      x="225fr 27px 15fr"
+                      y="10px 27px 7px"
+                      absolute="true"
+                      lg-x="225fr 27px 15fr"
+                      lg-y="9px 27px 6px"
+                      md-x="225fr 27px 15fr"
+                      md-y="7px 27px 5px"
+                      sm-x="225fr 27px 15fr"
+                      sm-y="6px 27px 5px"
+                      xxs-x="225fr 27px 15fr"
+                      xxs-y="5px 27px 5px">
+                      <div class="profile-icon" style="margin-left:6px;">
+                        <img src={% static 'img/signIcon.png' %} width="100%">
+                      </div>
+                    </px-posize>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="profile-flex2-spacer"></div>
+            <div class="profile-flex2-item1">
+              <article class="profile-content-box layout" style="background-color:#0000; height:557px;">
+                <h1 class="profile-hero-title11-box layout" style="margin:95.5px 39px 35px 29px;"><pre class="profile-hero-title1" style="font-size:51px;"> 個人檔案  </pre></h1>
+                {% comment %} <h1 class="profile-big-title2-box layout">
+                  <pre class="profile-big-title2">
+                    <a href="{% url 'pFile' %}" style="text-decoration:none; color:#000;">修改密碼</a>
+                  </pre>
+                  <pre class="profile-big-title2">修改帳號、<br/><br/>密碼</pre>
+                </h1> {% endcomment %}
+                <div class="profile-cover-group1 layout1">
+                  <a href="{% url 'pFile' %}" style="text-decoration:none; color:#000;">
+                    <h1 class="profile-big-title1 layout1" style="width:48%;">修改密碼</h1>
+                    <div class="profile-box1 layout" style="background-color:#0000;"></div>
+                  </a>
+                </div>
+                <div class="profile-cover-group1 layout1">
+                  <a href="{% url 'pFileMood' %}" style="text-decoration:none; color:#000;">
+                    <h1 class="profile-big-title1 layout1" style="width:60%;">我的情緒圖</h1>
+                    <div class="profile-box1 layout" style="background-color:#0000;"></div>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+    </script>
+  </body>
+</html>
