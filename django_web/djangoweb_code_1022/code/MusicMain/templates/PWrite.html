@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/PWrite.css' %}" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div class="p-write p-write-block layout">
+      <div style="display: flex;
+      /* flex-direction: row;
+      align-items: flex-start;
+      padding: 10px; */
+      gap: 10px;
+      
+      width: 100%;
+      height: 100%;
+      
+      background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+      class="p-write-block1 layout">
+        <div class="p-write-flex layout">
+          <div class="p-write-flex1 layout">
+            <div class="index-flex1-item" style="margin-top:-25px; margin-left:-10px;">
+              <a href="{% url 'index' %}">
+                <img src={% static 'img/logo_plus.png' %} width="69%;">
+              </a>
+            </div>
+            <div class="p-write-flex1-spacer"></div>
+            <div class="p-write-flex1-item">
+              <h1 class="p-write-big-title layout">
+                <a href="{% url 'index' %}" style="text-decoration:none; color:#000;">首頁</a>
+              </h1>
+            </div>
+            <div class="p-write-flex1-spacer1"></div>
+            <div class="p-write-flex1-item">
+              <h1 class="p-write-big-title layout">
+                <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a>
+              </h1>
+            </div>
+            <div class="p-write-flex1-spacer2"></div>
+            <div class="p-write-flex1-item">
+              <h1 class="p-write-big-title layout">
+                <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+              </h1>
+            </div>
+          </div>
+          <hr class="p-write-line layout" style="height:1px; margin-top:19.5px;"/>
+          <div class="p-write-flex2 layout">
+            <div class="p-write-flex2-item">
+              <h1 class="p-write-big-title layout1" style="margin-left: -170px;">
+                <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+              </h1>
+            </div>
+            <div class="p-write-flex2-spacer"></div>
+            <div class="p-write-flex2-item1">
+              <div class="p-write-image1 layout" style="margin-left:-165px;">
+                <img src={% static 'img/leftArrow.png' %} width="100%">
+              </div>
+            </div>
+            <div class="p-write-flex2-spacer1"></div>
+            <div class="p-write-flex2-item"><h1 class="p-write-big-title layout2" style="margin-left: -1150px;">寫信</h1></div>
+          </div>
+          <div class="p-write-cover-block2 layout">
+            <div class="p-write-box layout"></div>
+
+            <form action="" method="post" id="writeMail" name="writeMail">
+              {% csrf_token %}
+              <div class="p-write-foreground layout">
+                <div class="p-write-cover-block layout" style="width:42.7%; height:37.1px;">
+                  <div class="p-write-medium-title">
+                    <input style="width: 367px;height: 36px; font-size: 20px;" type="text" id="signature" name="signature" placeholder="請輸入署名。" maxlength="10" title="至多只能輸入10個字" value="{{ user.username }}" readonly="readonly" required>
+                    {% comment %} <span class="p-write-medium-title-span0">| </span>
+                    <span class="p-write-medium-title-span1"></span> {% endcomment %}
+                  </div>
+                </div>
+                <div class="p-write-cover-block1 layout">
+                  <textarea name="description" id="description" placeholder="開始寫信..." style="font-size: 20px; vertical-align: top; height: 424px; width: 861px;" required></textarea>
+                  {% comment %} <h2 class="p-write-medium-title1-box layout"><pre class="p-write-medium-title1"> |開始寫信</pre></h2> {% endcomment %}
+                </div>
+                <div class="p-write-flex3 layout">
+                  <p style="float:left;height: 40px;margin-top: -513px;margin-left: 100px;position: absolute;font-size: 25px;" >
+                    <input type="checkbox" id="anonyCbox" style="height: 20px;width: 20px;"> <!-- onclick="getchecked();" -->
+                    <label for="cbox1">我要匿名</label> <!-- 勾選匿名寄送之後，送出的資料署名就是匿名 -->
+                  </p>
+                  <p style="float:left;height: 40px;margin-top: -19px;margin-left: 75px;position: absolute;font-size: 25px;" >
+                    <input type="text" id="send_mail" name="send_mail" style="height: 17px;width: 1px;position: absolute;top: 45px;"> <!-- height: 17px;width: 1px;position: absolute;top: 45px;   style="height: 51px;width: 106px;position: absolute;top: -11px;left: -107px;" -->
+                    <input type="checkbox" id="sendmailCbox" style="height: 20px;width: 20px;">
+                    <label for="cbox1">我要公開寄送</label> <!-- 勾選公開寄送之後，會寄送到公開公布欄 onclick="sendmailchecked()" -->
+                  </p>
+                  <div class="p-write-flex3-item">
+                    <div class="p-write-cover-group layout" >
+                      <input style="width: 160px;height: 45px; font-size: 25px; background: #c4c4c4;border: 1px solid #000;margin-top: 25px;" type="button" name="draftMail" id="draftMail" value="存為草稿">
+                      {% comment %} <h1 class="p-write-big-title1 layout" style="margin:30px 5px;">存為草稿</h1>
+                      <div class="p-write-box3 layout" style="background-color:#0000; top:25px;"></div> {% endcomment %}
+                    </div>
+                  </div>
+                  <div class="p-write-flex3-spacer"></div>
+                  <div class="p-write-flex3-item">
+                    <div class="p-write-cover-group layout">
+                      <input style="width: 160px;height: 45px; font-size: 25px; background: #c4c4c4;border: 1px solid #000;margin-top: 25px;" type="submit" name="sendMail" value="送出信件">
+                      {% comment %} <h1 class="p-write-big-title1 layout" style="margin:30px 5px;">送出信件</h1>
+                      <div class="p-write-box3 layout" style="background-color:#0000; top:25px;"></div> {% endcomment %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+
+      document.querySelector('#draftMail').addEventListener('click', () => {
+        let formData = $('#writeMail').serializeArray();
+        
+        let data = {}
+        for (const field of formData) {
+            data[field.name] = field.value;
+        }
+        
+        // console.log(data)
+        fetch('/draftsend/p_draftmail/', {
+            body: JSON.stringify(data),
+            headers: {
+                'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                'content-type': 'application/json'
+            },
+            method: 'POST'
+        }).then(async (response) => {
+          let data = await response.json();
+            if ('redirect' in data) {
+              window.location.href = data.redirect;
+            }
+        });
+      });
+      
+
+      /* function getchecked(){
+          var word = document.getElementById('signature').value;
+          var orword = "{{ user.username }}";
+          var onchecked = $(this).is(":checked");
+          if(onchecked == true){
+            document.getElementById('signature').value = "None";  // None 是匿名
+          }else{
+            document.getElementById('signature').value = orword;
+          }
+        }  
+      */
+      
+      // 是否匿名 
+      $("#anonyCbox").click(function(){
+        var anonyCbox = $(this).is(":checked");
+        var word = document.getElementById('signature').value;
+        var orword = "{{ user.username }}";
+
+        if(anonyCbox == true){
+          document.getElementById('signature').value = "None"; /* None 是匿名 */
+        }else{
+          document.getElementById('signature').value = orword;
+        }
+      });
+
+      // 是否公開送出
+      $("#sendmailCbox").click(function(){
+        var sendmailCbox = $(this).is(":checked");
+        document.getElementById('send_mail').value = sendmailCbox;
+        console.log(sendmailCbox); //true or false
+      });
+    </script>
+  </body>
+</html>

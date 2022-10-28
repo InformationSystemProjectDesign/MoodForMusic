@@ -1,0 +1,188 @@
+/* This source code is exported from pxCode, you can get more document from https://www.pxcode.io */
+.result-msg-block {
+  display: flex;
+  flex-direction: column;
+  background-color: white; }
+
+.result-msg-block.layout {
+  position: relative;
+  min-height: 1024px;
+  flex-shrink: 0; }
+
+.result-msg-block1 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.486); }
+
+.result-msg-block1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content; }
+
+.result-msg-flex {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(247, 247, 247, 0.866);
+  border-radius: 50px 50px 50px 50px; }
+
+.result-msg-flex.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 56.94%;
+  margin: 275px auto; }
+  @media (max-width: 1199px) {
+    .result-msg-flex.layout {
+      margin: 215px auto; } }
+  @media (max-width: 991px) {
+    .result-msg-flex.layout {
+      width: 63.81%;
+      margin: 149px auto; } }
+  @media (max-width: 767px) {
+    .result-msg-flex.layout {
+      width: 70.15%;
+      margin: 93px auto; } }
+  @media (max-width: 575px) {
+    .result-msg-flex.layout {
+      width: 75.81%;
+      margin: 65px auto; } }
+  @media (max-width: 479px) {
+    .result-msg-flex.layout {
+      width: 80.69%;
+      margin: 37px auto; } }
+  @media (max-width: 383px) {
+    .result-msg-flex.layout {
+      width: 84.79%;
+      margin: 18px auto; } }
+
+.result-msg-hero-title {
+  display: flex;
+  justify-content: center;
+  font: 600 48px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .result-msg-hero-title {
+      font-size: 43px;
+      text-align: center; } }
+  @media (max-width: 991px) {
+    .result-msg-hero-title {
+      font-size: 37px; } }
+  @media (max-width: 767px) {
+    .result-msg-hero-title {
+      font-size: 32px; } }
+  @media (max-width: 575px) {
+    .result-msg-hero-title {
+      font-size: 30px; } }
+  @media (max-width: 479px) {
+    .result-msg-hero-title {
+      font-size: 27px; } }
+  @media (max-width: 383px) {
+    .result-msg-hero-title {
+      font-size: 25px; } }
+
+.result-msg-hero-title.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 36.59%;
+  margin: 175px auto 0px; }
+  @media (max-width: 1199px) {
+    .result-msg-hero-title.layout {
+      margin: 139px auto 0px; } }
+  @media (max-width: 991px) {
+    .result-msg-hero-title.layout {
+      margin: 101px auto 0px; } }
+  @media (max-width: 767px) {
+    .result-msg-hero-title.layout {
+      margin: 67px auto 0px; } }
+  @media (max-width: 575px) {
+    .result-msg-hero-title.layout {
+      margin: 51px auto 0px; } }
+  @media (max-width: 479px) {
+    .result-msg-hero-title.layout {
+      margin: 34px auto 0px; } }
+  @media (max-width: 383px) {
+    .result-msg-hero-title.layout {
+      margin: 23px auto 0px; } }
+
+.result-msg-cover-group {
+  display: flex;
+  flex-direction: column; }
+
+.result-msg-cover-group.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 22.44%;
+  margin: 67px auto 130px; }
+  @media (max-width: 1199px) {
+    .result-msg-cover-group.layout {
+      margin: 58px auto 105px; } }
+  @media (max-width: 991px) {
+    .result-msg-cover-group.layout {
+      margin: 47px auto 79px; } }
+  @media (max-width: 767px) {
+    .result-msg-cover-group.layout {
+      margin: 38px auto 56px; } }
+  @media (max-width: 575px) {
+    .result-msg-cover-group.layout {
+      margin: 34px auto 44px; } }
+  @media (max-width: 479px) {
+    .result-msg-cover-group.layout {
+      margin: 30px auto 33px; } }
+  @media (max-width: 383px) {
+    .result-msg-cover-group.layout {
+      margin: 27px auto 25px; } }
+
+.result-msg-big-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 28px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .result-msg-big-title {
+      font-size: 25px;
+      text-align: center; } }
+  @media (max-width: 991px) {
+    .result-msg-big-title {
+      font-size: 23px; } }
+  @media (max-width: 767px) {
+    .result-msg-big-title {
+      font-size: 20px; } }
+  @media (max-width: 575px) {
+    .result-msg-big-title {
+      font-size: 19px; } }
+  @media (max-width: 479px) {
+    .result-msg-big-title {
+      font-size: 18px; } }
+  @media (max-width: 383px) {
+    .result-msg-big-title {
+      font-size: 17px; } }
+
+.result-msg-big-title.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 34.24%;
+  margin: 5px auto; }
+
+.result-msg-box1 {
+  background-color: #c4c4c4;
+  border: 1px solid black; }
+
+.result-msg-box1.layout {
+  position: absolute;
+  top: 0px;
+  height: 44px;
+  left: 0px;
+  right: 0px; }
