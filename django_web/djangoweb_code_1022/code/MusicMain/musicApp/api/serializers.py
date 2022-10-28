@@ -12,7 +12,7 @@ class SingerSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.Serializer):
     email = serializers.EmailField()
-    username = serializers.CharField()
+    # username = serializers.CharField()
     password = serializers.CharField()
     
 class LoginSerializer(serializers.Serializer):
@@ -32,3 +32,8 @@ class ChangePassSerializer(serializers.Serializer): # 修改密碼
     # password = serializers.CharField()
     old_password = serializers.CharField(required=True) 
     new_password = serializers.CharField(required=True)
+    
+
+# google login token
+class TokenSerializer(serializers.Serializer):
+    token = serializers.CharField()

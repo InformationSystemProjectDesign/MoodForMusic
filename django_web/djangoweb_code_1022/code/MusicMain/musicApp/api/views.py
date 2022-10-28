@@ -1,4 +1,6 @@
-from musicApp.api.serializers import LoginSerializer, SingerSerializer, UserSerializer, ArticleSerializer,CrawlerSerializer, ChangePassSerializer
+from os import stat
+import re
+from musicApp.api.serializers import LoginSerializer, SingerSerializer, UserSerializer, ArticleSerializer,CrawlerSerializer, ChangePassSerializer, TokenSerializer
 from musicApp.models import Acct, Article, Singer
 from rest_framework import viewsets, status, generics
 from django.contrib.auth.models import User
@@ -8,6 +10,9 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from musicApp.song_crawler import song_compar
+import requests
+from django.core.exceptions import ObjectDoesNotExist
+
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -25,6 +30,11 @@ class SingerViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.GenericViewSet): 
     queryset = Acct.objects.all()  
     serializer_class = UserSerializer
+    
+    def get_serializer_class(self): # 判斷要google 登入或是用一般登入
+        if self.action == "google_login":
+            return TokenSerializer
+        return super().get_serializer_class()
     
     @action( # 新增使用者
         methods = ["POST"], detail = False, url_path = "add-user"
@@ -60,6 +70,21 @@ class UserViewSet(viewsets.GenericViewSet):
         else:
             return Response(data={"result": "login fail"})
     
+    @action( # google登入功能
+        methods=["POST"], detail=False, url_path="google_login"
+    )
+    def google_login(self, request):
+        s = self.get_serializer(data = request.data)
+        s.is_valid(raise_exception = True) #取到token
+        
+        email = check_token(s.validated_data['token']) # 傳去檢查token是否正確
+        
+        try:
+            acct = Acct.objects.get(email = email)
+            token = get_tokens_for_user(acct)
+            return Response(data={"result": "login success", "token":token["access"]})
+        except ObjectDoesNotExist:
+            return Response(data={"result":"login fail"}, status=status.HTTP_404_NOT_FOUND)
     
     # 測試用，用token登入(JWT密鑰)，postman的authorization選Bearer token放token
     @action(
@@ -67,7 +92,23 @@ class UserViewSet(viewsets.GenericViewSet):
     )
     def test(self, request):
         return Response(data={"result":"test"})
-    
+   
+def check_token(token: str):
+   res = requests.get(
+       "https://www.googleapis.com/oauth2/v1/userinfo",
+       {
+           'alt': 'json', 
+           'access_token': token #帶這兩個參數去問google api是否正確
+       }
+   ) 
+   
+   user_info = res.json()
+   
+   if not user_info.get('email'): 
+      return Response(data={"result":"google get email error"}, status=status.HTTP_401_UNAUTHORIZED)
+   print(user_info)
+   return user_info['email']
+
 class ChangePasswordView(generics.UpdateAPIView): # PATCH
     
     serializer_class = ChangePassSerializer
