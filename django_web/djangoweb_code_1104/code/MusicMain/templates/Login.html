@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Login.css' %}" />
+
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div class="login login-block layout">
+      <div style="display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 10px;
+      
+      width: 100%;
+      height: 100%;
+      
+      background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+      class="login-block1 layout">
+        <div class="login-flex layout">
+          <div class="login-flex1 layout">
+            <div class="index-flex1-item" style="margin-top: -25px;margin-left: -10px;">
+              <img src={% static 'img/logo_plus.png' %} width="80%;">
+            </div> <!-- <h1 class="index-hero-title1 layout">LOGO</h1> -->
+            <div class="login-flex1-spacer"></div>
+            <div class="login-flex1-item">
+              <h1 class="login-big-title layout">
+                <a href="{% url 'acct_login' %}" style="text-decoration:none; color:#000;">首頁</a>
+              </h1>
+            </div>
+            <div class="login-flex1-spacer1"></div>
+            <div class="login-flex1-item">
+              <h1 class="login-big-title layout">
+                <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a> {% comment %}  {% endcomment %}
+              </h1>
+            </div>
+            <div class="login-flex1-spacer2"></div>
+            <div class="login-flex1-item">
+              <h1 class="login-big-title layout">
+                <a onclick="plzSign();" style="text-decoration:none; color:#000;">個人天地</a> {% comment %} href="{% url 'profile' %}" {% endcomment %}
+              </h1>
+            </div>
+          </div>
+          <hr class="login-line layout" style="height:1px; margin-top:20.5px; width: 1260px;"/>
+          <div class="login-flex2 layout">
+            <div class="login-flex2-item">
+              <div class="login-flex3 layout" style=" margin-top:0;">
+                <h1 class="login-hero-title-box layout">
+                  <pre class="login-hero-title" style="line-height:70px; font-size:70px;">
+                    邀請您
+                    一起向未來
+                    寄封信。</pre>
+                </h1>
+                <div class="login-cover-block4 layout" style="height: 65px;">
+                  <button onclick="plzSign();" id="startMail" style="width: 372px;"> <!-- 這邊用JS寫，先跳出訊息說要登入，再轉到登入頁面 -->
+                    <h2 class="login-medium-title-box layout"><pre class="login-medium-title"> 開始寫信...</pre></h2>
+                    {% comment %} <div class="login-cover-block4-spacer"></div> {% endcomment %}
+                    <div class="login-cover-block4-item" style="margin: -62px 0px -60px 292px;">
+                      <img src="{% static 'img/LineBar.png' %}" height="63px;" width="1px;">
+                    </div>
+                    {% comment %} <div class="login-cover-block4-spacer1"></div> {% endcomment %}
+                    <div class="login-cover-block4-item1">
+                      <div class="login-image2 layout" style="margin:15px 20px 14px 308px;">
+                        <img src="{% static 'img/MailIcon.png' %}" width="120%">
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="login-flex2-spacer"></div>
+            <div class="login-flex2-item1">
+              <div class="login-cover-block3 layout">
+                <form action="" method="post">
+                  <div class="form">
+                    {% csrf_token %}
+                    <h1 class="login-big-title1 layout">登入</h1>
+                    <div class="login-cover-group layout">
+                      <input style="width: 452px;height: 54px; font-size: 20px;" type="text" id="email" name="email" placeholder="請輸入電子信箱" required>
+                      {% comment %} <h1 class="login-big-title11 layout"></h1> {% endcomment %}
+                      {% comment %} <div class="login-box2 layout" style="background:#0000;"></div> {% endcomment %}
+                    </div>
+                    <div class="login-cover-group layout1">
+                      <input style="width: 452px;height: 54px; font-size: 20px;" type="password" id="password" name="password" placeholder="請輸入密碼" required>
+                      {% comment %} <h1 class="login-big-title12 layout">密碼</h1>
+                      <div class="login-box2 layout" style="background:#0000;"></div> {% endcomment %}
+                    </div>
+                    <div class="login-cover-block layout">
+                      <input style="width: 452px;height: 54px; font-size: 25px; background: #c4c4c4;border: none;" type="submit" value="登入">
+                      {% comment %} <h1 class="login-big-title1 layout1">登入</h1> {% endcomment %}
+                    </div>
+                    <h1 class="login-big-title1 layout2">或</h1>
+                    <div class="login-cover-block layout1" style="background-color:#000000;">
+                      <h1 class="login-big-title1 layout3" style="font-size:28px;">以 Google 帳號登入</h1>
+                    </div>
+                    <h1 class="login-big-title1 layout4">還沒註冊?</h1>
+                    <a href="{% url 'signPage' %}" style="text-decoration:none; color:#000;">
+                      <div class="login-cover-block layout2">
+                        <h1 class="login-big-title1 layout5" style="font-size:28px;">註冊</h1>
+                      </div>
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+
+      {% for message in messages %}
+        alert('{{ message }}')
+      {% endfor %}
+      
+      function plzSign(){
+        alert("登入後才能使用此功能");
+      }
+
+    </script>
+  </body>
+</html>

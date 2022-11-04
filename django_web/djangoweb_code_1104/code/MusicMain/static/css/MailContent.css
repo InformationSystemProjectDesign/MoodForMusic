@@ -1,0 +1,549 @@
+/* This source code is exported from pxCode, you can get more document from https://www.pxcode.io */
+.mail-content-block {
+  display: flex;
+  flex-direction: column;
+  background-color: white; }
+
+.mail-content-block.layout {
+  position: relative;
+  min-height: 1024px;
+  flex-shrink: 0; }
+
+.mail-content-box {
+  border: 3px solid black; }
+
+.mail-content-box.layout {
+  position: absolute;
+  top: 189px;
+  height: 879px;
+  width: 1069px;
+  right: 183px; }
+
+.mail-content-block1 {
+  display: flex;
+  flex-direction: column;
+  background: var(--src) center center/contain no-repeat;
+  background-color: white; }
+
+.mail-content-block1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content; }
+
+.mail-content-cover-block2 {
+  display: flex;
+  flex-direction: column;
+  background-color: black; }
+
+.mail-content-cover-block2.layout {
+  position: absolute;
+  top: 224px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 678px;
+  left: 0px;
+  right: 0px;
+  width: 68.33%;
+  margin: 0px auto; }
+
+.mail-content-hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 64px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: white;
+  text-align: center;
+  letter-spacing: 0px; }
+
+.mail-content-hero-title.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 34.15%;
+  margin: 22.5px auto; }
+
+.mail-content-cover-block1 {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black; }
+
+.mail-content-cover-block1.layout {
+  position: absolute;
+  top: 355px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 309px;
+  left: 0px;
+  right: 0px;
+  width: 68.33%;
+  margin: 0px auto; }
+
+.mail-content-hero-title1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 64px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+
+.mail-content-hero-title1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 143px 0px 140px; }
+
+.mail-content-medium-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: right;
+  letter-spacing: 0px; }
+
+.mail-content-medium-title.layout {
+  position: absolute;
+  top: 740px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 255px;
+  left: 0px;
+  right: 0px;
+  width: 68.75%;
+  margin: 0px auto; }
+
+.mail-content-medium-title.layout1 {
+  position: absolute;
+  top: 778px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 217px;
+  left: 0px;
+  right: 0px;
+  width: 68.75%;
+  margin: 0px auto; }
+
+.mail-content-cover-block {
+  display: flex;
+  border: 1px solid black; }
+
+.mail-content-cover-block.layout {
+  position: absolute;
+  top: 831px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 145px;
+  left: 0px;
+  right: 0px;
+  width: 68.33%;
+  margin: 0px auto; }
+
+.mail-content-medium-title1 {
+  display: flex;
+  align-items: center;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: #7e7e7e;
+  letter-spacing: 0px; }
+
+.mail-content-medium-title1.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 9.5px 0px 9.5px 14px; }
+
+.mail-content-cover-block-spacer {
+  flex: 0 1 716px; }
+
+.mail-content-cover-block-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 1px; }
+
+.mail-content-image1 {
+  background: var(--src) center center/contain no-repeat; }
+
+.mail-content-image1.layout {
+  position: relative;
+  height: 48px;
+  width: 1px;
+  min-width: 1px; }
+
+.mail-content-cover-block-spacer1 {
+  flex: 0 1 12px; }
+
+.mail-content-medium-title2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+
+.mail-content-medium-title2.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 9.5px 13px 9.5px 0px; }
+
+.mail-content-block2 {
+  display: flex;
+  flex-direction: column; }
+
+.mail-content-block2.layout {
+  position: absolute;
+  top: 883px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 86px;
+  left: 0px;
+  right: 0px;
+  width: 68.4%;
+  margin: 0px auto; }
+
+.mail-content-flex {
+  display: flex; }
+
+.mail-content-flex.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 10px 0px; }
+
+.mail-content-medium-title3-box {
+  display: flex;
+  align-items: center; }
+
+.mail-content-medium-title3-box.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 5px 0px 1px; }
+
+.mail-content-medium-title3 {
+  overflow: visible;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0px;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px;
+  white-space: pre-wrap; }
+
+.mail-content-flex-spacer {
+  flex: 0 1 336px; }
+
+.mail-content-medium-title4 {
+  display: flex;
+  align-items: center;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px; }
+
+.mail-content-medium-title4.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 5px 0px 1px; }
+
+.mail-content-flex-spacer1 {
+  flex: 0 1 138px; }
+
+.mail-content-highlights {
+  display: flex;
+  align-items: flex-end;
+  font: 600 16px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: #7e7e7e;
+  text-decoration: underline;
+  letter-spacing: 0px; }
+
+.mail-content-highlights.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 15px 225px 0px 0px; }
+
+.mail-content-block2.layout1 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 68.4%;
+  margin: 942px auto 27px; }
+
+.mail-content-medium-title5-box {
+  display: flex;
+  align-items: center; }
+
+.mail-content-medium-title5-box.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 5px 0px 1px; }
+
+.mail-content-medium-title5 {
+  overflow: visible;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0px;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px;
+  white-space: pre-wrap; }
+
+.mail-content-medium-title6 {
+  display: flex;
+  align-items: center;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px; }
+
+.mail-content-medium-title6.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 5px 0px 1px; }
+
+.mail-content-flex-spacer2 {
+  flex: 0 1 138px; }
+
+.mail-content-cover-group1 {
+  display: flex;
+  flex-direction: column; }
+
+.mail-content-cover-group1.layout {
+  position: absolute;
+  top: 929px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 24px;
+  left: 0px;
+  right: 0px;
+  width: 4.93%;
+  margin: 0px 4.03% 0px 91.04%; }
+
+.mail-content-image2 {
+  background: var(--src) center center/contain no-repeat; }
+
+.mail-content-image2.layout {
+  position: absolute;
+  top: 0px;
+  height: 14px;
+  left: 0px;
+  width: 22px;
+  min-width: 22px;
+  margin: 14px 25px 43px 24px; }
+
+.mail-content-icon {
+  background: var(--src) center center/contain no-repeat; }
+
+.mail-content-icon.layout {
+  position: absolute;
+  top: 0px;
+  height: 71px;
+  left: 0px;
+  width: 71px;
+  min-width: 71px; }
+
+.mail-content-medium-title7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 24px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+
+.mail-content-medium-title7.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 25.5px 7.5px 16.5px; }
+
+.mail-content-cover-group {
+  display: flex;
+  flex-direction: column; }
+
+.mail-content-cover-group.layout {
+  position: absolute;
+  top: 747px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 233px;
+  left: 0px;
+  right: 0px;
+  width: 12.78%;
+  margin: 0px auto; }
+
+.mail-content-big-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 28px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+
+.mail-content-big-title.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 5px 33px 5px 32px; }
+
+.mail-content-box4 {
+  background-color: #c4c4c4;
+  border: 1px solid black; }
+
+.mail-content-box4.layout {
+  position: absolute;
+  top: 0px;
+  height: 44px;
+  left: 0px;
+  right: 0px; }
+
+.mail-content-hero-title2 {
+  display: flex;
+  align-items: center;
+  font: 48px/0.93 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 4.8px; }
+
+.mail-content-hero-title2.layout {
+  position: absolute;
+  top: 39px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 940px;
+  left: 0px;
+  right: 0px;
+  width: 90.28%;
+  margin: 0px auto; }
+
+.mail-content-line {
+  background-color: black; }
+
+.mail-content-line.layout {
+  position: absolute;
+  top: 0px;
+  height: 1px;
+  left: 0px;
+  right: 0px;
+  margin: 108px 0px 915px; }
+
+.mail-content-big-title1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 28px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+
+.mail-content-big-title1.layout {
+  position: absolute;
+  top: 50.5px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 939.5px;
+  left: 0px;
+  right: 0px;
+  width: 4.38%;
+  margin: 0px 24.76% 0px 70.87%; }
+
+.mail-content-big-title1.layout1 {
+  position: absolute;
+  top: 50.5px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 939.5px;
+  left: 0px;
+  right: 0px;
+  width: 10.21%;
+  margin: 0px 12.53% 0px 77.26%; }
+
+.mail-content-big-title1.layout2 {
+  position: absolute;
+  top: 50.5px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 939.5px;
+  left: 0px;
+  right: 0px;
+  width: 8.26%;
+  margin: 0px 2.47% 0px 89.27%; }
+
+.mail-content-big-title1.layout3 {
+  position: absolute;
+  top: 134.5px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 855.5px;
+  left: 0px;
+  right: 0px;
+  width: 8.26%;
+  margin: 0px 57.53% 0px 34.2%; }
+
+.mail-content-big-title1.layout4 {
+  position: absolute;
+  top: 134.5px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 855.5px;
+  left: 0px;
+  right: 0px;
+  width: 8.26%;
+  margin: 0px 67.95% 0px 23.78%; }
+
+.mail-content-image3 {
+  background: var(--src) center center/contain no-repeat;
+  width: 100%;
+  height: 100%; }
+
+.mail-content-big-title1.layout5 {
+  position: absolute;
+  top: 134.5px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 855.5px;
+  left: 0px;
+  right: 0px;
+  width: 8.26%;
+  margin: 0px 78.09% 0px 13.65%; }

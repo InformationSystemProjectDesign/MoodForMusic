@@ -2,12 +2,17 @@ import { useRef } from "react";
 import { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import getBaseUrl from "../../pages/const";
+import { useRouter } from "next/router";
 
 function IndexForm() {
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
+  const emailInputRef = useRef(); //和email的input綁起來
+  const passwordInputRef = useRef(); //和password的input綁起來
+
+  const router = useRouter();
 
   function submitHandler(event) {
+    //按下登入鑑的function
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
@@ -19,6 +24,63 @@ function IndexForm() {
     };
 
     console.log(LoginData);
+    console.log("post url", getBaseUrl + "auth/login");
+
+    // fetch(getBaseUrl + "auth/test", {
+    //   method: "GET",
+    //   headers: new Headers({
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json",
+    //     Authorization: "Bearer " + sessionStorage.getItem("token"), //登入才可以使用的頁面功能，權限儲存token
+    //   }),
+    // })
+    //   .then((res) => {
+    //     console.log("res", res);
+    //     if (res.ok) {
+    //       return res.json();
+    //     } else {
+    //       throw "登入失敗";
+    //     }
+    //   })
+    //   .then((data) => {
+    //     /*接到request data後要做的事情*/
+    //     sessionStorage.setItem("token", data.token);  //儲存token
+    //     router.push('/personal_space')  //跳轉頁面
+    //   })
+    //   .catch((e) => {
+    //     /*發生錯誤時要做的事情*/
+    //     console.log("ee", e);
+    //     alert('登入失敗') //系統頁面提示訊息登入失敗
+    //   });
+
+    fetch(getBaseUrl + "auth/login", {
+      method: "POST",
+      body: JSON.stringify(LoginData) /*把json資料字串化*/,
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        // "Authorization": 'Bearer' + sessionStorage.getItem('token')
+      }),
+    })
+      .then((res) => {
+        console.log("res", res);
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw "登入失敗";
+        }
+      })
+      .then((data) => {
+        /*接到request data後要做的事情*/
+        console.log("data", data);
+        sessionStorage.setItem("token", data.token);  //儲存token
+        router.push('/personal_space')  //跳轉頁面
+      })
+      .catch((e) => {
+        /*發生錯誤時要做的事情*/
+        console.log("ee", e);
+        alert('登入失敗') //系統頁面提示訊息登入失敗
+      });
   }
 
   return (
@@ -61,6 +123,7 @@ function IndexForm() {
               name="email"
               id="email"
               placeholder="帳號（電子郵件）"
+              ref={emailInputRef}
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
             />
           </div>
@@ -72,17 +135,24 @@ function IndexForm() {
               name="password"
               id="password"
               placeholder="密碼"
+              ref={passwordInputRef}
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
             />
           </div>
 
           {/* 登入btn */}
           <div>
-            <Link href="personal_space" passHref>
+            {/* <Link href="personal_space" passHref>
               <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
                 登入
               </button>
-            </Link>
+            </Link> */}
+            <button
+              onClick={submitHandler}
+              class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+            >
+              登入
+            </button>
           </div>
 
           {/* Google登入btn */}

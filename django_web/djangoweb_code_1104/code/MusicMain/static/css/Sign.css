@@ -1,0 +1,442 @@
+/* This source code is exported from pxCode, you can get more document from https://www.pxcode.io */
+.sign-block {
+  display: flex;
+  flex-direction: column;
+  background: var(--src) center center/contain no-repeat;
+  background-color: white; }
+
+.sign-block.layout {
+  position: relative;
+  min-height: 1024px;
+  flex-shrink: 0; }
+
+.sign-flex {
+  display: flex;
+  flex-direction: column; }
+
+.sign-flex.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 39px 0px; }
+  @media (max-width: 1199px) {
+    .sign-flex.layout {
+      margin: 34px 0px; } }
+  @media (max-width: 991px) {
+    .sign-flex.layout {
+      margin: 28px 0px; } }
+  @media (max-width: 767px) {
+    .sign-flex.layout {
+      margin: 23px 0px; } }
+  @media (max-width: 575px) {
+    .sign-flex.layout {
+      margin: 21px 0px; } }
+  @media (max-width: 479px) {
+    .sign-flex.layout {
+      margin: 18px 0px; } }
+  @media (max-width: 383px) {
+    .sign-flex.layout {
+      margin: 17px 0px; } }
+
+.sign-flex1 {
+  display: flex; }
+  @media (max-width: 575px) {
+    .sign-flex1 {
+      flex-wrap: wrap;
+      row-gap: 16px; } }
+
+.sign-flex1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 92.67%;
+  margin: 0px 2.47% 0px 4.86%; }
+
+.sign-flex1-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 0 auto; }
+  @media (max-width: 575px) {
+    .sign-flex1-item {
+      flex: 0 0 calc(50% - 8px); } }
+  @media (max-width: 383px) {
+    .sign-flex1-item {
+      flex: 0 0 100%; } }
+
+.sign-hero-title {
+  display: flex;
+  align-items: center;
+  font: 48px/0.93 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 4.8px; }
+  @media (max-width: 1199px) {
+    .sign-hero-title {
+      font-size: 43px;
+      text-align: left; } }
+  @media (max-width: 991px) {
+    .sign-hero-title {
+      font-size: 37px; } }
+  @media (max-width: 767px) {
+    .sign-hero-title {
+      font-size: 32px; } }
+  @media (max-width: 575px) {
+    .sign-hero-title {
+      font-size: 30px; } }
+  @media (max-width: 479px) {
+    .sign-hero-title {
+      font-size: 27px; } }
+  @media (max-width: 383px) {
+    .sign-hero-title {
+      font-size: 25px; } }
+
+.sign-hero-title.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 0px 0px 0.5px; }
+  @media (max-width: 1199px) {
+    .sign-hero-title.layout {
+      margin: 0px 0px 5px; } }
+
+.sign-flex1-spacer {
+  flex: 0 1 778.5px; }
+  @media (max-width: 575px) {
+    .sign-flex1-spacer {
+      flex: 0 0 16px; } }
+  @media (max-width: 383px) {
+    .sign-flex1-spacer {
+      display: none; } }
+
+.sign-big-title1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 28px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .sign-big-title1 {
+      font-size: 25px;
+      text-align: center; } }
+  @media (max-width: 991px) {
+    .sign-big-title1 {
+      font-size: 23px; } }
+  @media (max-width: 767px) {
+    .sign-big-title1 {
+      font-size: 20px; } }
+  @media (max-width: 575px) {
+    .sign-big-title1 {
+      font-size: 19px; } }
+  @media (max-width: 479px) {
+    .sign-big-title1 {
+      font-size: 18px; } }
+  @media (max-width: 383px) {
+    .sign-big-title1 {
+      font-size: 17px; } }
+
+.sign-big-title1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 11.5px 0px 0px; }
+  @media (max-width: 1199px) {
+    .sign-big-title1.layout {
+      margin: 10px 0px 0px; } }
+  @media (max-width: 991px) {
+    .sign-big-title1.layout {
+      margin: 9px 0px 0px; } }
+  @media (max-width: 767px) {
+    .sign-big-title1.layout {
+      margin: 7px 0px 0px; } }
+  @media (max-width: 479px) {
+    .sign-big-title1.layout {
+      margin: 6px 0px 0px; } }
+  @media (max-width: 383px) {
+    .sign-big-title1.layout {
+      margin: 5px 0px 0px; } }
+
+.sign-flex1-spacer1 {
+  flex: 0 1 29px; }
+  @media (max-width: 575px) {
+    .sign-flex1-spacer1 {
+      display: none; } }
+
+.sign-flex1-spacer2 {
+  flex: 0 1 26px; }
+  @media (max-width: 575px) {
+    .sign-flex1-spacer2 {
+      flex: 0 0 16px; } }
+  @media (max-width: 383px) {
+    .sign-flex1-spacer2 {
+      display: none; } }
+
+.sign-line {
+  background-color: black; }
+
+.sign-line.layout {
+  position: relative;
+  height: 1px;
+  margin: 23.5px 0px 0px; }
+  @media (max-width: 1199px) {
+    .sign-line.layout {
+      margin: 21px 0px 0px; } }
+  @media (max-width: 991px) {
+    .sign-line.layout {
+      margin: 17px 0px 0px; } }
+  @media (max-width: 767px) {
+    .sign-line.layout {
+      margin: 15px 0px 0px; } }
+  @media (max-width: 575px) {
+    .sign-line.layout {
+      margin: 13px 0px 0px; } }
+  @media (max-width: 479px) {
+    .sign-line.layout {
+      margin: 12px 0px 0px; } }
+  @media (max-width: 383px) {
+    .sign-line.layout {
+      margin: 11px 0px 0px; } }
+
+.sign-cover-block1 {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black; }
+
+.sign-cover-block1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 40.97%;
+  margin: 152px auto 144px; }
+  @media (max-width: 1199px) {
+    .sign-cover-block1.layout {
+      margin: 122px auto 116px; } }
+  @media (max-width: 991px) {
+    .sign-cover-block1.layout {
+      margin: 89px auto 86px; } }
+  @media (max-width: 767px) {
+    .sign-cover-block1.layout {
+      width: 48.08%;
+      margin: 62px auto 59px; } }
+  @media (max-width: 575px) {
+    .sign-cover-block1.layout {
+      width: 55.24%;
+      margin: 48px auto 46px; } }
+  @media (max-width: 479px) {
+    .sign-cover-block1.layout {
+      width: 62.21%;
+      margin: 34px auto 33px; } }
+  @media (max-width: 383px) {
+    .sign-cover-block1.layout {
+      width: 68.69%;
+      margin: 24px auto 25px; } }
+
+.sign-big-title {
+  display: flex;
+  align-items: center;
+  font: 32px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .sign-big-title {
+      font-size: 29px;
+      text-align: left; } }
+  @media (max-width: 991px) {
+    .sign-big-title {
+      font-size: 25px; } }
+  @media (max-width: 767px) {
+    .sign-big-title {
+      font-size: 23px; } }
+  @media (max-width: 575px) {
+    .sign-big-title {
+      font-size: 21px; } }
+  @media (max-width: 479px) {
+    .sign-big-title {
+      font-size: 20px; } }
+  @media (max-width: 383px) {
+    .sign-big-title {
+      font-size: 19px; } }
+
+.sign-big-title.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 51px 35px 0px; }
+  @media (max-width: 1199px) {
+    .sign-big-title.layout {
+      margin: 43px 30px 0px; } }
+  @media (max-width: 991px) {
+    .sign-big-title.layout {
+      margin: 35px 26px 0px; } }
+  @media (max-width: 767px) {
+    .sign-big-title.layout {
+      margin: 28px 21px 0px; } }
+  @media (max-width: 575px) {
+    .sign-big-title.layout {
+      margin: 25px 19px 0px; } }
+  @media (max-width: 479px) {
+    .sign-big-title.layout {
+      margin: 21px 17px 0px; } }
+  @media (max-width: 383px) {
+    .sign-big-title.layout {
+      margin: 19px 16px 0px; } }
+
+.sign-box1 {
+  background-color: #c4c4c4;
+  border: 1px solid black; }
+
+.sign-box1.layout {
+  position: relative;
+  height: 54px;
+  margin: 10px 27px 0px 35px; }
+  @media (max-width: 1199px) {
+    .sign-box1.layout {
+      margin: 9px 24px 0px 30px; } }
+  @media (max-width: 991px) {
+    .sign-box1.layout {
+      margin: 7px 20px 0px 26px; } }
+  @media (max-width: 767px) {
+    .sign-box1.layout {
+      margin: 6px 17px 0px 21px; } }
+  @media (max-width: 575px) {
+    .sign-box1.layout {
+      margin: 6px 15px 0px 19px; } }
+  @media (max-width: 479px) {
+    .sign-box1.layout {
+      margin: 5px 14px 0px 17px; } }
+  @media (max-width: 383px) {
+    .sign-box1.layout {
+      margin: 5px 13px 0px 16px; } }
+
+.sign-big-title.layout1 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 19px 35px 0px; }
+  @media (max-width: 1199px) {
+    .sign-big-title.layout1 {
+      margin: 17px 30px 0px; } }
+  @media (max-width: 991px) {
+    .sign-big-title.layout1 {
+      margin: 14px 26px 0px; } }
+  @media (max-width: 767px) {
+    .sign-big-title.layout1 {
+      margin: 12px 21px 0px; } }
+  @media (max-width: 575px) {
+    .sign-big-title.layout1 {
+      margin: 11px 19px 0px; } }
+  @media (max-width: 479px) {
+    .sign-big-title.layout1 {
+      margin: 10px 17px 0px; } }
+  @media (max-width: 383px) {
+    .sign-big-title.layout1 {
+      margin: 9px 16px 0px; } }
+
+.sign-big-title.layout2 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 31px 35px 0px; }
+  @media (max-width: 1199px) {
+    .sign-big-title.layout2 {
+      margin: 27px 30px 0px; } }
+  @media (max-width: 991px) {
+    .sign-big-title.layout2 {
+      margin: 23px 26px 0px; } }
+  @media (max-width: 767px) {
+    .sign-big-title.layout2 {
+      margin: 19px 21px 0px; } }
+  @media (max-width: 575px) {
+    .sign-big-title.layout2 {
+      margin: 18px 19px 0px; } }
+  @media (max-width: 479px) {
+    .sign-big-title.layout2 {
+      margin: 16px 17px 0px; } }
+  @media (max-width: 383px) {
+    .sign-big-title.layout2 {
+      margin: 15px 16px 0px; } }
+
+.sign-cover-block {
+  display: flex;
+  flex-direction: column;
+  background-color: #c4c4c4;
+  border: 1px solid black; }
+
+.sign-cover-block.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 45px 27px 71px 35px; }
+  @media (max-width: 1199px) {
+    .sign-cover-block.layout {
+      margin: 39px 24px 61px 30px; } }
+  @media (max-width: 991px) {
+    .sign-cover-block.layout {
+      margin: 32px 20px 50px 26px; } }
+  @media (max-width: 767px) {
+    .sign-cover-block.layout {
+      margin: 26px 17px 41px 21px; } }
+  @media (max-width: 575px) {
+    .sign-cover-block.layout {
+      margin: 23px 15px 36px 19px; } }
+  @media (max-width: 479px) {
+    .sign-cover-block.layout {
+      margin: 20px 14px 31px 17px; } }
+  @media (max-width: 383px) {
+    .sign-cover-block.layout {
+      margin: 18px 13px 28px 16px; } }
+
+.sign-big-title2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 32px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .sign-big-title2 {
+      font-size: 29px;
+      text-align: center; } }
+  @media (max-width: 991px) {
+    .sign-big-title2 {
+      font-size: 25px; } }
+  @media (max-width: 767px) {
+    .sign-big-title2 {
+      font-size: 23px; } }
+  @media (max-width: 575px) {
+    .sign-big-title2 {
+      font-size: 21px; } }
+  @media (max-width: 479px) {
+    .sign-big-title2 {
+      font-size: 20px; } }
+  @media (max-width: 383px) {
+    .sign-big-title2 {
+      font-size: 19px; } }
+
+.sign-big-title2.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 13.64%;
+  margin: 7px auto 8px; }
+  @media (max-width: 1199px) {
+    .sign-big-title2.layout {
+      margin: 6px auto 7px; } }
+  @media (max-width: 991px) {
+    .sign-big-title2.layout {
+      margin: 5px auto 6px; } }
+  @media (max-width: 767px) {
+    .sign-big-title2.layout {
+      margin: 5px auto; } }

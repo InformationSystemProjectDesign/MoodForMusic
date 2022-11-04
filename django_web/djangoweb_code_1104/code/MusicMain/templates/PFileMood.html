@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/PFile.css' %}" />
+
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div class="p-file p-file-block layout" style="min-height:0px;">
+      <div style="display: flex;
+      /* flex-direction: row;
+      align-items: flex-start;
+      padding: 10px; */
+      gap: 10px;
+      
+      width: 100%;
+      height: 100%;
+      
+      background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+      class="p-file-block1 layout">
+        <div class="p-file-flex layout">
+          <div class="p-file-flex1 layout">
+            <div class="index-flex1-item" style="margin-top:-25px; margin-left:-10px;">
+              <img src={% static 'img/logo_plus.png' %} width="70%;">
+            </div>
+            <div class="p-file-flex1-spacer"></div>
+            <div class="p-file-flex1-item">
+              <h1 class="p-file-big-title1 layout">
+                <a href="{% url 'index' %}" style="text-decoration:none; color:#000;">首頁</a>
+              </h1>
+            </div>
+            <div class="p-file-flex1-spacer1"></div>
+            <div class="p-file-flex1-item">
+              <h1 class="p-file-big-title1 layout">
+                <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a>
+              </h1>
+            </div>
+            <div class="p-file-flex1-spacer2"></div>
+            <div class="p-file-flex1-item">
+              <h1 class="p-file-big-title1 layout">
+                <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+              </h1>
+            </div>
+          </div>
+          <hr class="p-file-line layout" style="height:1.3px; margin-top:19px;"/>
+          <div class="p-file-flex2 layout">
+            <div class="p-file-flex2-item">
+              <h1 class="p-file-big-title1 layout1">
+                <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+              </h1>
+            </div>
+            <div class="p-file-flex2-spacer"></div>
+            <div class="p-file-flex2-item1">
+              <div class="p-file-image1 layout" style="margin:7.5px 0px 2.5px -122px;">
+                <img src={% static 'img/leftArrow.png' %} width="100%">
+              </div>
+            </div>
+            <div class="p-file-flex2-spacer1"></div>
+            <div class="p-file-flex2-item"><h1 class="p-file-big-title1 layout2" style="margin-left:-875px;">我的情緒圖</h1></div>
+          </div>
+
+          <div class="p-file-cover-block1 layout" style="border:none; left:-140px;">
+            <div id="chartContainer" style="height: 500px; width: 800px;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+
+      {% for message in messages %}
+        alert('{{ message }}')
+      {% endfor %}
+
+    </script>
+  </body>
+  <script>
+    window.onload = function () {
+      CanvasJS.addColorSet("mycolorShades",
+                [//colorSet Array
+
+                "#774F38",
+                "#0F4F92",
+                "#C5E0DC",
+                "#CC2A41",
+                "#E08E79",
+                "#F1D4AF"
+                ]);
+      
+      var chart = new CanvasJS.Chart("chartContainer", {
+        colorSet: "mycolorShades",
+        backgroundColor: "#0000",
+        theme: "light2",
+        animationEnabled: true,
+        {% comment %} title: {
+          text: "Shares of Electricity Generation by Fuel"
+        },
+        subtitles: [{
+          text: "United Kingdom, 2016",
+          fontSize: 16
+        }], {% endcomment %}
+        data: [{
+          type: "pie",
+          indexLabelFontSize: 23,
+          radius: 200,
+          indexLabel: "{label} {y}",
+          yValueFormatString: "###0.0\"%\"",
+          click: explodePie,
+          dataPoints: [
+            { y: 25, label: "開心" },
+            { y: 15, label: "生氣"},
+            { y: 15, label: "難過" },
+            { y: 9, label: "害怕" },
+            { y: 20, label: "愛" },
+            { y: 16, label:"恨"}
+          ]
+        }]
+      });
+      chart.render();
+      
+      function explodePie(e) {
+        for(var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+          if(i !== e.dataPointIndex)
+            e.dataSeries.dataPoints[i].exploded = false;
+        }
+      }
+      
+    }
+  </script>
+</html>
