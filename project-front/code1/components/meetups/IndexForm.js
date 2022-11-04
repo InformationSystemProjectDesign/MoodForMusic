@@ -12,7 +12,7 @@ function IndexForm() {
   const router = useRouter();
 
   function submitHandler(event) {
-    //按下登入鑑的function
+    //按下登入鍵的function
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;

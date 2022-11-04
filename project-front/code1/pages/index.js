@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { MongoClient } from "mongodb";
 
 import IndexForm from "../components/meetups/IndexForm";
 import { Fragment } from "react";
