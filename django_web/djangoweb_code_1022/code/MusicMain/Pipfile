@@ -20,6 +20,7 @@ requests = "*"
 selenium = "*"
 sklearn-features = "*"
 drf-yasg = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

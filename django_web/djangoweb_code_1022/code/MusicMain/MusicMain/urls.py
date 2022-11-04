@@ -80,3 +80,4 @@ urlpatterns = [
 	path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 # http://127.0.0.1:8000/swagger/ 能看到目前能使用的api
+
