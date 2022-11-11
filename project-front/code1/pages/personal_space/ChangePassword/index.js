@@ -2,7 +2,6 @@ import Router, { useRouter } from "next/router";
 import { Fragment } from "react";
 import Head from "next/head";
 import RegisterForm from "../../../components/meetups/ChangePasswordForm";
-import { MongoClient } from "mongodb";
 
 function ChangePasswordPage() {
   const router = useRouter();
@@ -37,30 +36,5 @@ function ChangePasswordPage() {
   );
 }
 
-export async function getStaticProps() {
-    // fetch dada from an API
-    const client = await MongoClient.connect(
-      "mongodb+srv://happyday99:happy@cluster0.pflxs.mongodb.net/meetups?retryWrites=true&w=majority"
-    );
-    const db = client.db();
-  
-    const meetupsCollection = db.collection("meetups");
-  
-    const meetups = await meetupsCollection.find().toArray();
-  
-    client.close();
-  
-    return {
-      props: {
-        meetups: meetups.map((meetup) => ({
-          title: meetup.title,
-          address: meetup.address,
-          image: meetup.image,
-          id: meetup._id.toString(),
-        })),
-      },
-      revalidate: 10, //10秒就重抓資料一次
-    };
-  }
 
 export default ChangePasswordPage;

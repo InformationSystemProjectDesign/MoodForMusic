@@ -1,6 +1,5 @@
 import Router, { useRouter } from "next/router";
 import Head from "next/head";
-import { MongoClient } from "mongodb";
 import PersonalForm from "../../components/meetups/PersonalForm";
 import Link from 'next/link';
 import { Fragment } from "react";
@@ -81,16 +80,6 @@ function PersonalPage() {
 
 export async function getStaticProps() {
   // fetch dada from an API
-  const client = await MongoClient.connect(
-    "mongodb+srv://happyday99:happy@cluster0.pflxs.mongodb.net/meetups?retryWrites=true&w=majority"
-  );
-  const db = client.db();
-
-  const meetupsCollection = db.collection("meetups");
-
-  const meetups = await meetupsCollection.find().toArray();
-
-  client.close();
 
   return {
     props: {
