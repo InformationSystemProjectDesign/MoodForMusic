@@ -2,23 +2,24 @@ import { useRef } from 'react';
 import { Fragment } from "react";
 import Head from "next/head";
 import Link from 'next/link';
+import getBaseUrl from "../../pages/const";
 
 function RegisterForm() {
-  const titleInputRef = useRef();
+  const usernameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const confirmPasswordInputRef = useRef();
 
-  function submitHandler(event) {
+  function submitHandler(event) {//按下登入鍵的function
     event.preventDefault();
 
-    const enteredTitle = titleInputRef.current.value;
+    const enteredusername = usernameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     const enteredConfirmPassword = confirmPasswordInputRef.current.value;
 
     const registerData = {
-      title: enteredTitle,
+      username: enteredusername,
       email: enteredEmail,
       password: enteredPassword,
       confirmPassword: enteredConfirmPassword,

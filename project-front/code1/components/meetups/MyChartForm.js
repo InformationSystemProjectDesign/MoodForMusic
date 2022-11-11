@@ -4,16 +4,20 @@ import Head from "next/head";
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import getBaseUrl from "../../pages/const";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function MyChartForm() {
-  const pie_data = {
+  MyChartHandler();
+
+  //let 將pie_data設為變數 (const表示不會變的值)
+  let pie_data = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        data: [],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -34,6 +38,30 @@ function MyChartForm() {
       },
     ],
   };
+
+  function MyChartHandler() {
+    fetch(getBaseUrl + "crawler/test", {
+      method: "GET",
+      // body: JSON.stringify(enteredMyChardata),  //GET不用body
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log("res", res);
+        if (res.ok) {
+          return res.json(); //將收到的值改為json格式
+        } else {
+          console.log("get api error");
+        }
+      })
+      .then((result) => {
+        console.log("result", result);
+        // pie_data['datasets']['data'] = result.result
+      });
+
+    console.log("pie_datap", pie_data);
+  }
 
   return (
     <Fragment>
