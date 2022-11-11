@@ -19,20 +19,20 @@ function MyChartForm() {
         label: "# of Votes",
         data: [3,7,2,5,1,9],
         backgroundColor: [
-          "rgba(85,94,123, 0.5)",
-          "rgba(124,204,229, 0.5)",
-          "rgba(253,228,127, 0.5)",
-          "rgba(224,70,68, 0.5)",
-          "rgba(181,118,173, 0.5)",
-          "rgba(183,217,104 0.5)",
+          "rgba(255,144,118, 0.5)",
+          "rgba(137,201,239, 0.5)",
+          "rgba(254,217,93, 0.5)",
+          "rgba(228,174,222, 0.5)",
+          "rgba(133,220,187, 0.5)",
+          "rgba(238,171,98, 0.5)",
         ],
         borderColor: [
-          "rgba(85,94,123, 1)",
-          "rgba(124,204,229, 1)",
-          "rgba(253,228,127, 1)",
-          "rgba(224,70,68, 1)",
-          "rgba(181,118,173, 1)",
-          "rgba(183,217,104, 1)",
+          "rgba(255,144,118, 1)",
+          "rgba(137,201,239, 1)",
+          "rgba(254,217,93, 1)",
+          "rgba(228,174,222, 1)",
+          "rgba(133,220,187, 1)",
+          "rgba(238,171,98, 1)",
         ],
         borderWidth: 1,
       },
@@ -60,7 +60,7 @@ function MyChartForm() {
         // pie_data['datasets']['data'] = result.result
       });
 
-    console.log("pie_datap", pie_data);
+    // console.log("pie_data", pie_data);
   }
 
   return (

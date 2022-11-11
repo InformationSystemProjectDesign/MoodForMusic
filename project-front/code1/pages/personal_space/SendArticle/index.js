@@ -25,7 +25,7 @@ function SendArticlePage() {
     return (
       <Fragment>
         <Head>
-          <title>註冊</title>
+          <title>寄信</title>
           <meta
             name="description"
             content="Register for the React Meetups!"

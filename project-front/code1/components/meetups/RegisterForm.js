@@ -87,9 +87,9 @@ function RegisterForm() {
             {/* 確認密碼 */}
             <div class="mb-5">              
               <input
-                type="confirmPassword"
-                name="confirmpassword"
-                id="confirmpassword"
+                type="password"
+                name="password"
+                id="password"
                 placeholder="確認密碼"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
