@@ -51,7 +51,7 @@ function ChangePasswordForm() {
             </label>
 
             {/* 帳號 */}
-            <div class="mb-5">              
+            {/* <div class="mb-5">              
               <input
                 type="email"
                 name="email"
@@ -59,7 +59,7 @@ function ChangePasswordForm() {
                 placeholder="帳號（請輸入電子郵件）"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
-            </div>
+            </div> */}
 
             {/* 密碼 */}
             <div class="mb-5">              

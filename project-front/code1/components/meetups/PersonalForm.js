@@ -52,9 +52,11 @@ function PersonalForm() {
 
                 {/* 信件紀錄btn */}
                 <div class="mb-5">
-                  <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                    信件紀錄
-                  </button>
+                  <Link href="personal_space/MailRecord">
+                    <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                      信件紀錄
+                    </button>
+                  </Link>
                 </div>
               
               </form>
@@ -74,13 +76,13 @@ function PersonalForm() {
                   <p class="underline underline-offset-4 decoration-2">個人檔案</p>
                 </label>            
 
-                {/* 修改帳密btn */}
+                {/* 修改密碼btn */}
                 <div class="mb-5">
 
                   <Link href="personal_space/ChangePassword" passHref>
                     
                     <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                      修改帳密
+                      修改密碼
                     </button>
                   </Link>
                 </div>

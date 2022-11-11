@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import Link from 'next/link';
 
-function ArticleForm() {
+function MailRecordForm() {
   const URLInputRef = useRef();
   
 
@@ -24,7 +24,7 @@ function ArticleForm() {
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       <Head>
-        <title>送出文章</title>
+        <title>信件紀錄</title>
         <meta
           name="description"
           content="Browse a huge list of active React meetups!"
@@ -40,44 +40,42 @@ function ArticleForm() {
                         for="name"
                         class="mb-3 block text-left text-1xl font-bold"
                     >
-                    個人天地 - 寫信
-                    </label>
+                    個人天地 - 信件紀錄
+                    </label>                    
                     <div class="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 text-base outline-none focus:border-gray-800  focus:shadow-md">
+                      
+                    {/* 歌曲連結 */}
+                    <div class="mb-5">
+                        <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                            歌曲連結
+                        </button>
+                    </div>
+
                     {/* 文章連結 */}
-                     <div class="mb-5">              
-                        <input
-                            type="text"
-                            name="url"
-                            id="url"
-                            placeholder="文章連結"
-                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
-                        />
+                    <div class="mb-5">
+                        <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                            文章連結
+                        </button>
+                    </div>
+                    
+                    <div class="flex flex-row place-content-center">
+
+                      {/* 時間 */}
+                      <div class="mb-5">
+                          <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                              時間
+                          </button>
+                      </div>
+
+                      {/* 心情 */}
+                      <div class="mb-5">
+                          <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                              心情
+                          </button>
+                      </div>
+
                     </div>
             
-                    {/* dcard文章送出btn */}
-                    <div class="mb-5">
-                        <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                            Dcard連結送出
-                        </button>
-                    </div>
-                    {/* ptt文章送出btn */}
-                    <div class="mb-5">
-                        <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
-                            PTT連結送出
-                        </button>
-                    </div>
-
-                    <label
-                        for="name"
-                        class="mb-3 block text-center text-base font-bold">
-                        你的文章內容
-                    </label>
-
-                    <label
-                        for="name"
-                        class="mb-3 block text-center text-base font-bold">
-                        知音為你推薦的歌曲
-                    </label>
                     </div>
                 </form>
                 
@@ -88,4 +86,4 @@ function ArticleForm() {
   );
 }
 
-export default ArticleForm;
+export default MailRecordForm;
