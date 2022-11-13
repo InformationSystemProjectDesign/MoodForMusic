@@ -7,12 +7,34 @@ mary
 case111202@gmail.com
 case111202
 
-12314@ntub.edu.tw
-12314@ntub.edu.tw
+email:123wedc@gmail.com
+password:asdf123
+
+https://www.dcard.tw/f/relationship/p/238632575
+
+swagger api 權限:
+https://dotblogs.com.tw/yc421206/2019/01/21/swagger_via_api_key_jwt_call_protect_api
+記得在token前面加bearer並用空白隔開即可
+
 
 使用者名稱:lin4587
 帳號:westdra891221@gmail.com
-密碼:123
+密碼:qweqwe
+
+
+所有API功能:
+1. 一般登入(已完成)
+(POST) localhost:8000/api/auth/login
+2. google 登入(前端的google登入按鈕沒用好)
+(POST) localhost:8000/api/auth/google_login
+3. 使用者註冊(已完成，view.py那有改)
+(POST) localhost:8000/api/auth/add-user
+4. 修改帳密(已完成)
+(PATCH) localhost:8000/api/change-password
+5. 文章新增
+(POST) localhost:8000/api/crawler/add-article
+6. 文章查閱(包含信件查閱、情緒圖)
+(GET) localhost:8000/api/article/
 
 開啟步驟：
 在windows系統使用
@@ -203,8 +225,19 @@ pipenv freeze > requirements.txt 輸出套件並儲存
 
 https://studygyaan.com/django/django-rest-framework-tutorial-change-password-and-reset-password
 
-------------------------
-pipenv --python 3.10.6
-pipenv shell 建立虛擬機並進入
-pipenv install -r requirements.txt 第一次進入並安裝套件
-exit 離開虛擬環境
+
+# find_song('https://www.dcard.tw/f/relationship/p/238632575')
+# find_song('https://www.dcard.tw/f/talk/p/239984330')
+# find_song('https://www.dcard.tw/f/photography/p/240167044')
+# find_song("http://www.ptt.cc/bbs/Boy-Girl/M.1664277279.A.9AA.html")
+# find_song("https://www.ptt.cc/bbs/Gossiping/M.1664530650.A.4E3.html")
+# find_song("http://www.ptt.cc/bbs/Boy-Girl/M.1660356781.A.365.html")
+
+
+https://getbootstrap.com/docs/4.2/components/spinners/
+
+
+!!!!!!注意!!!!!
+1. 登入頁面右上角的按鈕連結，要調整不能點
+2. 部署到伺服器之前要django的設定debug = false
+3. 把一些測試的print要記得註解

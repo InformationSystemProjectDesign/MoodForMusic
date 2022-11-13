@@ -32,7 +32,8 @@ class ChangePassSerializer(serializers.Serializer): # 修改密碼
     # password = serializers.CharField()
     old_password = serializers.CharField(required=True) 
     new_password = serializers.CharField(required=True)
+    
 
-#google login token
+# google login token
 class TokenSerializer(serializers.Serializer):
     token = serializers.CharField()

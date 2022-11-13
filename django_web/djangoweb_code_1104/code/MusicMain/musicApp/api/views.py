@@ -1,4 +1,4 @@
-from musicApp.api.serializers import LoginSerializer, SingerSerializer, UserSerializer, ArticleSerializer,CrawlerSerializer, ChangePassSerializer,TokenSerializer
+from musicApp.api.serializers import LoginSerializer, SingerSerializer, UserSerializer, ArticleSerializer,CrawlerSerializer, ChangePassSerializer, TokenSerializer
 from musicApp.models import Acct, Article, Singer
 from rest_framework import viewsets, status, generics
 from django.contrib.auth.models import User
@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from musicApp.song_crawler import song_compar
 import requests
 from django.core.exceptions import ObjectDoesNotExist
+
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -27,8 +28,8 @@ class SingerViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.GenericViewSet): 
     queryset = Acct.objects.all()  
     serializer_class = UserSerializer
-
-    def get_serializer_class(self):
+    
+    def get_serializer_class(self): # 判斷要google 登入或是用一般登入
         if self.action == "google_login":
             return TokenSerializer
         return super().get_serializer_class()
@@ -44,9 +45,12 @@ class UserViewSet(viewsets.GenericViewSet):
         email = serailzer.data["email"]
         username = serailzer.data["username"]
         password = serailzer.data["password"]
-        Acct.objects.create_user(username = username, email = email, password = password)
-        
-        return Response(data={"message":"add success"})
+        ct_user = Acct.objects.filter(email=email).count()
+        if ct_user == 0:
+            Acct.objects.create_user(username = username, email = email, password = password)
+            return Response(data={"message":"add success"})
+        else:
+            return Response(data={"message":"帳戶已存在，請使用其他電子信箱"})
         # return Response(data={"username":Acct.username, "email":Acct.email})
         # 很彈性看要回傳啥都可
         
@@ -60,62 +64,56 @@ class UserViewSet(viewsets.GenericViewSet):
         email = serailzer.data["email"]
         password = serailzer.data["password"]
         
-        acct = authenticate(request, email = email, password = password)
-        if acct:
-            token = get_tokens_for_user(acct)
-            return Response(data={"result": "login success", "token":token["access"]})
+        ct_user = Acct.objects.filter(email=email).count()
+        if ct_user == 1:
+            acct = authenticate(request, email = email, password = password)
+            if acct:
+                token = get_tokens_for_user(acct)
+                return Response(data={"result": "login success", "token":token["access"]})
+            else:
+                return Response(data={"result": "login fail"})
         else:
-            return Response(data={"result": "login fail"})
+            return Response(data={"result": "沒有此使用者，請去註冊"})
     
-
-    @action( # 登入功能
+    @action( # google登入功能
         methods=["POST"], detail=False, url_path="google_login"
-    ) 
+    )
     def google_login(self, request):
-        s = self.get_serializer(data=request.data)
-        s.is_valid(raise_exception = True)
-
-       
+        s = self.get_serializer(data = request.data)
+        s.is_valid(raise_exception = True) #取到token
         
-        email = check_token(s.validated_data['token'])
-
+        email = check_token(s.validated_data['token']) # 傳去檢查token是否正確
+        
         try:
             acct = Acct.objects.get(email = email)
             token = get_tokens_for_user(acct)
             return Response(data={"result": "login success", "token":token["access"]})
         except ObjectDoesNotExist:
             return Response(data={"result":"login fail"}, status=status.HTTP_404_NOT_FOUND)
-
-
-
-
     
     # 測試用，用token登入(JWT密鑰)，postman的authorization選Bearer token放token
     @action(
-      methods=["GET"], detail=False, url_path="test", permission_classes = [IsAuthenticated]
+    methods=["GET"], detail=False, url_path="test", permission_classes = [IsAuthenticated]
     )
     def test(self, request):
         return Response(data={"result":"test"})
-
+   
 def check_token(token: str):
-     
-    res = requests.get(
-        "https://www.googleapis.com/oauth2/v1/userinfo",
-        {
-            'alt':'json',
-            'access_token':token
-        }
-    )
+   res = requests.get(
+       "https://www.googleapis.com/oauth2/v1/userinfo",
+       {
+           'alt': 'json', 
+           'access_token': token #帶這兩個參數去問google api是否正確
+       }
+   ) 
+   
+   user_info = res.json()
+   
+   if not user_info.get('email'): 
+      return Response(data={"result":"google get email error"}, status=status.HTTP_401_UNAUTHORIZED)
+   print(user_info)
+   return user_info['email']
 
-
-    user_info = res.json()
-
-    if not user_info.get('email'):
-        return Response(data={"result":"google get email error"},status = status.HTTP_401_UNAUTHORIED)
-
-    return user_info['email']
-
-    
 class ChangePasswordView(generics.UpdateAPIView): # PATCH
     
     serializer_class = ChangePassSerializer
@@ -154,7 +152,7 @@ class CrawlerViewSet(viewsets.GenericViewSet): #新增文章
     serializer_class = CrawlerSerializer
     # model = Acct
     
-    @action( # 新增使用者
+    @action(
         methods = ["POST"], detail = False, url_path = "add-article", permission_classes = [IsAuthenticated]
     )
     

@@ -3,12 +3,16 @@ import { Fragment } from "react";
 import Head from "next/head";
 import Link from 'next/link';
 import getBaseUrl from "../../pages/const";
+import { useRouter } from "next/router";
 
+// 註冊api
 function RegisterForm() {
   const usernameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const confirmPasswordInputRef = useRef();
+
+  const router = useRouter();
 
   function submitHandler(event) {//按下登入鍵的function
     event.preventDefault();
@@ -22,10 +26,49 @@ function RegisterForm() {
       username: enteredusername,
       email: enteredEmail,
       password: enteredPassword,
-      confirmPassword: enteredConfirmPassword,
     };
 
     console.log(registerData);
+
+    if (enteredConfirmPassword == enteredPassword){
+      fetch(getBaseUrl + "auth/add-user", {
+        method: "POST",
+        body: JSON.stringify(registerData) /*把json資料字串化*/,
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        }),
+      })
+        .then((res) => {
+          console.log("res", res);
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw "註冊失敗";
+          }
+        })
+        .then((data) => {
+          /*接到request data後要做的事情*/
+          console.log("data", data);
+          if (data["message"] == "帳戶已存在，請使用其他電子信箱"){
+            alert('帳戶已存在，請使用其他電子信箱')
+            router.reload(); // 重整頁面
+          }else{
+            alert('註冊成功')
+            router.push('/')  //跳轉頁面
+          }
+          
+        })
+        .catch((e) => {
+          /*發生錯誤時要做的事情*/
+          console.log("ee", e);
+          alert('註冊失敗，可能帳號已被使用') //系統頁面提示訊息登入失敗
+          router.reload(); // 重整頁面
+        });
+    }else{
+      alert('確認密碼輸入錯誤，請重新輸入')
+      router.reload(); // 重整頁面
+    }
   }
 
   return (
@@ -58,6 +101,7 @@ function RegisterForm() {
                 name="name"
                 id="name"
                 placeholder="使用者名稱"
+                ref = {usernameInputRef}
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
               />
             </div>
@@ -69,6 +113,7 @@ function RegisterForm() {
                 name="email"
                 id="email"
                 placeholder="帳號（請輸入電子郵件）"
+                ref = {emailInputRef}
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
             </div>
@@ -80,6 +125,7 @@ function RegisterForm() {
                 name="password"
                 id="password"
                 placeholder="密碼"
+                ref = {passwordInputRef}
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
             </div>
@@ -91,13 +137,17 @@ function RegisterForm() {
                 name="password"
                 id="password"
                 placeholder="確認密碼"
+                ref = {confirmPasswordInputRef}
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
             </div>
 
             {/* 註冊btn */}
             <div class="mb-5">
-                <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                <button 
+                onClick={submitHandler}
+                class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                >
                   註冊
                 </button>
             </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import getBaseUrl from "../../pages/const";
 import { useRouter } from "next/router";
 
+// 一般登入api
 function IndexForm() {
   const emailInputRef = useRef(); //和email的input綁起來
   const passwordInputRef = useRef(); //和password的input綁起來
@@ -19,7 +20,7 @@ function IndexForm() {
     const enteredPassword = passwordInputRef.current.value;
 
     const LoginData = {
-      email: enteredEmail,
+      email: enteredEmail, //這裡的變數名稱必須跟後端寫的名稱一樣
       password: enteredPassword,
     };
 
@@ -73,8 +74,13 @@ function IndexForm() {
       .then((data) => {
         /*接到request data後要做的事情*/
         console.log("data", data);
-        sessionStorage.setItem("token", data.token);  //儲存token
-        router.push('/personal_space')  //跳轉頁面
+        if (data["result"] == "沒有此使用者，請去註冊"){
+          alert('登入失敗 沒有此使用者，請去註冊')
+          router.push('/register')
+        }else{
+          sessionStorage.setItem("token", data.token);  //儲存token
+          router.push('/personal_space')  //跳轉頁面
+        }
       })
       .catch((e) => {
         /*發生錯誤時要做的事情*/

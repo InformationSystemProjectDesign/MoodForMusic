@@ -63,7 +63,7 @@ def dcardCraw(url):
     # 讓beautifulSoup協助我們解析HTML格式文件
     root = bs4.BeautifulSoup(data, "html.parser")
     # dcard標籤會不定時更換須注意，用列表顯示全部爬蟲下來的標題
-    titles = root.find("div", class_ = "sc-ba53eaa8-0 hKkUKs")
+    titles = root.find("div", class_ = "sc-bbb1500f-0 dzKBPw")
     
     for title in titles:
         result = title.text.strip().replace('\n', '').replace(' ', '')
@@ -183,7 +183,11 @@ def find_song(url):
 
 
 # find_song('https://www.dcard.tw/f/relationship/p/238632575')
+# find_song('https://www.dcard.tw/f/talk/p/239984330')
+# find_song('https://www.dcard.tw/f/photography/p/240167044')
+# find_song("http://www.ptt.cc/bbs/Boy-Girl/M.1664277279.A.9AA.html")
 # find_song("https://www.ptt.cc/bbs/Gossiping/M.1664530650.A.4E3.html")
+# find_song("http://www.ptt.cc/bbs/Boy-Girl/M.1660356781.A.365.html")
 
 # 需pip install
 # pip install requests

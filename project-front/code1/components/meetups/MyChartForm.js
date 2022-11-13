@@ -8,6 +8,7 @@ import getBaseUrl from "../../pages/const";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+// 情緒圖API
 function MyChartForm() {
   MyChartHandler();
 

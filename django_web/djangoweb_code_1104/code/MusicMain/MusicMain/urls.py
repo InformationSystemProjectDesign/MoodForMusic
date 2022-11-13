@@ -80,3 +80,6 @@ urlpatterns = [
 	path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 # http://127.0.0.1:8000/swagger/ 能看到目前能使用的api
+# 最後加密swagger才不會被其他人看到我們的api路徑，用下面網址的方法
+# https://github.com/twtrubiks/django_rest_framework_swagger_tutorial
+

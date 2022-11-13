@@ -47,11 +47,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
-    'corsheaders',
+    'corsheaders', # 防止跨網域攻擊
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,10 +59,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
-
-
 
 ROOT_URLCONF = 'MusicMain.urls'
 
@@ -198,12 +197,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+        # 'rest_framework.authentication.TokenAuthentication',
+    ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAdminUser',
+#    ),
 }
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60*8), #大多用這個，token結束之後就會被自動登出
 }
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
@@ -212,3 +216,40 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_All_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+
+# SWAGGER_SETTINGS = {
+#     "exclude_namespaces": [], # List URL namespaces to ignore
+#     "api_version": '0.1',  # Specify your API's version
+#     "api_path": "api/",  # Specify the path to your API not a root level
+#     "enabled_methods": [  # Specify which methods to enable in Swagger UI
+#         'get',
+#         'post',
+#         'put',
+#         'patch',
+#         'delete'
+#     ],
+#     "api_key": '', # An API key
+#     "is_authenticated": False,  # Set to True to enforce user authentication,
+#     "is_superuser": False,  # Set to True to enforce admin only access
+# }
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "JWT [Bearer {JWT}]": {
+            "name": "Authorization",
+            "type": "apiKey",
+            "in": "header",
+        }
+    },
+    "USE_SESSION_AUTH": False,
+}
+
+FORCE_SCRIPT_NAME = "/"
+
+# authorizations = {
+#     'apikey': {
+#         'type' : 'apiKey',
+#         'in': 'header',
+#         'name': 'Authorization'
+#     }
+# }

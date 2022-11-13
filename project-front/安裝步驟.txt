@@ -1,0 +1,7 @@
+首次安裝:
+1. 在該資料夾的路徑之cmd，輸入npm install
+2. cmd輸入: npm run dev
+3. 在cmd輸入:
+   npm install -D tailwindcss
+
+啟動虛擬機:npm run dev
