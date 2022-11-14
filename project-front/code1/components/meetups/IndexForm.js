@@ -27,33 +27,6 @@ function IndexForm() {
     console.log(LoginData);
     console.log("post url", getBaseUrl + "auth/login");
 
-    // fetch(getBaseUrl + "auth/test", {
-    //   method: "GET",
-    //   headers: new Headers({
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     Authorization: "Bearer " + sessionStorage.getItem("token"), //登入才可以使用的頁面功能，權限儲存token
-    //   }),
-    // })
-    //   .then((res) => {
-    //     console.log("res", res);
-    //     if (res.ok) {
-    //       return res.json();
-    //     } else {
-    //       throw "登入失敗";
-    //     }
-    //   })
-    //   .then((data) => {
-    //     /*接到request data後要做的事情*/
-    //     sessionStorage.setItem("token", data.token);  //儲存token
-    //     router.push('/personal_space')  //跳轉頁面
-    //   })
-    //   .catch((e) => {
-    //     /*發生錯誤時要做的事情*/
-    //     console.log("ee", e);
-    //     alert('登入失敗') //系統頁面提示訊息登入失敗
-    //   });
-
     fetch(getBaseUrl + "auth/login", {
       method: "POST",
       body: JSON.stringify(LoginData) /*把json資料字串化*/,
@@ -87,6 +60,39 @@ function IndexForm() {
         console.log("ee", e);
         alert('登入失敗') //系統頁面提示訊息登入失敗
       });
+  }
+
+  // google 登入
+  function submitHandler_google(event) {
+
+    event.preventDefault();
+    
+    fetch(getBaseUrl + "auth/google_login", {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"), //登入才可以使用的頁面功能，權限儲存token
+      }),
+    })
+    .then((res) => {
+      console.log("res", res);
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw "登入失敗";
+      }
+    })
+    .then((data) => {
+      /*接到request data後要做的事情*/
+      sessionStorage.setItem("token", data.token);  //儲存token
+      router.push('/personal_space')  //跳轉頁面
+    })
+    .catch((e) => {
+      /*發生錯誤時要做的事情*/
+      console.log("ee", e);
+      alert('登入失敗') //系統頁面提示訊息登入失敗
+    });
   }
 
   return (
@@ -163,7 +169,10 @@ function IndexForm() {
 
           {/* Google登入btn */}
           <div>
-            <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+            <button
+            onClick={submitHandler_google}
+            class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+            >
               以Google帳號登入
             </button>
             <label
