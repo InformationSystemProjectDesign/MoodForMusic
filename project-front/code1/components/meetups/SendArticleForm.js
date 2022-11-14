@@ -17,6 +17,7 @@ function ArticleForm() {
   function submitHandler(event) {
     event.preventDefault(); //當按下送出鍵的function
     $('#loading_icon').show();
+    $('#hint_message').show();
     const enteredURL = URLInputRef.current.value;
 
     const articleData = {
@@ -45,6 +46,7 @@ function ArticleForm() {
       .then((data) => {
         /*接到request data後要做的事情*/
         $('#loading_icon').hide();
+        $('#hint_message').hide();
         console.log("data", data);
         article_d = data['result']['article'];
         singer_d = data['result']['singer'];
@@ -53,7 +55,7 @@ function ArticleForm() {
         songURL_d = data['result']['songURL'];
 
         document.getElementById("article_d").innerHTML=article_d;
-        document.getElementById("song").innerHTML=song_d + "-" + singer_d + "- 情緒:" + art_mood_d;
+        document.getElementById("song").innerHTML=song_d + " - " + singer_d + " - 情緒:" + art_mood_d;
         document.getElementById("songURL_d").innerHTML=songURL_d;
         document.getElementById("songURL_d").href=songURL_d; 
 
@@ -134,6 +136,7 @@ function ArticleForm() {
                     <div class="spinner-border text-secondary" role="status" id="loading_icon" style={{display:'none'}}> 
                       <span class="sr-only">Loading...</span>
                     </div>
+                    <span id="hint_message" style={{display:'none'}}>系統正在為您產生推薦歌曲，請耐心等待 謝謝您</span>
 
                     <label
                         for="name"
