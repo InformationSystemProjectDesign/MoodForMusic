@@ -63,14 +63,14 @@ function MailRecordForm() {
 
                       {/* 時間 */}
                       <div class="mb-5">
-                          <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                          <button class="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base">
                               時間
                           </button>
                       </div>
 
                       {/* 心情 */}
                       <div class="mb-5">
-                          <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+                          <button class="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base">
                               心情
                           </button>
                       </div>
