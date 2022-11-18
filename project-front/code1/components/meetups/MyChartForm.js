@@ -12,13 +12,122 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 function MyChartForm() {
   MyChartHandler();
 
+  var angry = 0;
+  var sad = 0;
+  var happy = 0;
+  var love = 0;
+  var afraid = 0;
+  var hate = 0;
+  // const [angry,setAngry] = useState(0);
+  // const [sad,setSad] = useState(0);
+  // const [happy,setHappy] = useState(0);
+  // const [love,setLove] = useState(0);
+  // const [afraid,setAfraid] = useState(0);
+  // const [hate,setHate] = useState(0);
+
+  function MyChartHandler() {
+    fetch(getBaseUrl + "article", {
+      method: "GET",
+      // body: JSON.stringify(enteredMyChardata),  //GET不用body
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log("res", res);
+        if (res.ok) {
+          return res.json(); //將收到的值改為json格式
+        } else {
+          console.log("get api error");
+        }
+      })
+      .then((result) => {
+        console.log("result", result);
+        for (var s in result) {
+          if (result[s]["sencla"] == "怒") {
+            angry++;
+          } else if (result[s]["sencla"] == "哀") {
+            sad++;
+          } else if (result[s]["sencla"] == "喜") {
+            happy++;
+          } else if (result[s]["sencla"] == "愛") {
+            love++;
+          }
+        }
+        console.log(angry, sad, happy, love, afraid, hate);
+        // pie_data.datasets.data[love].push();
+        // pie_data.update();
+
+        function addData(pie_data, data) {
+          pie_data.datasets.data.push({data: data});
+          pie_data.update();
+      }
+      // inserting the new dataset after 3 seconds
+      setTimeout(function() {
+         addData(pie_data, [love]);
+      }, 5000);
+
+        // setAngry(angry); setSad(sad); setHappy(happy),
+        // setLove(love); setAfraid(afraid); setAfraid(afraid);
+
+        // pie_data['datasets']['data'] = result.result
+      });
+
+    // console.log("pie_data", pie_data);
+  }
+
+  // class MyChartHandler extends React.Component {
+  //   static async getInitialProps(ctx) {
+  //     fetch(getBaseUrl + "article", {
+  //       method: "GET",
+  //       // body: JSON.stringify(enteredMyChardata),  //GET不用body
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //       .then((res) => {
+  //         console.log("res", res);
+  //         if (res.ok) {
+  //           return res.json(); //將收到的值改為json格式
+  //         } else {
+  //           console.log("get api error");
+  //         }
+  //       })
+  //       .then((result) => {
+  //         console.log("result", result);
+  //         for (var s in result) {
+  //           if (result[s]["sencla"] == "怒") {
+  //             angry++;
+  //           } else if (result[s]["sencla"] == "哀") {
+  //             sad++;
+  //           } else if (result[s]["sencla"] == "喜") {
+  //             happy++;
+  //           } else if (result[s]["sencla"] == "愛") {
+  //             love++;
+  //           }
+  //         }
+  //         console.log(angry, sad, happy, love, afraid, hate);
+  //         pie_data.datasets.data[love].push();
+  //         pie_data.update();
+
+  //         // setAngry(angry); setSad(sad); setHappy(happy),
+  //         // setLove(love); setAfraid(afraid); setAfraid(afraid);
+
+  //         // pie_data['datasets']['data'] = result.result
+  //       });
+
+  //     // console.log("pie_data", pie_data);
+  //   }
+  // }
+
   //let 將pie_data設為變數 (const表示不會變的值)
+  
   let pie_data = {
     labels: ["怒", "哀", "喜", "愛", "懼", "恨"],
     datasets: [
       {
         label: "# of Votes",
-        data: [3,7,2,5,1,9],
+        data: [[angry], [sad], [happy], [love], [afraid], [hate]],
         backgroundColor: [
           "rgba(255,144,118, 0.5)",
           "rgba(137,201,239, 0.5)",
@@ -40,30 +149,6 @@ function MyChartForm() {
     ],
   };
 
-  function MyChartHandler() {
-    fetch(getBaseUrl + "crawler/test", {
-      method: "GET",
-      // body: JSON.stringify(enteredMyChardata),  //GET不用body
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        console.log("res", res);
-        if (res.ok) {
-          return res.json(); //將收到的值改為json格式
-        } else {
-          console.log("get api error");
-        }
-      })
-      .then((result) => {
-        console.log("result", result);
-        // pie_data['datasets']['data'] = result.result
-      });
-
-    // console.log("pie_data", pie_data);
-  }
-
   return (
     <Fragment>
       {/* link */}
@@ -76,7 +161,7 @@ function MyChartForm() {
         />
       </Head>
       <div>
-        <Pie data={pie_data} />;
+        <Pie id="myPieChart" data={pie_data} />;
       </div>
     </Fragment>
   );
