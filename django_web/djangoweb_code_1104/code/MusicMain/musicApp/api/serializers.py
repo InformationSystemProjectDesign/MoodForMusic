@@ -1,14 +1,14 @@
 from dataclasses import field
 from rest_framework import serializers
-from musicApp.models import Article, Singer, Acct
+from musicApp.models import Article, Acct
 from django.contrib.auth.models import User
 
 
-class SingerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Singer
-        fields = ['singer_id', 'singer_name']
-        # fields = '__all__' #選擇全部欄位
+# class SingerSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Singer
+#         fields = ['singer_id', 'singer_name']
+#         # fields = '__all__' #選擇全部欄位
 
 class UserSerializer(serializers.Serializer):
     email = serializers.EmailField()

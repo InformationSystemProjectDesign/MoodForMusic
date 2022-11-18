@@ -1,5 +1,5 @@
-from musicApp.api.serializers import LoginSerializer, SingerSerializer, UserSerializer, ArticleSerializer,CrawlerSerializer, ChangePassSerializer, TokenSerializer
-from musicApp.models import Acct, Article, Singer
+from musicApp.api.serializers import LoginSerializer, UserSerializer, ArticleSerializer,CrawlerSerializer, ChangePassSerializer, TokenSerializer
+from musicApp.models import Acct, Article
 from rest_framework import viewsets, status, generics
 from django.contrib.auth.models import User
 from rest_framework.decorators import action
@@ -20,10 +20,10 @@ def get_tokens_for_user(user):
         'access': str(refresh.access_token),
     }
 
-class SingerViewSet(viewsets.ModelViewSet):
-    # ModelViewSet 已包含增刪改查四種功能
-    queryset = Singer.objects.all()
-    serializer_class = SingerSerializer
+# class SingerViewSet(viewsets.ModelViewSet):
+#     # ModelViewSet 已包含增刪改查四種功能
+#     queryset = Singer.objects.all()
+#     serializer_class = SingerSerializer
  
 class UserViewSet(viewsets.GenericViewSet): 
     queryset = Acct.objects.all()  
@@ -163,10 +163,21 @@ class CrawlerViewSet(viewsets.GenericViewSet): #新增文章
         
         artCraw = serailzer.data["art_craw"]
         resCraw = song_compar.find_song(artCraw)
+        resText = ""
+        
+        # print()
+        # print("resCraw: ",resCraw['article'])
+        # for t in resCraw['article']:
+        #     res = t.replace('🥰', ' ').replace('❤', ' ').replace('🌹', ' ')
+        #     resText += res
+        # print()
+        # print('resText: ' ,resText)
+        
         # print(type(resCraw))
         usr_email = Acct.objects.get(email=request.user.email)
-        print(usr_email)
-        Article.objects.create(article_context = resCraw['article'], singer_name = resCraw['singer'], song_name = resCraw['song'], link = resCraw['songURL'], sencla = resCraw['art_mood'], email = usr_email)
+        # print(usr_email)
+        Article.objects.create(article_context = resCraw['article'], singer_name = resCraw['singer'], song_name = resCraw['song'], link = resCraw['songURL'], sencla = resCraw['art_mood'], article_link = artCraw, email = usr_email)
+        # Article.objects.create(article_context = resText, singer_name = resCraw['singer'], song_name = resCraw['song'], link = resCraw['songURL'], sencla = resCraw['art_mood'], article_link = artCraw, email = usr_email)
         # rectime 不用寫日期去存，django會自動幫我們以最新的時間存進資料庫中
         
         return Response(data={"result": resCraw})

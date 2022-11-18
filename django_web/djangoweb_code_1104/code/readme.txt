@@ -16,7 +16,6 @@ swagger api 權限:
 https://dotblogs.com.tw/yc421206/2019/01/21/swagger_via_api_key_jwt_call_protect_api
 記得在token前面加bearer並用空白隔開即可
 
-
 使用者名稱:lin4587
 帳號:westdra891221@gmail.com
 密碼:qweqwe
@@ -31,7 +30,7 @@ https://dotblogs.com.tw/yc421206/2019/01/21/swagger_via_api_key_jwt_call_protect
 (POST) localhost:8000/api/auth/add-user
 4. 修改帳密(已完成)
 (PATCH) localhost:8000/api/change-password
-5. 文章新增
+5. 文章新增(已完成)
 (POST) localhost:8000/api/crawler/add-article
 6. 文章查閱(包含信件查閱、情緒圖)
 (GET) localhost:8000/api/article/
@@ -227,7 +226,11 @@ https://studygyaan.com/django/django-rest-framework-tutorial-change-password-and
 
 
 # find_song('https://www.dcard.tw/f/relationship/p/238632575')
+
+這篇有emoji，已經存進資料庫
 # find_song('https://www.dcard.tw/f/talk/p/239984330')
+
+
 # find_song('https://www.dcard.tw/f/photography/p/240167044')
 # find_song("http://www.ptt.cc/bbs/Boy-Girl/M.1664277279.A.9AA.html")
 # find_song("https://www.ptt.cc/bbs/Gossiping/M.1664530650.A.4E3.html")

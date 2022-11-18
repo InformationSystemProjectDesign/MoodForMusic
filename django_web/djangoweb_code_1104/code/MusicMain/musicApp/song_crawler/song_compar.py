@@ -65,9 +65,10 @@ def dcardCraw(url):
     # dcard標籤會不定時更換須注意，用列表顯示全部爬蟲下來的標題
     titles = root.find("div", class_ = "sc-bbb1500f-0 dzKBPw")
     
+    result = ""
     for title in titles:
-        result = title.text.strip().replace('\n', '').replace(' ', '')
-        print(result) #印出內文
+        result += title.text.strip().replace('\n', '').replace(' ', '')
+    # print('result: ',result) #印出內文
     
     driver.close()
     return result
@@ -108,7 +109,7 @@ def pttCraw(url):
     main_content = main_content.replace('\n', '')
     
     #印出內文
-    print(main_content)
+    # print(main_content)
     
     return main_content
 
@@ -150,6 +151,7 @@ def find_song(url):
     else:
         article = pttCraw(url)
     
+    # print("article: ",article)
     lyrics=train['lyrics']
     i=0
     num=0
@@ -168,7 +170,7 @@ def find_song(url):
     youtube_theKey = author + ' ' + songName  # 孫凱旋 專屬
     uploads_id = youtube_spider.get_ytSearch(youtube_theKey)   
     
-    # print("文章內容:", article)
+    print("文章內容:", article)
     print('配適度:',highpri,'歌手:',train.singer.iloc[num],'歌名:',train.name.iloc[num], '情緒:',train.moodCat.iloc[num])
     print("連結:https://www.youtube.com/watch?v="+uploads_id)
     

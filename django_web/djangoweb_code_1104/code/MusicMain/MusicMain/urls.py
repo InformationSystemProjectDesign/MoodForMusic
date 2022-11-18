@@ -20,7 +20,7 @@ from musicApp import views
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from musicApp.api.views import SingerViewSet, UserViewSet, ArticleViewSet, CrawlerViewSet, ChangePasswordView
+from musicApp.api.views import UserViewSet, ArticleViewSet, CrawlerViewSet, ChangePasswordView
 
 from rest_framework_simplejwt.views import TokenVerifyView
 from rest_framework_simplejwt.views import (
@@ -43,7 +43,7 @@ schema_view = swagger_get_schema_view(
 
 # serializers.py
 router = DefaultRouter(False) #加False，路徑最後就不用加斜線
-router.register('singer', SingerViewSet)
+# router.register('singer', SingerViewSet)
 router.register('auth', UserViewSet)
 router.register('crawler', CrawlerViewSet)
 router.register('article', ArticleViewSet)

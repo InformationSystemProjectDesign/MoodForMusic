@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Singer, Acct
+from .models import Article, Acct
 
 # Register your models here.
 class AcctAdmin(admin.ModelAdmin):
@@ -37,12 +37,12 @@ class ArticleAdmin(admin.ModelAdmin):
 admin.site.register(Article, ArticleAdmin)
 
 
-class SingerAdmin(admin.ModelAdmin):
-    list_display = ['singer_id', 'singer_name']
-    search_fields = ['singer_name'] #搜尋歌手名稱
-    ordering = ['singer_id'] # 升冪排序
+# class SingerAdmin(admin.ModelAdmin):
+#     list_display = ['singer_id', 'singer_name']
+#     search_fields = ['singer_name'] #搜尋歌手名稱
+#     ordering = ['singer_id'] # 升冪排序
 
-admin.site.register(Singer, SingerAdmin)
+# admin.site.register(Singer, SingerAdmin)
 
 # class SongAdmin(admin.ModelAdmin):
 #     list_display = ['song_id', 'song_name', 'link', 'richi', 'sentim_class', 'singer_id']

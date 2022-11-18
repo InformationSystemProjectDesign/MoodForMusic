@@ -29,6 +29,7 @@ class Article(models.Model):
     sencla = models.CharField('情感分類',max_length=1) #情感分類
     rectime = models.DateField('新增時間', auto_now_add=True) #創建文章的時間
     email = models.ForeignKey('Acct', related_name='acct_email', on_delete=models.RESTRICT) #使用者編號外鍵，auth是django資料庫的內建資料表名稱(關於user的資料)
+    article_link = models.URLField('文章連結',max_length=200) #文章連結
     # song_id = models.ForeignKey('Song', related_name='article_song_id', on_delete=models.RESTRICT) #歌曲編號外鍵
     # draft_context = models.TextField('草稿', max_length=500, null= True, blank=True) # 草稿
     # nick_name = models.CharField('暱稱', max_length=20, null=True, blank=True) # 署名(判斷是否匿名)，一般使用使用者名稱
@@ -37,9 +38,9 @@ class Article(models.Model):
     # null 是允許存進資料庫為空值，blank 是允許在後台空著不寫
 
 # 歌手
-class Singer(models.Model):
-    singer_id = models.AutoField(primary_key=True) #歌手編號
-    singer_name = models.CharField('歌手名稱', max_length=30) #歌手名稱
+# class Singer(models.Model):
+#     singer_id = models.AutoField(primary_key=True) #歌手編號
+#     singer_name = models.CharField('歌手名稱', max_length=30) #歌手名稱
 
 # 歌曲
 # class Song(models.Model):
