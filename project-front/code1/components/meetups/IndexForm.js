@@ -69,9 +69,12 @@ function IndexForm() {
   function submitHandler_google(event){
 
     event.preventDefault();
-    google.accounts.id.prompt();
-
-    return
+    google.accounts.id.prompt((notification) => {
+      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+      document.cookie = `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+      google.accounts.id.prompt()
+  }
+});
   }
 
   function handleCallbackResponse(response) {

@@ -81,7 +81,6 @@ class UserViewSet(viewsets.GenericViewSet):
     def google_login(self, request):
         s = self.get_serializer(data = request.data)
         s.is_valid(raise_exception = True) #取到token
-        
         email = check_token(s.validated_data['token']) # 傳去檢查token是否正確
         
         try:
