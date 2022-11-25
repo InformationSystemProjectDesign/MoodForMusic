@@ -33,6 +33,7 @@ function HomePage(props) {
             name="description"
             content="Register for the React Meetups!"
           />
+          <script src ="https://accounts.google.com/gsi/client" async defer></script>
         </Head>
         <IndexForm onIndex={IndexHandler} />
       </Fragment>
