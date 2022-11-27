@@ -27,6 +27,10 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = Article
         fields = '__all__' #選擇全部欄位
         
+# class SeaArtSerializer(serializers.Serializer):
+#     email = serializers.EmailField()
+#     email_id = serializers.CharField()
+        
 class ChangePassSerializer(serializers.Serializer): # 修改密碼
     model = User
     # password = serializers.CharField()

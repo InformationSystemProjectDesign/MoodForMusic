@@ -63,7 +63,7 @@ def dcardCraw(url):
     # 讓beautifulSoup協助我們解析HTML格式文件
     root = bs4.BeautifulSoup(data, "html.parser")
     # dcard標籤會不定時更換須注意，用列表顯示全部爬蟲下來的標題
-    titles = root.find("div", class_ = "sc-bbb1500f-0 dzKBPw")
+    titles = root.find("div", class_ = "atm_vv_1btx8ck atm_w4_1hnarqo c1ehvwc9")
     
     result = ""
     for title in titles:

@@ -31,7 +31,7 @@ function ArticleForm() {
       body: JSON.stringify(articleData) /*把json資料字串化*/,
       headers: new Headers({
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
         "Authorization": "Bearer " + sessionStorage.getItem("token")
       }),
     })
@@ -47,7 +47,7 @@ function ArticleForm() {
         /*接到request data後要做的事情*/
         $('#loading_icon').hide();
         $('#hint_message').hide();
-        console.log("data", data);
+        // console.log("data:", data);
         article_d = data['result']['article'];
         singer_d = data['result']['singer'];
         song_d = data['result']['song'];
