@@ -13,7 +13,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 function MyChartForm() {
   // MyChartHandler();
   const [pie_data, setPieData] = useState({}); // 宣告pie_data和setPieData()，使用react的功能useState()
-  useEffect(() => {MyChartHandler()}, []) 
+  useEffect(() => {MyChartHandler()}, []) // 新增 useEffect的方法，宣告MyChartHandler()，後面[]是指這個方法只會跑一次，不然會無限迴圈
 
   //let 將pie_data設為變數 (const表示不會變的值)
   // let pie_data = {
