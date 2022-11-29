@@ -244,7 +244,7 @@ https://getbootstrap.com/docs/4.2/components/spinners/
 
 
 !!!!!!注意!!!!!
-1. 部署到伺服器之前要django的設定debug = false
+1. 部署到伺服器之前要django的設定debug = false(已改)
 2. 把一些測試的print要記得註解
 3. _blank有時候會失效(點超連結超大機率會成功)
 4. 注意dcard class，是否被更換
