@@ -70,6 +70,7 @@ function MailRecordForm() {
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       <Head>
+        <base target='_blank'></base>
         <title>信件紀錄</title>
         <meta
           name="description"
