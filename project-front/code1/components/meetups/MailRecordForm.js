@@ -95,7 +95,7 @@ function MailRecordForm() {
                           <button
                             class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                           >
-                            <a id="songURL_a" href={data.link} target={{ target: '_blank' }} style={{ textDecoration: 'none' }}>歌曲連結: {data.link}</a>
+                            <a id="songURL_a" href={data.link} target='_blank' style={{ textDecoration: 'none' }}>歌曲連結: {data.link}</a>
                           </button>
                         </div>
                       
@@ -104,7 +104,7 @@ function MailRecordForm() {
                             <button 
                               class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                             >
-                              <a id="artURL_a" href={data.article_link} target={{target:'_blank'}} style={{textDecoration: 'none'}}>文章連結: {data.article_link}</a>
+                              <a id="artURL_a" href={data.article_link} target='_blank' style={{textDecoration: 'none'}}>文章連結: {data.article_link}</a> {/* {data.article_link} */}
                             </button>
                         </div>
                     
