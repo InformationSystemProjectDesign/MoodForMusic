@@ -44,7 +44,11 @@ function RegisterForm() {
           if (res.ok) {
             return res.json();
           } else {
-            throw "註冊失敗";
+            if(!enteredusername || !enteredEmail || !enteredPassword || !enteredConfirmPassword){
+              throw "少填欄位";
+            }else{
+              throw "註冊失敗";
+            }
           }
         })
         .then((data) => {
@@ -62,8 +66,12 @@ function RegisterForm() {
         .catch((e) => {
           /*發生錯誤時要做的事情*/
           console.log("ee", e);
-          alert('註冊失敗，可能帳號已被使用') //系統頁面提示訊息登入失敗
-          router.reload(); // 重整頁面
+          if(e == "少填欄位"){
+            alert("少填欄位，註冊失敗")
+          }else{
+            alert('註冊失敗，可能帳號已被使用') //系統頁面提示訊息登入失敗
+            router.reload(); // 重整頁面
+          }
         });
     }else{
       alert('確認密碼輸入錯誤，請重新輸入')

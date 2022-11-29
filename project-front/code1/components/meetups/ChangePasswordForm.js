@@ -50,7 +50,8 @@ function ChangePasswordForm() {
       })
       .then((data) => {
         /*接到request data後要做的事情*/
-        sessionStorage.setItem("token", data.token);  //儲存token
+        // sessionStorage.setItem("token", data.token);  //儲存token
+        sessionStorage.clear();
         alert('修改成功，請重新登入')
         router.push('/')  //跳轉頁面
       })
@@ -110,7 +111,7 @@ function ChangePasswordForm() {
             {/* 新密碼 */}
             <div class="mb-5">              
               <input
-                type="confirmPassword"
+                type="password"
                 name="confirmpassword"
                 id="confirmpassword"
                 placeholder="輸入新的密碼"

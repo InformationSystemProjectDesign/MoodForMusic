@@ -42,14 +42,18 @@ function MainNavigation() {
               <a style={{textDecoration: 'none'}}
                 onClick={e => {
                   e.preventDefault()
-                  console.log('Logout');
+                  if(sessionStorage.getItem("token") == null){
+                    alert('尚未登入，不能登出')
+                  }else{
+                    console.log('Logout');
 
-                  // CLEAR DATA FROM STORAGE
-                  sessionStorage.clear();
-                  // sessionStorage.removeItem('token');
+                    // CLEAR DATA FROM STORAGE
+                    sessionStorage.clear();
+                    // sessionStorage.removeItem('token');
 
-                  alert("登出成功");
-                  router.push("/");
+                    alert("登出成功");
+                    router.push("/");
+                  }
                 }}>
                 登出
               </a>

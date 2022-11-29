@@ -10,11 +10,14 @@ case111202
 email:123wedc@gmail.com
 password:asdf123
 
+10556001@ntub.edu.tw
+10556001
+
 https://www.dcard.tw/f/relationship/p/238632575
 
 swagger api 權限:
 https://dotblogs.com.tw/yc421206/2019/01/21/swagger_via_api_key_jwt_call_protect_api
-記得在token前面加bearer並用空白隔開即可
+記得在token前面加Bearer並用空白隔開即可
 
 使用者名稱:lin4587
 帳號:westdra891221@gmail.com
@@ -241,6 +244,7 @@ https://getbootstrap.com/docs/4.2/components/spinners/
 
 
 !!!!!!注意!!!!!
-1. 登入頁面右上角的按鈕連結，要調整不能點
-2. 部署到伺服器之前要django的設定debug = false
-3. 把一些測試的print要記得註解
+1. 部署到伺服器之前要django的設定debug = false
+2. 把一些測試的print要記得註解
+3. _blank有時候會失效(點超連結超大機率會成功)
+4. 注意dcard class，是否被更換
