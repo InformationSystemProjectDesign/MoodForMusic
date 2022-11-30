@@ -92,21 +92,17 @@ function MailRecordForm() {
                     {artLists.map(data => (
                       <><div class="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">                  
                         {/* 歌曲連結 */}
-                        <div class="mt-5 mb-5">
-                          <button
-                            class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                          >
-                            <a id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>歌曲連結: {data.link}</a>
-                          </button>
+                        <div class="mt-5 mb-5">                          
+                          <a id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}
+                              class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                          >歌曲連結: {data.link}</a>
                         </div>
                       
                         {/* 文章連結 */}
                         <div class="mb-5">
-                            <button 
+                          <a id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{textDecoration: 'none'}}
                               class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                            >
-                              <a id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{textDecoration: 'none'}}>文章連結: {data.article_link}</a> {/* {data.article_link} */}
-                            </button>
+                          >文章連結: {data.article_link}</a> {/* {data.article_link} */}                           
                         </div>
                     
                         <div class="flex flex-row place-content-center">
