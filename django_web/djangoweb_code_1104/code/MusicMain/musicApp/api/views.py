@@ -102,10 +102,9 @@ class UserViewSet(viewsets.GenericViewSet):
 
 def check_token(token: str):
     res = requests.get(
-        "https://www.googleapis.com/oauth2/v1/userinfo",
+         "https://oauth2.googleapis.com/tokeninfo",
         {
-            'alt': 'json',
-            'access_token': token  # 帶這兩個參數去問google api是否正確
+            'id_token': token  # 帶這兩個參數去問google api是否正確
         }
     )
 
