@@ -1,4 +1,4 @@
-import {useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -53,13 +53,9 @@ function IndexForm() {
         if (data["result"] == "沒有此使用者，請去註冊") {
           alert('登入失敗 沒有此使用者，請去註冊')
           router.push('/register')
-        } else if(sessionStorage.getItem("token") != null) {
-          alert('你已登入過，無須再次登入')
+        } else {
+          sessionStorage.getItem("token",data.token);
           router.push('/personal_space')
-        }else{
-          sessionStorage.setItem("token", data.token);  //儲存token
-          router.push('/personal_space')  //跳轉頁面
-          alert('登入成功')
         }
       })
       .catch((e) => {
@@ -72,14 +68,21 @@ function IndexForm() {
   // google 登入
   function submitHandler_google(event) {
 
-      event.preventDefault()
-      fetch(getBaseUrl + "auth/google_login", {
-        method: "POST",
-        headers: new Headers({
+      event.preventDefault();
+      google.accounts.id.prompt();
+
+      return
+    }
+  
+    function handleCallbackResponse(response) {
+      console.log("Encoded JWT ID token:" + response.credential);
+      fetch(getBaseUrl + "auth/google_login",{
+        method:"POST",
+        header:new Headers({
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: "Bearer " + sessionStorage.getItem("token"), //登入才可以使用的頁面功能，權限儲存token
         }),
+        body:{'token':"Bearer " + response}
       })
       .then((res) => {
         console.log("res", res);
@@ -100,6 +103,18 @@ function IndexForm() {
         alert('登入失敗') //系統頁面提示訊息登入失敗
       });
   }
+  
+  useEffect(() => {
+    /*global google */
+    google.accounts.id.initialize({
+      client_id: "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    });
+
+    // google.accounts.id.renderButton(
+      // document.getElementById("googlebtn"),
+    // )
+  }, []);
   
     
 
