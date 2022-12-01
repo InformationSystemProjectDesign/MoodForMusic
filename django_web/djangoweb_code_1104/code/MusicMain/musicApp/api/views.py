@@ -1,4 +1,4 @@
-from musicApp.api.serializers import LoginSerializer, UserSerializer, ArticleSerializer, CrawlerSerializer, ChangePassSerializer, TokenSerializer
+from musicApp.api.serializers import LoginSerializer, UserSerializer, ArticleSerializer, CrawlerSerializer, ChangePassSerializer, TokenSerializer,GoogleLoginSerializer
 from musicApp.models import Acct, Article
 from rest_framework import viewsets, status, generics
 from django.contrib.auth.models import User
@@ -10,6 +10,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from musicApp.song_crawler import song_compar
 import requests
 from django.core.exceptions import ObjectDoesNotExist
+# from google.oauth2 import id_token
+# from google.auth.transport import requests
 
 
 def get_tokens_for_user(user):
@@ -80,11 +82,16 @@ class UserViewSet(viewsets.GenericViewSet):
         methods=["POST"], detail=False, url_path="google_login"
     )
     def google_login(self, request):
-        s = self.get_serializer(data=request.data)
-        s.is_valid(raise_exception=True)  # 取到token
-
-        email = check_token(s.validated_data['token'])  # 傳去檢查token是否正確
-
+        serailzer = GoogleLoginSerializer(data=request.data)
+        serailzer.is_valid(raise_exception=True)  # 取到token
+        
+        # s = self.get_serializer(data=request.data)
+        # s.is_valid(raise_exception=True)  # 取到token
+        # email = check_token(s.validated_data['token'])  # 傳去檢查token是否正確
+        
+        email = check_token(serailzer.data["googleToken"])  # 傳去檢查token是否正確
+        print(email)
+        
         try:
             acct = Acct.objects.get(email=email)
             token = get_tokens_for_user(acct)
@@ -99,10 +106,10 @@ class UserViewSet(viewsets.GenericViewSet):
     def test(self, request):
         return Response(data={"result": "test"})
 
-
 def check_token(token: str):
     res = requests.get(
          "https://oauth2.googleapis.com/tokeninfo",
+        # "https://www.googleapis.com/oauth2/v1/userinfo",
         {
             'id_token': token  # 帶這兩個參數去問google api是否正確
         }
@@ -114,7 +121,6 @@ def check_token(token: str):
         return Response(data={"result": "google get email error"}, status=status.HTTP_401_UNAUTHORIZED)
     print(user_info)
     return user_info['email']
-
 
 class ChangePasswordView(generics.UpdateAPIView):  # PATCH
 
