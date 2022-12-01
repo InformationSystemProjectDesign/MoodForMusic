@@ -64,7 +64,6 @@ function MailRecordForm() {
         // console.log('artLists:',artLists)
       });
   }
-
   return (
     <Fragment>
       {/* link */}
@@ -93,20 +92,20 @@ function MailRecordForm() {
                       <><div class="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">                  
                         {/* 歌曲連結 */}
                         <div class="mt-5 mb-5">
-                          <button
-                            class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                          >
-                            <a id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>歌曲連結: {data.link}</a>
-                          </button>
+                          {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
+                            <a class="max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                            id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
+                              歌曲連結: {data.link}
+                            </a>
                         </div>
                       
                         {/* 文章連結 */}
                         <div class="mb-5">
-                            <button 
-                              class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                            >
-                              <a id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{textDecoration: 'none'}}>文章連結: {data.article_link}</a> {/* {data.article_link} */}
-                            </button>
+                          {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
+                            <a class="max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                            id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{textDecoration: 'none'}}>
+                              文章連結: {data.article_link}
+                            </a>                   
                         </div>
                     
                         <div class="flex flex-row place-content-center">

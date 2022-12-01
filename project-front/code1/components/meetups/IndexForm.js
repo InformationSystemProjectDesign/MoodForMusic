@@ -5,9 +5,6 @@ import Link from "next/link";
 import getBaseUrl from "../../pages/const";
 import { useRouter } from "next/router";
 
-
-
-
 // 一般登入api
 function IndexForm() {
   const emailInputRef = useRef(); //和email的input綁起來
