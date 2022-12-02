@@ -63,6 +63,8 @@ function MyChartForm() {
       })
       .then((result) => {
         setPieData(result);
+        // pie_data.overrides[lable].plugins.legend
+        ChartJS.defaults.font.size = 32;
         // console.log("result", result);
         // pie_data['datasets']['data'] = result.result
       });
@@ -104,7 +106,7 @@ function MyChartForm() {
           />
         </Head>
         <div>
-          <Pie data={pie_data} />;
+          <Pie data={pie_data}  />;
         </div>
       </Fragment>
     );
