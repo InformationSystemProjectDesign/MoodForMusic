@@ -4,6 +4,7 @@ import Head from "next/head";
 import React from "react";
 import Link from 'next/link';
 import getBaseUrl from "../../pages/const";
+import { useRouter } from "next/router";
 
 {/* # TODO: 信件紀錄的API，要用useState去渲染顯示 */}
 // 信件紀錄的api
@@ -12,8 +13,17 @@ function MailRecordForm() {
   // var artURL_d = "";
   // var time_d = "";
   // var art_mood_d = "";
+  const router = useRouter();
   const [artLists, setArtLists] = useState([]) // [] {}
   useEffect(() => {MyArticleHandler()}, [])
+
+  useEffect(() => {
+    if(sessionStorage.getItem('token') == null){
+      alert("尚未登入，請先登入");
+      router.push('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function MyArticleHandler() {
     fetch(getBaseUrl + "article/my_article", {
@@ -68,6 +78,7 @@ function MailRecordForm() {
     <Fragment>
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
+      <script src="https://accounts.google.com/gsi/client" async defer></script>
       <Head>
         <base target='_blank'></base>
         <title>信件紀錄</title>
@@ -79,41 +90,41 @@ function MailRecordForm() {
       
       {/* 文章送出表單 */}
     
-      <div class="flex items-center justify-center p-12 pt-0">
-          <div class="mx-auto w-full max-w-[550px]">
+      <div className="flex items-center justify-center p-12 pt-0">
+          <div className="mx-auto w-full max-w-[550px]">
               <form action="https://formbold.com/s/FORM_ID" method="POST">
                   <label
-                      for="name"
-                      class="mb-3 block text-left text-1xl font-bold"
+                      htmlFor="name"
+                      className="mb-3 block text-left text-1xl font-bold"
                   >
                   個人天地 - 信件紀錄
                   </label>  
                     {artLists.map(data => (
-                      <><div class="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">                  
+                      <><div className="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">                  
                         {/* 歌曲連結 */}
-                        <div class="mt-5 mb-5">
-                          {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
-                            <a class="max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                        <div className="mt-5 mb-5">
+                          {/* <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
+                            <a className="max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                             id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
                               歌曲連結: {data.link}
                             </a>
                         </div>
                       
                         {/* 文章連結 */}
-                        <div class="mb-5">
-                          {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
-                            <a class="max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                        <div className="mb-5">
+                          {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button>  */}
+                            <a className="max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                             id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{textDecoration: 'none'}}>
                               文章連結: {data.article_link}
-                            </a>                   
+                            </a>                  
                         </div>
                     
-                        <div class="flex flex-row place-content-center">
+                        <div className="flex flex-row place-content-center">
 
                           {/* 時間 */}
-                          <div class="mb-5 mr-3">
+                          <div className="mb-5 mr-3">
                             <button 
-                              class="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
+                              className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
                               id = "time_d"
                             >
                               文章時間: {data.rectime}
@@ -121,9 +132,9 @@ function MailRecordForm() {
                           </div>
 
                           {/* 心情 */}
-                          <div class="mb-5">
+                          <div className="mb-5">
                             <button 
-                              class="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
+                              className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
                               id = "art_mood_d"
                             >
                               文章情緒: {data.sencla}
@@ -133,10 +144,8 @@ function MailRecordForm() {
                       </div></>
                     ))}
               </form>
-              
           </div>
       </div>
-      
     </Fragment>
   );
 }

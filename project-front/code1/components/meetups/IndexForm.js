@@ -8,10 +8,17 @@ import Script from 'next/script'
 
 // 一般登入api
 function IndexForm() {
+  // const google = window.google;
   const emailInputRef = useRef(); //和email的input綁起來
   const passwordInputRef = useRef(); //和password的input綁起來
 
   const router = useRouter();
+
+  // useEffect(() => {
+  //   if(sessionStorage.getItem('key') == null){
+  //     sessionStorage.setItem("key",'nothing');
+  //   }
+  // }, [])
 
   // const {OAuth2Client} = require('google-auth-library');
   // const client = new OAuth2Client(CLIENT_ID);
@@ -108,7 +115,8 @@ function IndexForm() {
     // });
   }
 
-  function handleCallbackResponse(response) { // 只能用資料庫裡原本有的帳戶去登入google，帳密要跟google一樣
+  function handleCallbackResponse(response) {
+    // 只能用資料庫裡原本有的帳戶去登入google，帳號要跟google一樣
     const gt = response.credential;
 
     const GoogleData = {
@@ -158,35 +166,37 @@ function IndexForm() {
     // google.accounts.id.renderButton(
       // document.getElementById("googlebtn"),
     // )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Fragment>
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
+      {/* <script src="https://accounts.google.com/gsi/client" async defer></script> */}
       <Head>
         <title>登入</title>
         <meta
           name="description"
           content="Browse a huge list of active React meetups!"
         />
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
         <meta name="google-signin-client_id" content="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"></meta>
+        <script src="https://accounts.google.com/gsi/client" async />
+        <script src="https://apis.google.com/js/api.js" async />
       </Head>
 
       {/* <>
         <Script src="https://accounts.google.com/gsi/client" async defer />
       </> */}
-
-      <div class="grid grid-cols-2 gap-x-10">
+      <div className="grid grid-cols-2 gap-x-10">
         {/*歡迎文字區*/}
-        <div class="grid grid-rows-4  gap-y-4 mt-12">
-          <div class="text-6xl">邀請您</div>
-          <div class="text-6xl">一起向未來</div>
-          <div class="text-6xl">寄封信。</div>
+        <div className="grid grid-rows-4  gap-y-4 mt-12">
+          <div className="text-6xl">邀請您</div>
+          <div className="text-6xl">一起向未來</div>
+          <div className="text-6xl">寄封信。</div>
           <div>
             <Link href="">
-              <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                 onClick={e => {
                   e.preventDefault()
 
@@ -203,8 +213,8 @@ function IndexForm() {
         </div>
 
         {/* 登入表單 */}
-        <div class="grid gap-y-3 mx-auto w-full max-w-[550px]">
-          <label for="name" class="mb-3 block text-center text-3xl font-bold">
+        <div className="grid gap-y-3 mx-auto w-full max-w-[550px]">
+          <label htmlFor="name" className="mb-3 block text-center text-3xl font-bold">
             登入
           </label>
 
@@ -216,7 +226,7 @@ function IndexForm() {
               id="email"
               placeholder="帳號（電子郵件）"
               ref={emailInputRef}
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
+              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
             />
           </div>
 
@@ -228,7 +238,7 @@ function IndexForm() {
               id="password"
               placeholder="密碼"
               ref={passwordInputRef}
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
+              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
             />
           </div>
 
@@ -241,25 +251,33 @@ function IndexForm() {
             </Link> */}
             <button
               onClick={submitHandler}
-              class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
             >
               登入
             </button>
           </div>
 
+          {/* <div id="g_id_onload"
+              data-client_id="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"
+              data-login_uri= "localhost:8000/api/auth/google_login"
+              data-prompt_parent_id="g_id_onload"
+              class = "absolute top-100 right-30 w-500 h-300 z-1001">
+                <button>G登入</button>
+          </div> */}
+
           {/* # TODO: google login api 登入功能 */}
           {/* Google登入btn */}
-          <div class="g-signin2" data-onsuccess="onSignIn">
+          <div className="g-signin2" data-onsuccess="onSignIn">
             <div id="googlebtn" ></div>
             <button
             onClick={submitHandler_google}
-            class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+            className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
             >
               以Google帳號登入
             </button>
             <label
-              for="name"
-              class="mb-3 block text-center text-base font-bold"
+              htmlFor="name"
+              className="mb-3 block text-center text-base font-bold"
             >
               還沒註冊?
             </label>
@@ -268,7 +286,7 @@ function IndexForm() {
           {/* 註冊btn */}
           <div>
             <Link href="register" passHref>
-              <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
                 註冊
               </button>
             </Link>

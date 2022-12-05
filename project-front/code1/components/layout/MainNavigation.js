@@ -10,7 +10,7 @@ function MainNavigation() {
     <header className={classes.header}>
       <div className={classes.logo}>知音</div>
       <nav>
-        <ul class="font-bold">
+        <ul className="font-bold">
           <li>
             <Link href='/'>
               <a style={{textDecoration: 'none'}} >首頁</a>

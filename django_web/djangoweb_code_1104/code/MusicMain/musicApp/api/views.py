@@ -255,6 +255,6 @@ class ArticleViewSet(viewsets.ModelViewSet):
                     ],
                     "borderWidth": 1,
                 },
-            ],
+            ]
         }
         return Response(pie_data) 

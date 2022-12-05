@@ -5,18 +5,45 @@ import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import getBaseUrl from "../../pages/const";
-
+import { useRouter } from "next/router";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+// function loginJudge(){
+//   let result;
+//   // if(typeof window !== 'undefined'){
+//   //   alert("尚未登入，請先登入");
+//   //   result = 'login';
+//   //   router.push('/');
+//   // }
+//   // if(sessionStorage.setItem('token') == "nothing"){
+//   //   alert("尚未登入，請先登入");
+//   //   result = 'login';
+//   //   router.push('/');
+//   // }
+//   result = 'login yet.';
+//   return result;
+// }
 
 // 情緒圖API
 function MyChartForm() {
   // MyChartHandler();
   const [pie_data, setPieData] = useState({}); // 宣告pie_data和setPieData()，使用react的功能useState()
   useEffect(() => {MyChartHandler()}, []) // 新增 useEffect的方法，宣告MyChartHandler()，後面[]是指這個方法只會跑一次，不然會無限迴圈
+  const router = useRouter();
+
+  useEffect(() => {
+    if(sessionStorage.getItem('token') == null){
+      alert("尚未登入，請先登入");
+      router.push('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   //let 將pie_data設為變數 (const表示不會變的值)
-  // let pie_data = {
+  // pie_data.overrides[lable].plugins.legend
+  ChartJS.defaults.font.size = 32;
+  // let pie_data1 = {
   //   labels: ["怒", "哀", "喜", "愛", "懼", "恨"],
   //   datasets: [
   //     {
@@ -39,8 +66,8 @@ function MyChartForm() {
   //         "rgba(238,171,98, 1)",
   //       ],
   //       borderWidth: 1,
-  //     },
-  //   ],
+  //     }
+  //   ]
   // };
 
   function MyChartHandler() {
@@ -63,8 +90,6 @@ function MyChartForm() {
       })
       .then((result) => {
         setPieData(result);
-        // pie_data.overrides[lable].plugins.legend
-        ChartJS.defaults.font.size = 32;
         // console.log("result", result);
         // pie_data['datasets']['data'] = result.result
       });
@@ -76,19 +101,34 @@ function MyChartForm() {
       <Fragment>
         {/* link */}
         {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"></link>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossOrigin="anonymous"></link>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous" async />
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossOrigin="anonymous" async />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossOrigin="anonymous" async />
         <Head>
           <title>我的情緒圖</title>
           <meta
             name="description"
             content="Browse a huge list of active React meetups!"
           />
+          <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+          {/* <script>
+            {
+            function loginJudge(){
+              let result;
+              if(sessionStorage.getItem("token") == null){
+                alert("尚未登入，請先登入");
+                result = 'login';
+                router.push('/');
+              }
+              result = 'login yet.';
+              return result;
+            }}
+          </script> */}
         </Head>
-        <div class="spinner-border text-secondary" role="status" id="loading_icon"> 
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-border text-secondary" role="status" id="loading_icon"> 
+          <span className="sr-only">Loading...</span>
         </div>
         <span id="hint_message">系統正在為您取得文章資料，請耐心等待 謝謝您</span>
       </Fragment>
@@ -98,6 +138,7 @@ function MyChartForm() {
       <Fragment>
         {/* link */}
         {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
+        <script src="https://accounts.google.com/gsi/client" async />
         <Head>
           <title>我的情緒圖</title>
           <meta
@@ -106,7 +147,7 @@ function MyChartForm() {
           />
         </Head>
         <div>
-          <Pie data={pie_data}  />;
+          <Pie data={pie_data}/>
         </div>
       </Fragment>
     );
