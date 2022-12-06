@@ -40,9 +40,10 @@ function MyChartForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  ChartJS.defaults.font.size = 18;
+
   //let 將pie_data設為變數 (const表示不會變的值)
   // pie_data.overrides[lable].plugins.legend
-  ChartJS.defaults.font.size = 32;
   // let pie_data1 = {
   //   labels: ["怒", "哀", "喜", "愛", "懼", "恨"],
   //   datasets: [
@@ -146,8 +147,10 @@ function MyChartForm() {
             content="Browse a huge list of active React meetups!"
           />
         </Head>
-        <div>
-          <Pie data={pie_data}/>
+        <div class="pb-12 max-h-full">
+          <Pie data={pie_data} 
+            height={"420%"}
+            options={{ maintainAspectRatio: false }}/>
         </div>
       </Fragment>
     );

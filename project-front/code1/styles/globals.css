@@ -25,7 +25,8 @@ body {
   height: 100%;
   font-family: Simsun !important;
   /* font-family: abc !important; */
-  margin: 0;
+  
+  background-repeat:no-repeat;
   background: radial-gradient(
         106.18% 350.13% at -1.35% 2.84%,
         #fade7b 0%,
@@ -37,7 +38,7 @@ body {
       )
       /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
     #ffffff;
-  /* background-repeat: repeat-y; */
+    background-attachment: fixed;
 }
 
 a {
