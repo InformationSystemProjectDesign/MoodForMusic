@@ -83,7 +83,8 @@ function RegisterForm() {
     <Fragment>
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
-      <script src="https://accounts.google.com/gsi/client" async/>
+      {/* <script src="https://accounts.google.com/gsi/client" async/>
+      <script src="https://apis.google.com/js/api.js" async /> */}
       <Head>
         <title>註冊</title>
         <meta

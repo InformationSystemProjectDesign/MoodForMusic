@@ -41,6 +41,10 @@ function PersonalForm() {
     <div className="w-full h-full">
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
+      <script src="https://apis.google.com/js/api:client.js" async defer></script>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"  async defer/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"  async defer/>
       <div className="flex flex-row place-content-center">
         {/* 我的書桌 */}
         <div className="basis-1/2 border-solid border-2 border-black mr-10">

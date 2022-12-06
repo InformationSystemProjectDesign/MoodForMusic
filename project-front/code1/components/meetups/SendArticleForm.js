@@ -92,18 +92,22 @@ function ArticleForm() {
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossOrigin="anonymous"></link>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous"  async />
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossOrigin="anonymous"  async />
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossOrigin="anonymous"  async />
-      <script src="https://accounts.google.com/gsi/client" async defer></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous"  async defer/>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossOrigin="anonymous"  async defer/>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossOrigin="anonymous"  async defer/>
+      <script src="https://apis.google.com/js/api:client.js" async defer></script>
+      <script src="https://accounts.google.com/gsi/client" async defer/>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js" type="text/javascript" async defer/>
+      {/* <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"  async defer/> */}
       <Head>
         <base target='_blank'></base>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"  async />
         <title>送出文章</title>
         <meta
           name="description"
           content="Browse a huge list of active React meetups!"
         />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"  async defer/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"  async defer/>
       </Head>
       
       {/* 文章送出表單 */}

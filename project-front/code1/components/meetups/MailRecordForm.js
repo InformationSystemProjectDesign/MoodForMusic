@@ -78,7 +78,8 @@ function MailRecordForm() {
     <Fragment>
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
-      <script src="https://accounts.google.com/gsi/client" async defer></script>
+      {/* <script src="https://accounts.google.com/gsi/client" async />
+      <script src="https://apis.google.com/js/api.js" async /> */}
       <Head>
         <base target='_blank'></base>
         <title>信件紀錄</title>

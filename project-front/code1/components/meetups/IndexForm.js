@@ -85,7 +85,7 @@ function IndexForm() {
 
     event.preventDefault();
     google.accounts.id.prompt();
-    
+
     return
     // fetch(getBaseUrl + "auth/google_login", {
     //   method: "POST",
@@ -145,6 +145,10 @@ function IndexForm() {
     })
     .then((data) => {
       /*接到request data後要做的事情*/
+      // if (sessionStorage.getItem("token") != null){
+      //   alert('你已登入過，無須再次登入')
+      //   router.push('/personal_space')
+      // }
       sessionStorage.setItem("token", data.token);  //儲存token
       router.push('/personal_space')  //跳轉頁面
       alert('登入成功')
@@ -164,7 +168,7 @@ function IndexForm() {
     });
 
     // google.accounts.id.renderButton(
-      // document.getElementById("googlebtn"),
+    //   document.getElementById("googlebtn"),
     // )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -174,15 +178,18 @@ function IndexForm() {
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       {/* <script src="https://accounts.google.com/gsi/client" async defer></script> */}
+      <script src="https://apis.google.com/js/api:client.js" async defer /> {/* https://apis.google.com/js/api:client.js https://apis.google.com/js/platform.js*/}
+      <script src="https://accounts.google.com/gsi/client" async defer/>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"  async defer/>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"  async defer/>
       <Head>
         <title>登入</title>
         <meta
           name="description"
           content="Browse a huge list of active React meetups!"
         />
-        <meta name="google-signin-client_id" content="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"></meta>
-        <script src="https://accounts.google.com/gsi/client" async />
-        <script src="https://apis.google.com/js/api.js" async />
+        {/* <meta name="google-signin-client_id" content="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"></meta> */}
+        {/* <div class="g_id_signin" data-type="standard"></div> */}
       </Head>
 
       {/* <>
@@ -267,7 +274,14 @@ function IndexForm() {
 
           {/* # TODO: google login api 登入功能 */}
           {/* Google登入btn */}
-          <div className="g-signin2" data-onsuccess="onSignIn">
+          <div id="g_id_onload"
+            data-client_id="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse">
+          </div>
+          {/* data-login_uri="http://localhost:3000/" data-auto_select="true" // 啟用one top 視窗*/}
+          {/* <div className="g_id_signin" data-type="standard"> className="g-signin2" data-onsuccess="handleCredentialResponse*/}
+          <div className="g-signin2"> 
+          {/*  className="g-signin2" data-onsuccess="onSignIn" */}
             <div id="googlebtn" ></div>
             <button
             onClick={submitHandler_google}
