@@ -147,7 +147,7 @@ function MyChartForm() {
             content="Browse a huge list of active React meetups!"
           />
         </Head>
-        <div class="pb-12 max-h-full">
+        <div className="pb-12 max-h-full">
           <Pie data={pie_data} 
             height={"420%"}
             options={{ maintainAspectRatio: false }}/>
