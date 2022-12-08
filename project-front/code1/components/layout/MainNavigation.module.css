@@ -9,10 +9,18 @@
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: black;
   font-weight: bold;
 }
+
+@media screen and (min-width: 500px) {
+  .logo{
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+  }  
+ }
 
 .header ul {
   list-style: none;
@@ -23,14 +31,29 @@
 }
 
 .header li {
-  margin-left: 3rem;
+  margin-left: 0.5rem;
 }
+
+@media screen and (min-width: 500px) {
+  .header li{
+    margin-left: 3rem;
+  }  
+ }
 
 .header a {
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #000000;
 }
+
+
+@media screen and (min-width: 500px) {
+  .header a{
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #000000;
+  }  
+ }
 
 .header a:hover,
 .header a:active,
