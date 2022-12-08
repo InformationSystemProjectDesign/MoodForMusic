@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Sign.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Login.css' %}" />
+    
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div style="display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    
+    background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+    class="sign sign-block layout">
+      <div class="sign-flex layout">
+        <div class="sign-flex1 layout">
+          <div class="index-flex1-item" style="margin-top:-25px; margin-left: -10px;">
+            <img src={% static 'img/logo_plus.png' %} width="69.5%;">
+          </div>
+          <div class="sign-flex1-spacer"></div>
+          <div class="sign-flex1-item">
+            <h1 class="sign-big-title1 layout">
+              <a href="{% url 'acct_login' %}" style="text-decoration:none; color:#000;">首頁</a>
+            </h1>
+          </div>
+          <div class="sign-flex1-spacer1"></div>
+          <div class="sign-flex1-item">
+            <h1 class="sign-big-title1 layout"> 
+              <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a>
+            </h1>
+          </div>
+          <div class="sign-flex1-spacer2"></div>
+          <div class="sign-flex1-item">
+            <h1 class="sign-big-title1 layout" style="color:#939393;">
+              <a onclick="plzSign();" style="text-decoration:none; color:#000;">個人天地</a>
+            </h1>
+          </div>
+        </div>
+        <hr class="sign-line layout" style="height:1px; margin-top: 19.5px;"/>
+
+        <div class="sign-cover-block1 layout">
+          <form action="" method="post"> <!-- 送出之後跳出視窗，說註冊完成 -->
+            {% csrf_token %}
+            <h1 class="sign-big-title layout">使用者名稱</h1>
+            <div class="sign-box1 layout" style="background-color:#0000;">
+              <input style="width: 450px;height: 52px; font-size: 20px;" type="text" name="user_name" id="user_name" placeholder="請輸入使用者名稱" required>
+            </div>
+            <h1 class="sign-big-title layout" style="margin: 30px 35px 0px;">帳號 (請輸入電子郵件)</h1>
+            <div class="sign-box1 layout" style="background-color:#0000;">
+              <input style="width: 450px;height: 52px; font-size: 20px;" type="text" name="email" id="email" placeholder="請輸入電子信箱" required>
+            </div>
+            <h1 class="sign-big-title layout1">密碼</h1> <!-- 之後可加密碼格式 -->
+            <div class="sign-box1 layout" style="background-color:#0000;">
+              <input style="width: 450px;height: 52px; font-size: 20px;" type="password" name="password" id="password" placeholder="請輸入至少8位並含至少一個英文字母" minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d#?!@$%^&*-_]{8,}$" title="請輸入至少8位並含至少一個英文字母" required>
+            </div>
+            <h1 class="sign-big-title layout2">確認密碼</h1>
+            <div class="sign-box1 layout" style="background-color:#0000;">
+              <input style="width: 450px;height: 52px; font-size: 20px;" type="password" name="password_check" id="password_check" placeholder="請輸入至少8位並含至少一個英文字母" minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d#?!@$%^&*-_]{8,}$" title="請輸入至少8位並含至少一個英文字母" required>
+            </div>
+            <div class="sign-cover-block layout">
+              <input style="width: 450px;height: 54px; font-size: 25px; background: #c4c4c4;border: none;" type="submit" value="註冊">
+              {% comment %} <h1 class="sign-big-title2 layout" style="width:15%;">註冊</h1> {% endcomment %}
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+
+      {% for message in messages %}
+        alert('{{ message }}')
+      {% endfor %}
+      
+      function plzSign(){
+        alert("登入後才能使用此功能");
+      }
+    </script>
+  </body>
+</html>

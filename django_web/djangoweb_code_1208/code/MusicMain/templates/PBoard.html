@@ -1,0 +1,168 @@
+<!DOCTYPE html> <!-- 這裡回首頁和個人天地要設定要登入過之後才能進，否則去登入頁面 -->
+<html> <!-- 信件點選後會進入信件內容 -->
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/PBoard.css' %}" />
+
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div class="p-board p-board-block layout"> <style>.p-board.p-board-block.layout{ min-height:0px;}</style>
+      <div style="display: flex;
+      gap: 10px;
+      width: 100%;
+      height: 100%;
+      
+      background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+       class="p-board-block1 layout">
+        <div class="p-board-group layout1">
+          <div class="p-board-group layout">
+            <div class="p-board-group layout">
+              <div class="p-board-group layout">
+                <div class="p-board-group layout">
+                  <div class="p-board-group layout">
+                    <div class="p-board-flex layout">
+                      <div class="p-board-flex1 layout">
+                        <div class="index-flex1-item" style="margin-top:-25px; margin-left:-10px;">
+                          <img src={% static 'img/logo_plus.png' %} width="69%;">
+                        </div>
+                        <div class="p-board-flex1-spacer"></div>
+                        <div class="p-board-flex1-item">
+                          <h1 class="p-board-big-title layout">
+                            <a href="{% url 'index' %}" style="text-decoration:none; color:#000;">首頁</a>
+                          </h1>
+                        </div>
+                        <div class="p-board-flex1-spacer1"></div>
+                        <div class="p-board-flex1-item">
+                          <h1 class="p-board-big-title layout">
+                            <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a>
+                          </h1>
+                        </div>
+                        <div class="p-board-flex1-spacer2"></div>
+                        <div class="p-board-flex1-item">
+                          <h1 class="p-board-big-title layout">
+                            <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+                          </h1>
+                        </div>
+                      </div>
+                      <hr class="p-board-line layout" style="height:1px; margin-top:19.5px;"/>
+                      <div class="p-board-flex2 layout">
+                        <div class="p-board-flex2-item">
+                          <div class="p-board-cover-block2 layout" style="background:#000;">
+                            <h1 class="p-board-big-title2 layout" style="margin:3px 9.5px 6px 7.5px;">熱門排行榜</h1>
+                          </div>
+                        </div>
+                        <div class="p-board-flex2-spacer"></div>
+                        <div class="p-board-flex2-item">
+                          <div class="p-board-cover-block1 layout" style="margin:1px 8px 16px 0px; height:51px;">
+                            {% comment %} <h1 class="p-board-big-title2 layout1" style="margin:3px 0px 6px 11.5px;">心情分類</h1> {% endcomment %}
+                            <select style="margin-left:10px; width:160px; font-size:32px; background-color:#0000; border:none">
+                              <option>心情分類</option>
+                              <option>開心</option>
+                              <option>生氣</option>
+                              <option>難過</option>
+                              <option>害怕</option>
+                              <option>愛</option>
+                              <option>恨</option>
+                            </select>
+                            <div class="p-board-cover-block1-spacer"></div>
+                            {% comment %} <div class="p-board-cover-block1-item">
+                              <div class="p-board-image1 layout" style="margin:14px 8px 16px 0px;">
+                                <img src={% static 'img/downArrow.png' %} width="100%">
+                              </div>
+                            </div> {% endcomment %}
+                          </div>
+                        </div>
+                        <div class="p-board-flex2-spacer1"></div>
+                        <div class="p-board-flex2-item">
+                          <div class="p-board-cover-block layout">
+                            <form action="" method="post">
+                              {% csrf_token %}
+                              <input name="searchSong" id="searchSong" type="text" placeholder="搜尋..." style="height: 49px; width:140px; font-size: 20px;">
+                              <button type="submit" name="searchsub" style="width: 37px; height: 41px; position: absolute; background-color:#0000; border:none;">
+                                <div class="p-board-icon layout" style="float:left;position: absolute; margin:-8px 0px 0px 0px;">
+                                  <img src={% static 'img/searchIcon.png' %} width="100%">
+                                </div>
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="p-board-flex3 layout"><style>.p-board-flex3.layout{width:1020px; display: inline-block; /* max-width */}</style>
+                        {% for article in article_open %}
+                          <div class="p-board-flex3-item"><style>.p-board-flex3-item{margin:50px 35px 0px 46px; float:left; position:relative;}</style>
+                            <a href="/mailCon/{{ article.article_id }}">
+                              <div class="p-board-cover-block5 layout"> <style>.p-board-cover-block5.layout{width:256px; float:left;}</style>
+                                <div class="p-board-flex4 layout">
+                                  <div class="p-board-cover-block4 layout">
+                                    <h1 class="p-board-big-title11 layout">{{ article.song_id }}</h1><style>.p-board-big-title11.layout{overflow:hidden; white-space: nowrap; text-overflow: ellipsis;}</style>
+                                  </div>
+                                  <h1 class="p-board-big-title3 layout">{{ article.article_context }}</h1><style>.p-board-big-title3.layout{overflow:hidden; white-space: nowrap; text-overflow: ellipsis;font-size:18px;}</style>
+                                  <div class="p-board-flex5 layout">
+                                    <div class="p-board-flex5-item">
+                                      <div class="p-board-flex6 layout">
+                                        <h3 class="p-board-subtitle layout" style="margin:0px 10px 0px 0px;">{{ article.nick_name }}</h3>
+                                        <h5 class="p-board-highlights layout" style="font-size:14.7px;">{{ article.rectime }}</h5>
+                                      </div>
+                                    </div>
+                                    <div class="p-board-flex5-spacer"></div>
+                                    <div class="p-board-flex5-item1">
+                                      <div class="p-board-cover-block3 layout">
+                                        <h4 class="p-board-highlights1 layout" style="margin:9px 5px 10px 17px;">{{ article.sencla }}</h4>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="p-board-flex3-spacer"></div>
+                        {% endfor %}
+                      </div>
+                      <div class="p-board-cover-group layout">
+                        <button onclick="topFunction()" id="myBtn" title="Gotop" style="border-radius: 35px; border-color: #0000; width:70px;">
+                          <div class="p-board-image2 layout" style="left:1px; ">
+                            <img src={% static 'img/upArrow.png' %} width="100%">
+                          </div>
+                          <div class="p-board-icon1 layout">
+                            <img src={% static 'img/circle.png' %} width="100%">
+                          </div>
+                          <h2 class="p-board-medium-title layout" style="margin:20.5px -2.5px 15.5px 0px;">TOP</h2>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+
+      // 重置scrollTop這個變數的值
+      function topFunction() {
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+    </script>
+  </body>
+</html>

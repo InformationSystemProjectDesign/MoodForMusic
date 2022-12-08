@@ -1,0 +1,917 @@
+/* This source code is exported from pxCode, you can get more document from https://www.pxcode.io */
+.login-block {
+  display: flex;
+  flex-direction: column;
+  background-color: white; }
+
+.login-block.layout {
+  position: relative;
+  min-height: 1024px;
+  flex-shrink: 0; }
+
+.login-block1 {
+  display: flex;
+  flex-direction: column;
+  background: var(--src) center center/contain no-repeat;
+  background-color: white; }
+
+.login-block1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content; }
+
+.login-flex {
+  display: flex;
+  flex-direction: column; }
+
+.login-flex.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 39px 0px; }
+  @media (max-width: 1199px) {
+    .login-flex.layout {
+      margin: 34px 0px; } }
+  @media (max-width: 991px) {
+    .login-flex.layout {
+      margin: 28px 0px; } }
+  @media (max-width: 767px) {
+    .login-flex.layout {
+      margin: 23px 0px; } }
+  @media (max-width: 575px) {
+    .login-flex.layout {
+      margin: 21px 0px; } }
+  @media (max-width: 479px) {
+    .login-flex.layout {
+      margin: 18px 0px; } }
+  @media (max-width: 383px) {
+    .login-flex.layout {
+      margin: 17px 0px; } }
+
+.login-flex1 {
+  display: flex; }
+  @media (max-width: 575px) {
+    .login-flex1 {
+      flex-wrap: wrap;
+      row-gap: 16px; } }
+
+.login-flex1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 92.67%;
+  margin: 0px 2.47% 0px 4.86%; }
+
+.login-flex1-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 0 auto; }
+  @media (max-width: 575px) {
+    .login-flex1-item {
+      flex: 0 0 calc(50% - 8px); } }
+  @media (max-width: 383px) {
+    .login-flex1-item {
+      flex: 0 0 100%; } }
+
+.login-hero-title1 {
+  display: flex;
+  align-items: center;
+  font: 48px/0.93 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 4.8px; }
+  @media (max-width: 1199px) {
+    .login-hero-title1 {
+      font-size: 43px;
+      text-align: left; } }
+  @media (max-width: 991px) {
+    .login-hero-title1 {
+      font-size: 37px; } }
+  @media (max-width: 767px) {
+    .login-hero-title1 {
+      font-size: 32px; } }
+  @media (max-width: 575px) {
+    .login-hero-title1 {
+      font-size: 30px; } }
+  @media (max-width: 479px) {
+    .login-hero-title1 {
+      font-size: 27px; } }
+  @media (max-width: 383px) {
+    .login-hero-title1 {
+      font-size: 25px; } }
+
+.login-hero-title1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 0px 0px 0.5px; }
+  @media (max-width: 1199px) {
+    .login-hero-title1.layout {
+      margin: 0px 0px 5px; } }
+
+.login-flex1-spacer {
+  flex: 0 1 778.5px; }
+  @media (max-width: 575px) {
+    .login-flex1-spacer {
+      flex: 0 0 16px; } }
+  @media (max-width: 383px) {
+    .login-flex1-spacer {
+      display: none; } }
+
+.login-big-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 28px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title {
+      font-size: 25px;
+      text-align: center; } }
+  @media (max-width: 991px) {
+    .login-big-title {
+      font-size: 23px; } }
+  @media (max-width: 767px) {
+    .login-big-title {
+      font-size: 20px; } }
+  @media (max-width: 575px) {
+    .login-big-title {
+      font-size: 19px; } }
+  @media (max-width: 479px) {
+    .login-big-title {
+      font-size: 18px; } }
+  @media (max-width: 383px) {
+    .login-big-title {
+      font-size: 17px; } }
+
+.login-big-title.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 11.5px 0px 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title.layout {
+      margin: 10px 0px 0px; } }
+  @media (max-width: 991px) {
+    .login-big-title.layout {
+      margin: 9px 0px 0px; } }
+  @media (max-width: 767px) {
+    .login-big-title.layout {
+      margin: 7px 0px 0px; } }
+  @media (max-width: 479px) {
+    .login-big-title.layout {
+      margin: 6px 0px 0px; } }
+  @media (max-width: 383px) {
+    .login-big-title.layout {
+      margin: 5px 0px 0px; } }
+
+.login-flex1-spacer1 {
+  flex: 0 1 29px; }
+  @media (max-width: 575px) {
+    .login-flex1-spacer1 {
+      display: none; } }
+
+.login-flex1-spacer2 {
+  flex: 0 1 26px; }
+  @media (max-width: 575px) {
+    .login-flex1-spacer2 {
+      flex: 0 0 16px; } }
+  @media (max-width: 383px) {
+    .login-flex1-spacer2 {
+      display: none; } }
+
+.login-line {
+  background-color: black; }
+
+.login-line.layout {
+  position: relative;
+  height: 1px;
+  margin: 23.5px 0px 0px; }
+  @media (max-width: 1199px) {
+    .login-line.layout {
+      margin: 21px 0px 0px; } }
+  @media (max-width: 991px) {
+    .login-line.layout {
+      margin: 17px 0px 0px; } }
+  @media (max-width: 767px) {
+    .login-line.layout {
+      margin: 15px 0px 0px; } }
+  @media (max-width: 575px) {
+    .login-line.layout {
+      margin: 13px 0px 0px; } }
+  @media (max-width: 479px) {
+    .login-line.layout {
+      margin: 12px 0px 0px; } }
+  @media (max-width: 383px) {
+    .login-line.layout {
+      margin: 11px 0px 0px; } }
+
+.login-flex2 {
+  display: flex; }
+  @media (max-width: 1199px) {
+    .login-flex2 {
+      flex-wrap: wrap;
+      row-gap: 16px; } }
+
+.login-flex2.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 83.4%;
+  margin: 172px 7.85% 124px 8.75%; }
+  @media (max-width: 1199px) {
+    .login-flex2.layout {
+      margin: 137px 7.85% 101px 8.75%; } }
+  @media (max-width: 991px) {
+    .login-flex2.layout {
+      margin: 99px 7.85% 76px 8.75%; } }
+  @media (max-width: 767px) {
+    .login-flex2.layout {
+      margin: 67px 7.85% 54px 8.75%; } }
+  @media (max-width: 575px) {
+    .login-flex2.layout {
+      margin: 50px 7.85% 44px 8.75%; } }
+  @media (max-width: 479px) {
+    .login-flex2.layout {
+      margin: 34px 7.85% 33px 8.75%; } }
+  @media (max-width: 383px) {
+    .login-flex2.layout {
+      margin: 23px 7.85% 26px 8.75%; } }
+
+.login-flex2-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 1 430px; }
+  @media (max-width: 1199px) {
+    .login-flex2-item {
+      flex: 0 0 100%; } }
+
+.login-flex3 {
+  display: flex;
+  flex-direction: column; }
+
+.login-flex3.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 91px 0px 38px; }
+  @media (max-width: 1199px) {
+    .login-flex3.layout {
+      margin: 76px 0px 33px; } }
+  @media (max-width: 991px) {
+    .login-flex3.layout {
+      margin: 60px 0px 27px; } }
+  @media (max-width: 767px) {
+    .login-flex3.layout {
+      margin: 46px 0px 23px; } }
+  @media (max-width: 575px) {
+    .login-flex3.layout {
+      margin: 39px 0px 20px; } }
+  @media (max-width: 479px) {
+    .login-flex3.layout {
+      margin: 32px 0px 18px; } }
+  @media (max-width: 383px) {
+    .login-flex3.layout {
+      margin: 27px 0px 16px; } }
+
+.login-hero-title-box {
+  display: flex;
+  align-items: center; }
+  @media (max-width: 1199px) {
+    .login-hero-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 991px) {
+    .login-hero-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 767px) {
+    .login-hero-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 575px) {
+    .login-hero-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 479px) {
+    .login-hero-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 383px) {
+    .login-hero-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+
+.login-hero-title-box.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content; }
+
+.login-hero-title {
+  overflow: visible;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0px;
+  font: 700 86px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px;
+  white-space: pre-wrap; }
+  @media (max-width: 1199px) {
+    .login-hero-title {
+      font-size: 75px;
+      text-align: left; } }
+  @media (max-width: 991px) {
+    .login-hero-title {
+      font-size: 63px; } }
+  @media (max-width: 767px) {
+    .login-hero-title {
+      font-size: 52px; } }
+  @media (max-width: 575px) {
+    .login-hero-title {
+      font-size: 47px; } }
+  @media (max-width: 479px) {
+    .login-hero-title {
+      font-size: 42px; } }
+  @media (max-width: 383px) {
+    .login-hero-title {
+      font-size: 38px; } }
+
+.login-cover-block4 {
+  display: flex;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247059);
+  border-style: solid;
+  border-width: 1px; }
+
+.login-cover-block4.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 87px 0px 0px; }
+  @media (max-width: 1199px) {
+    .login-cover-block4.layout {
+      margin: 73px 0px 0px; } }
+  @media (max-width: 991px) {
+    .login-cover-block4.layout {
+      margin: 58px 0px 0px; } }
+  @media (max-width: 767px) {
+    .login-cover-block4.layout {
+      margin: 45px 0px 0px; } }
+  @media (max-width: 575px) {
+    .login-cover-block4.layout {
+      margin: 38px 0px 0px; } }
+  @media (max-width: 479px) {
+    .login-cover-block4.layout {
+      margin: 32px 0px 0px; } }
+  @media (max-width: 383px) {
+    .login-cover-block4.layout {
+      margin: 27px 0px 0px; } }
+
+.login-medium-title-box {
+  display: flex;
+  align-items: center; }
+  @media (max-width: 1199px) {
+    .login-medium-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 991px) {
+    .login-medium-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 767px) {
+    .login-medium-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 575px) {
+    .login-medium-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 479px) {
+    .login-medium-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+  @media (max-width: 383px) {
+    .login-medium-title-box {
+      align-items: center;
+      justify-content: flex-start; } }
+
+.login-medium-title-box.layout {
+  position: relative;
+  flex: 0 0 auto;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 5px 0px 4px; }
+  @media (max-width: 1199px) {
+    .login-medium-title-box.layout {
+      margin: 5px 0px; } }
+
+.login-medium-title {
+  overflow: visible;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0px;
+  font: 24px/1.87 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 2.4px;
+  white-space: pre-wrap; }
+  @media (max-width: 1199px) {
+    .login-medium-title {
+      font-size: 22px;
+      text-align: left; } }
+  @media (max-width: 991px) {
+    .login-medium-title {
+      font-size: 20px; } }
+  @media (max-width: 767px) {
+    .login-medium-title {
+      font-size: 19px; } }
+  @media (max-width: 575px) {
+    .login-medium-title {
+      font-size: 18px; } }
+  @media (max-width: 479px) {
+    .login-medium-title {
+      font-size: 17px; } }
+  @media (max-width: 383px) {
+    .login-medium-title {
+      font-size: 16px; } }
+
+.login-cover-block4-spacer {
+  flex: 0 1 200px; }
+
+.login-cover-block4-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 1px; }
+
+.login-image1 {
+  background: var(--src) center center/contain no-repeat; }
+
+.login-image1.layout {
+  position: relative;
+  height: 54px;
+  width: 1px;
+  min-width: 1px; }
+
+.login-cover-block4-spacer1 {
+  flex: 0 1 16px; }
+
+.login-cover-block4-item1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 1 53px; }
+
+.login-image2 {
+  background: var(--src) center center/contain no-repeat; }
+
+.login-image2.layout {
+  position: relative;
+  height: 24px;
+  width: 34px;
+  min-width: 34px;
+  margin: 15px 19px 15px 0px; }
+  @media (max-width: 1199px) {
+    .login-image2.layout {
+      margin: 13px 17px 13px 0px; } }
+  @media (max-width: 991px) {
+    .login-image2.layout {
+      margin: 11px 14px 11px 0px; } }
+  @media (max-width: 767px) {
+    .login-image2.layout {
+      margin: 9px 12px 9px 0px; } }
+  @media (max-width: 575px) {
+    .login-image2.layout {
+      margin: 9px 11px 9px 0px; } }
+  @media (max-width: 479px) {
+    .login-image2.layout {
+      margin: 8px 10px 8px 0px; } }
+  @media (max-width: 383px) {
+    .login-image2.layout {
+      margin: 7px 9px 7px 0px; } }
+
+.login-flex2-spacer {
+  flex: 0 1 181px; }
+  @media (max-width: 1199px) {
+    .login-flex2-spacer {
+      display: none; } }
+
+.login-flex2-item1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 1 590px; }
+  @media (max-width: 1199px) {
+    .login-flex2-item1 {
+      flex: 0 0 100%; } }
+
+.login-cover-block3 {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black; }
+
+.login-cover-block3.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content; }
+
+.login-big-title1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 32px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  text-align: center;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title1 {
+      font-size: 29px;
+      text-align: center; } }
+  @media (max-width: 991px) {
+    .login-big-title1 {
+      font-size: 25px; } }
+  @media (max-width: 767px) {
+    .login-big-title1 {
+      font-size: 23px; } }
+  @media (max-width: 575px) {
+    .login-big-title1 {
+      font-size: 21px; } }
+  @media (max-width: 479px) {
+    .login-big-title1 {
+      font-size: 20px; } }
+  @media (max-width: 383px) {
+    .login-big-title1 {
+      font-size: 19px; } }
+
+.login-big-title1.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 25px 0px 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title1.layout {
+      margin: 22px 0px 0px; } }
+  @media (max-width: 991px) {
+    .login-big-title1.layout {
+      margin: 19px 0px 0px; } }
+  @media (max-width: 767px) {
+    .login-big-title1.layout {
+      margin: 16px 0px 0px; } }
+  @media (max-width: 575px) {
+    .login-big-title1.layout {
+      margin: 14px 0px 0px; } }
+  @media (max-width: 479px) {
+    .login-big-title1.layout {
+      margin: 13px 0px 0px; } }
+  @media (max-width: 383px) {
+    .login-big-title1.layout {
+      margin: 12px 0px 0px; } }
+
+.login-cover-group {
+  display: flex;
+  flex-direction: column; }
+
+.login-cover-group.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 11px 27px 0px 35px; }
+  @media (max-width: 1199px) {
+    .login-cover-group.layout {
+      margin: 10px 24px 0px 30px; } }
+  @media (max-width: 991px) {
+    .login-cover-group.layout {
+      margin: 8px 20px 0px 26px; } }
+  @media (max-width: 767px) {
+    .login-cover-group.layout {
+      margin: 7px 17px 0px 21px; } }
+  @media (max-width: 575px) {
+    .login-cover-group.layout {
+      margin: 6px 15px 0px 19px; } }
+  @media (max-width: 479px) {
+    .login-cover-group.layout {
+      margin: 6px 14px 0px 17px; } }
+  @media (max-width: 383px) {
+    .login-cover-group.layout {
+      margin: 5px 13px 0px 16px; } }
+
+.login-big-title11 {
+  display: flex;
+  align-items: center;
+  font: 32px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title11 {
+      font-size: 29px;
+      text-align: left; } }
+  @media (max-width: 991px) {
+    .login-big-title11 {
+      font-size: 25px; } }
+  @media (max-width: 767px) {
+    .login-big-title11 {
+      font-size: 23px; } }
+  @media (max-width: 575px) {
+    .login-big-title11 {
+      font-size: 21px; } }
+  @media (max-width: 479px) {
+    .login-big-title11 {
+      font-size: 20px; } }
+  @media (max-width: 383px) {
+    .login-big-title11 {
+      font-size: 19px; } }
+
+.login-big-title11.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 7.5px 9px; }
+  @media (max-width: 1199px) {
+    .login-big-title11.layout {
+      margin: 7px 8px; } }
+  @media (max-width: 991px) {
+    .login-big-title11.layout {
+      margin: 6px 7px; } }
+  @media (max-width: 767px) {
+    .login-big-title11.layout {
+      margin: 5px 6px; } }
+  @media (max-width: 575px) {
+    .login-big-title11.layout {
+      margin: 5px; } }
+
+.login-box2 {
+  background-color: #c4c4c4;
+  border: 1px solid black; }
+
+.login-box2.layout {
+  position: absolute;
+  top: 0px;
+  height: 54px;
+  left: 0px;
+  right: 0px; }
+
+.login-cover-group.layout1 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 24px 27px 0px 35px; }
+  @media (max-width: 1199px) {
+    .login-cover-group.layout1 {
+      margin: 21px 24px 0px 30px; } }
+  @media (max-width: 991px) {
+    .login-cover-group.layout1 {
+      margin: 18px 20px 0px 26px; } }
+  @media (max-width: 767px) {
+    .login-cover-group.layout1 {
+      margin: 15px 17px 0px 21px; } }
+  @media (max-width: 575px) {
+    .login-cover-group.layout1 {
+      margin: 14px 15px 0px 19px; } }
+  @media (max-width: 479px) {
+    .login-cover-group.layout1 {
+      margin: 12px 14px 0px 17px; } }
+  @media (max-width: 383px) {
+    .login-cover-group.layout1 {
+      margin: 11px 13px 0px 16px; } }
+
+.login-big-title12 {
+  display: flex;
+  align-items: center;
+  font: 32px/1.2 "Noto Serif TC", Helvetica, Arial, serif;
+  color: black;
+  letter-spacing: 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title12 {
+      font-size: 29px;
+      text-align: left; } }
+  @media (max-width: 991px) {
+    .login-big-title12 {
+      font-size: 25px; } }
+  @media (max-width: 767px) {
+    .login-big-title12 {
+      font-size: 23px; } }
+  @media (max-width: 575px) {
+    .login-big-title12 {
+      font-size: 21px; } }
+  @media (max-width: 479px) {
+    .login-big-title12 {
+      font-size: 20px; } }
+  @media (max-width: 383px) {
+    .login-big-title12 {
+      font-size: 19px; } }
+
+.login-big-title12.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 7.5px 9px; }
+  @media (max-width: 1199px) {
+    .login-big-title12.layout {
+      margin: 7px 8px; } }
+  @media (max-width: 991px) {
+    .login-big-title12.layout {
+      margin: 6px 7px; } }
+  @media (max-width: 767px) {
+    .login-big-title12.layout {
+      margin: 5px 6px; } }
+  @media (max-width: 575px) {
+    .login-big-title12.layout {
+      margin: 5px; } }
+
+.login-cover-block {
+  display: flex;
+  flex-direction: column;
+  background-color: #c4c4c4;
+  border: 1px solid black; }
+
+.login-cover-block.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 24px 27px 0px 35px; }
+  @media (max-width: 1199px) {
+    .login-cover-block.layout {
+      margin: 21px 24px 0px 30px; } }
+  @media (max-width: 991px) {
+    .login-cover-block.layout {
+      margin: 18px 20px 0px 26px; } }
+  @media (max-width: 767px) {
+    .login-cover-block.layout {
+      margin: 15px 17px 0px 21px; } }
+  @media (max-width: 575px) {
+    .login-cover-block.layout {
+      margin: 14px 15px 0px 19px; } }
+  @media (max-width: 479px) {
+    .login-cover-block.layout {
+      margin: 12px 14px 0px 17px; } }
+  @media (max-width: 383px) {
+    .login-cover-block.layout {
+      margin: 11px 13px 0px 16px; } }
+
+.login-big-title1.layout1 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 72px;
+  min-width: 72px;
+  margin: 6.5px auto 8.5px; }
+  @media (max-width: 1199px) {
+    .login-big-title1.layout1 {
+      margin: 6px auto 7px; } }
+  @media (max-width: 991px) {
+    .login-big-title1.layout1 {
+      margin: 5px auto 6px; } }
+  @media (max-width: 767px) {
+    .login-big-title1.layout1 {
+      margin: 5px auto; } }
+
+.login-big-title1.layout2 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 16px 0px 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title1.layout2 {
+      margin: 14px 0px 0px; } }
+  @media (max-width: 991px) {
+    .login-big-title1.layout2 {
+      margin: 12px 0px 0px; } }
+  @media (max-width: 767px) {
+    .login-big-title1.layout2 {
+      margin: 10px 0px 0px; } }
+  @media (max-width: 575px) {
+    .login-big-title1.layout2 {
+      margin: 9px 0px 0px; } }
+  @media (max-width: 479px) {
+    .login-big-title1.layout2 {
+      margin: 8px 0px 0px; } }
+
+.login-cover-block.layout1 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 17px 27px 0px 35px; }
+  @media (max-width: 1199px) {
+    .login-cover-block.layout1 {
+      margin: 15px 24px 0px 30px; } }
+  @media (max-width: 991px) {
+    .login-cover-block.layout1 {
+      margin: 13px 20px 0px 26px; } }
+  @media (max-width: 767px) {
+    .login-cover-block.layout1 {
+      margin: 11px 17px 0px 21px; } }
+  @media (max-width: 575px) {
+    .login-cover-block.layout1 {
+      margin: 10px 15px 0px 19px; } }
+  @media (max-width: 479px) {
+    .login-cover-block.layout1 {
+      margin: 9px 14px 0px 17px; } }
+  @media (max-width: 383px) {
+    .login-cover-block.layout1 {
+      margin: 8px 13px 0px 16px; } }
+
+.login-big-title1.layout3 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 55.3%;
+  margin: 7px auto 8px; }
+  @media (max-width: 1199px) {
+    .login-big-title1.layout3 {
+      margin: 6px auto 7px; } }
+  @media (max-width: 991px) {
+    .login-big-title1.layout3 {
+      margin: 5px auto 6px; } }
+  @media (max-width: 767px) {
+    .login-big-title1.layout3 {
+      margin: 5px auto; } }
+
+.login-big-title1.layout4 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 28px 0px 0px; }
+  @media (max-width: 1199px) {
+    .login-big-title1.layout4 {
+      margin: 25px 0px 0px; } }
+  @media (max-width: 991px) {
+    .login-big-title1.layout4 {
+      margin: 21px 0px 0px; } }
+  @media (max-width: 767px) {
+    .login-big-title1.layout4 {
+      margin: 18px 0px 0px; } }
+  @media (max-width: 575px) {
+    .login-big-title1.layout4 {
+      margin: 16px 0px 0px; } }
+  @media (max-width: 479px) {
+    .login-big-title1.layout4 {
+      margin: 14px 0px 0px; } }
+  @media (max-width: 383px) {
+    .login-big-title1.layout4 {
+      margin: 13px 0px 0px; } }
+
+.login-cover-block.layout2 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 13px 27px 35px 35px; }
+  @media (max-width: 1199px) {
+    .login-cover-block.layout2 {
+      margin: 11px 24px 30px 30px; } }
+  @media (max-width: 991px) {
+    .login-cover-block.layout2 {
+      margin: 10px 20px 26px 26px; } }
+  @media (max-width: 767px) {
+    .login-cover-block.layout2 {
+      margin: 8px 17px 21px 21px; } }
+  @media (max-width: 575px) {
+    .login-cover-block.layout2 {
+      margin: 7px 15px 19px 19px; } }
+  @media (max-width: 479px) {
+    .login-cover-block.layout2 {
+      margin: 7px 14px 17px 17px; } }
+  @media (max-width: 383px) {
+    .login-cover-block.layout2 {
+      margin: 6px 13px 16px 16px; } }
+
+.login-big-title1.layout5 {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 13.64%;
+  margin: 7px auto 8px; }
+  @media (max-width: 1199px) {
+    .login-big-title1.layout5 {
+      margin: 6px auto 7px; } }
+  @media (max-width: 991px) {
+    .login-big-title1.layout5 {
+      margin: 5px auto 6px; } }
+  @media (max-width: 767px) {
+    .login-big-title1.layout5 {
+      margin: 5px auto; } }

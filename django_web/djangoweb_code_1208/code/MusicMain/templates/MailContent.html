@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/MailContent.css' %}" />
+
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/px2code/posize/build/v1.00.5.js"></script>
+  </head>
+
+  <body style="display: flex; flex-direction: column">
+    <div class="mail-content mail-content-block layout" style="min-height:0px;">
+      
+      <div style="display: flex;
+      /* flex-direction: row;
+      align-items: flex-start; */
+      padding: 10px;
+      gap: 10px;
+      
+      width: 100%;
+      height: 100%;
+      
+      background: radial-gradient(106.18% 350.13% at -1.35% 2.84%, #FADE7B 0%, #FEE48A 14.59%, rgba(236, 236, 161, 0.809721) 32.26%, rgba(210, 248, 193, 0.546875) 53.21%, rgba(128, 210, 181, 0.293965) 77.26%, rgba(33, 166, 167, 0.15) 100%)"
+      class="mail-content-block1 layout">
+        {% comment %} <div class="mail-content-box layout" style="top:205px; height:780px; width:905px; right:178px;"></div> {% endcomment %}
+        <div class="mailcontent-box-lay-out" style="border: 3px solid black; top:205px; right:178px; width:905px; margin: 190px 0px 0px 162px;">
+          <a href="{{ song_link.link }}" target="_blank" style="text-decoration:none; color:#000;">
+            <div class="mail-content-cover-block2 layout"><h1 class="mail-content-hero-title layout" style="font-size:25px; width:90.15%;">{{ song_link.link }}</h1></div>
+          </a>
+          <div class="mail-content-cover-block1 layout"><h1 class="mail-content-hero-title1 layout" style="margin:0px 0px 140px; font-size: 30px; text-align: left;">{{ pub_article.article_context }}</h1></div>
+          <h2 class="mail-content-medium-title layout">{{ pub_article.nick_name }}</h2>
+          <h2 class="mail-content-medium-title layout1">{{ pub_article.rectime }}</h2>
+          
+          {% comment %} <div class="mail-content-cover-block layout">
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="mail-content-cover-block-item">
+                <input style="width: 780px;height: 48px; font-size: 20px;" type="text" name="userinput" placeholder="寫下想說的話...">
+              </div>
+              <div class="mail-con-cover-block-item" style="float:left;position: absolute;margin: -48px 0px 0px 780px;">
+                <input style="width: 80px;height: 48px; font-size: 20px; background: #c4c4c4; border: none;" type="submit" name="userinput_sub" value="送出">
+              </div>
+            </form>
+          </div> {% endcomment %}
+
+          <div class="mail-content-cover-group1 layout" style="top:795px;">
+            <button onclick="topFunction()" id="myBtn" title="Gotop" style="border-radius: 35px; border-color: #0000;">
+              <div class="mail-content-image2 layout" style="top:-3px; left:-3px;">
+                <img src={% static 'img/upArrow.png' %} width="100%">
+              </div>
+              <div class="mail-content-icon layout" style="left:-4px;">
+                <img src={% static 'img/circle.png' %} width="100%">
+              </div>
+              <h2 class="mail-content-medium-title7 layout" style="margin:25.5px 2.5px 10.5px">TOP</h2>
+            </button>
+          </div>
+          <img src="{% static 'img/horizontalLine.png' %}" style="height: 0px; margin-top: 647px;">
+        </div>
+      </div>
+      <div class="mail-content-cover-group layout">
+        {% comment %} <h1 class="mail-content-big-title layout" style="margin:5px 17px 5px 17px;">編輯信件</h1> {% endcomment %}
+        {% comment %} <div class="mail-content-box4 layout" style="background-color:#0000;"></div> {% endcomment %}
+      </div>
+      <div class="mail-content-hero-title2 layout" style="top: 14.5px; left: -20px;">
+        <img src={% static 'img/logo_plus.png' %} width="12%">
+      </div>
+      {% comment %} <h1 class="mail-content-hero-title2 layout">LOGO</h1> {% endcomment %}
+      <hr class="mail-content-line layout" style="height:1.5px; margin:103px 0px 915px;"/>
+      <h1 class="mail-content-big-title1 layout" style="top:50.5px; width:5%; left:-23px;">
+        <a href="{% url 'index' %}"  style="text-decoration:none; color:#000;">首頁</a>
+      </h1>
+      <h1 class="mail-content-big-title1 layout1" style="top:50.5px; width:12%; left:-24.5px;">
+        <a href="{% url 'pBoard' %}" style="text-decoration:none; color:#000;">未來公告欄</a>
+      </h1>
+      <h1 class="mail-content-big-title1 layout2" style="top:50.5px; width:10%; left:-14.8px;">
+        <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+      </h1>
+      <h1 class="mail-content-big-title1 layout3" style="top:155px; width:23%;">信件內容</h1>
+      <h1 class="mail-content-big-title1 layout4" style="top:155px; width:19%;">
+        <a href="{% url 'pMailRecord' %}" style="text-decoration:none; color:#000;">信件紀錄</a>
+      </h1>
+      <px-posize x="470fr 14px 956fr" y="143px 22px 859px" absolute="true">
+        <div class="mail-content-image3" style="margin-top:14px; margin-left:75px;">
+          <img src={% static 'img/leftArrow.png' %} width="150%">
+        </div>
+        </px-posize><px-posize x="320fr 14px 1106fr" y="143px 22px 859px" absolute="true">
+        <div class="mail-content-image3" style="position: relative; margin-top:14px; margin-left:50px;">
+          <img src={% static 'img/leftArrow.png' %} width="150%">
+        </div>
+      </px-posize>
+      <h1 class="mail-content-big-title1 layout5" style="top:155px; width:15%;">
+        <a href="{% url 'profile' %}" style="text-decoration:none; color:#000;">個人天地</a>
+      </h1>
+    </div>
+    <script type="text/javascript">
+      AOS.init();
+
+      // 重置scrollTop這個變數的值
+      function topFunction() {
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+    </script>
+  </body>
+</html>
