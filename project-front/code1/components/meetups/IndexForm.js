@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import getBaseUrl from "../../pages/const";
 import { useRouter } from "next/router";
-import Script from 'next/script'
+import Script from "next/script";
 
 // 一般登入api
 function IndexForm() {
@@ -29,7 +29,6 @@ function IndexForm() {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-    
 
     const LoginData = {
       email: enteredEmail, //這裡的變數名稱必須跟後端寫的名稱一樣
@@ -59,34 +58,33 @@ function IndexForm() {
       .then((data) => {
         /*接到request data後要做的事情*/
         // console.log("data", data);
-        if (data["result"] == "沒有此使用者，請去註冊"){
-          alert('登入失敗 沒有此使用者，請去註冊')
-          router.push('/register')
-        }else if(sessionStorage.getItem("token") != null){
-          alert('你已登入過，無須再次登入')
-          router.push('/personal_space')
-        }else if(data["result"] == "login fail"){
-          alert('帳號或是密碼輸入錯誤')
-        }else{
-          sessionStorage.setItem("token", data.token);  //儲存token
-          router.push('/personal_space')  //跳轉頁面
-          alert('登入成功')
+        if (data["result"] == "沒有此使用者，請去註冊") {
+          alert("登入失敗 沒有此使用者，請去註冊");
+          router.push("/register");
+        } else if (sessionStorage.getItem("token") != null) {
+          alert("你已登入過，無須再次登入");
+          router.push("/personal_space");
+        } else if (data["result"] == "login fail") {
+          alert("帳號或是密碼輸入錯誤");
+        } else {
+          sessionStorage.setItem("token", data.token); //儲存token
+          router.push("/personal_space"); //跳轉頁面
+          alert("登入成功");
         }
       })
       .catch((e) => {
         /*發生錯誤時要做的事情*/
         console.log("ee", e);
-        alert('登入失敗') //系統頁面提示訊息登入失敗
+        alert("登入失敗"); //系統頁面提示訊息登入失敗
       });
   }
 
   // google 登入
   function submitHandler_google(event) {
-
     event.preventDefault();
     // google.accounts.id.prompt();
 
-    return
+    return;
     // fetch(getBaseUrl + "auth/google_login", {
     //   method: "POST",
     //   headers: new Headers({
@@ -120,57 +118,58 @@ function IndexForm() {
     const gt = response.credential;
 
     const GoogleData = {
-      googleToken: gt
-    }
+      googleToken: gt,
+    };
 
     console.log("Encoded JWT ID token:" + response.credential);
     // console.log("response", response)
-    fetch(getBaseUrl + "auth/google_login",{
-      method:"POST",
-      body:JSON.stringify(GoogleData),
-      headers:new Headers({
+    fetch(getBaseUrl + "auth/google_login", {
+      method: "POST",
+      body: JSON.stringify(GoogleData),
+      headers: new Headers({
         "Content-Type": "application/json",
         Accept: "application/json",
-      })
+      }),
       // body:{"token":"Bearer " + response}
       // body:{"token": response.credential}
     })
-    .then((res) => {
-      console.log("res", res);
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw "登入失敗";
-      }
-    })
-    .then((data) => {
-      /*接到request data後要做的事情*/
-      // if (sessionStorage.getItem("token") != null){
-      //   alert('你已登入過，無須再次登入')
-      //   router.push('/personal_space')
-      // }
-      sessionStorage.setItem("token", data.token);  //儲存token
-      router.push('/personal_space')  //跳轉頁面
-      alert('登入成功')
-    })
-    .catch((e) => {
-      /*發生錯誤時要做的事情*/
-      console.log("ee", e);
-      alert('登入失敗') //系統頁面提示訊息登入失敗
-    });
+      .then((res) => {
+        console.log("res", res);
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw "登入失敗";
+        }
+      })
+      .then((data) => {
+        /*接到request data後要做的事情*/
+        // if (sessionStorage.getItem("token") != null){
+        //   alert('你已登入過，無須再次登入')
+        //   router.push('/personal_space')
+        // }
+        sessionStorage.setItem("token", data.token); //儲存token
+        router.push("/personal_space"); //跳轉頁面
+        alert("登入成功");
+      })
+      .catch((e) => {
+        /*發生錯誤時要做的事情*/
+        console.log("ee", e);
+        alert("登入失敗"); //系統頁面提示訊息登入失敗
+      });
   }
 
   useEffect(() => {
     // global google
     google.accounts.id.initialize({
-      client_id: "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
-      callback: handleCallbackResponse
+      client_id:
+        "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
     });
 
     google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
         document.cookie = `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
-        google.accounts.id.prompt()
+        google.accounts.id.prompt();
       }
     });
 
@@ -185,10 +184,21 @@ function IndexForm() {
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
       {/* <script src="https://accounts.google.com/gsi/client" async defer></script> */}
-      <script src="https://apis.google.com/js/api:client.js" async defer /> {/* https://apis.google.com/js/api:client.js https://apis.google.com/js/platform.js*/}
-      <script src="https://accounts.google.com/gsi/client" async defer/>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"  async defer/>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"  async defer/>
+      <script src="https://apis.google.com/js/api:client.js" async defer />{" "}
+      {/* https://apis.google.com/js/api:client.js https://apis.google.com/js/platform.js*/}
+      <script src="https://accounts.google.com/gsi/client" async defer />
+      <script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-3.6.1.js"
+        async
+        defer
+      />
+      <script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        async
+        defer
+      />
       <Head>
         <title>登入</title>
         <meta
@@ -198,28 +208,29 @@ function IndexForm() {
         {/* <meta name="google-signin-client_id" content="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"></meta> */}
         {/* <div class="g_id_signin" data-type="standard"></div> */}
       </Head>
-
       {/* <>
         <Script src="https://accounts.google.com/gsi/client" async defer />
       </> */}
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid m-6 sm:m-0 grid-cols-1 sm:grid-cols-2 gap-x-10">
         {/*歡迎文字區*/}
-        <div className="grid grid-rows-4  gap-y-4 mt-12">
-          <div className="text-6xl">邀請您</div>
-          <div className="text-6xl">一起向未來</div>
-          <div className="text-6xl">寄封信。</div>
-          <div>
+        <div className="grid grid-rows-4  gap-y-2 sm:gap-y-4 mb-6 sm:mb-0 sm:mt-12">
+          <div className="text-4xl sm:text-6xl">邀請您</div>
+          <div className="text-4xl sm:text-6xl">一起向未來</div>
+          <div className="text-4xl sm:text-6xl">寄封信。</div>
+          <div className="text-4xl sm:text-6xl">
             <Link href="">
-              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                onClick={e => {
-                  e.preventDefault()
+              <button
+                className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-2 sm:px-6 py-2 text-xs sm:text-base hover:bg-gray-100 focus:outline-none"
+                onClick={(e) => {
+                  e.preventDefault();
 
-                  if(sessionStorage.getItem("token") == null){
-                    alert('尚未登入，不能寫信')
-                  }else{
+                  if (sessionStorage.getItem("token") == null) {
+                    alert("尚未登入，不能寫信");
+                  } else {
                     router.push("/personal_space/SendArticle");
-                  }                  
-                }}>
+                  }
+                }}
+              >
                 <a>開始寫信...</a>
               </button>
             </Link>
@@ -228,7 +239,10 @@ function IndexForm() {
 
         {/* 登入表單 */}
         <div className="grid gap-y-3 mx-auto w-full max-w-[550px]">
-          <label htmlFor="name" className="mb-3 block text-center text-3xl font-bold">
+          <label
+            htmlFor="name"
+            className="sm:mb-3 block text-center text-2xl sm:text-3xl font-bold"
+          >
             登入
           </label>
 
@@ -240,7 +254,7 @@ function IndexForm() {
               id="email"
               placeholder="帳號（電子郵件）"
               ref={emailInputRef}
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
+              className="w-full rounded-md border border-[#e0e0e0] bg-white py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
             />
           </div>
 
@@ -252,7 +266,7 @@ function IndexForm() {
               id="password"
               placeholder="密碼"
               ref={passwordInputRef}
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
+              className="w-full rounded-md border border-[#e0e0e0] bg-white py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
             />
           </div>
 
@@ -265,7 +279,7 @@ function IndexForm() {
             </Link> */}
             <button
               onClick={submitHandler}
-              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base hover:bg-gray-100 focus:outline-none"
             >
               登入
             </button>
@@ -281,33 +295,34 @@ function IndexForm() {
 
           {/* # TODO: google login api 登入功能 */}
           {/* Google登入btn */}
-          <div id="g_id_onload"
+          <div
+            id="g_id_onload"
             data-client_id="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"
-            data-callback="handleCredentialResponse">
-          </div>
+            data-callback="handleCredentialResponse"
+          ></div>
           {/* data-login_uri="http://localhost:3000/" data-auto_select="true" // 啟用one top 視窗*/}
           {/* <div className="g_id_signin" data-type="standard"> className="g-signin2" data-onsuccess="handleCredentialResponse*/}
-          <div className="g-signin2"> 
-          {/*  className="g-signin2" data-onsuccess="onSignIn" */}
-            <div id="googlebtn" ></div>
+          <div className="g-signin2">
+            {/*  className="g-signin2" data-onsuccess="onSignIn" */}
+            <div id="googlebtn"></div>
             <button
-            onClick={submitHandler_google}
-            className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+              onClick={submitHandler_google}
+              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base hover:bg-gray-100 focus:outline-none"
             >
               以Google帳號登入
             </button>
-            <label
-              htmlFor="name"
-              className="mb-3 block text-center text-base font-bold"
-            >
-              還沒註冊?
-            </label>
           </div>
 
           {/* 註冊btn */}
           <div>
+            <label
+              htmlFor="name"
+              className="block text-center py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base font-bold"
+            >
+              還沒註冊?
+            </label>
             <Link href="register" passHref>
-              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
+              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base hover:bg-gray-100 focus:outline-none">
                 註冊
               </button>
             </Link>
