@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Fragment } from "react";
 import Head from "next/head";
 import Link from 'next/link';
-import getBaseUrl from "../../pages/const";
+import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
 
 // 註冊api

@@ -74,9 +74,10 @@ class UserViewSet(viewsets.GenericViewSet):
                 token = get_tokens_for_user(acct)
                 return Response(data={"result": "login success", "token": token["access"]})
             else:
-                return Response(data={"result": "login fail"})
+                return Response(data={"result": "login fail"}, status=status.HTTP_404_NOT_FOUND)
         else:
-            return Response(data={"result": "沒有此使用者，請去註冊"})
+            # TODO: 改成status 404
+            return Response(data={"result": "沒有此使用者，請去註冊"}, status=status.HTTP_404_NOT_FOUND)
 
     @action(  # google登入功能
         methods=["POST"], detail=False, url_path="google_login"

@@ -36,20 +36,20 @@ function ChangePasswordPage() {
   );
 }
 
-export async function getStaticProps() {
-    // fetch dada from an API
+// export async function getStaticProps() {
+//     // fetch dada from an API
   
-    return {
-      props: {
-        meetups: meetups.map((meetup) => ({
-          title: meetup.title,
-          address: meetup.address,
-          image: meetup.image,
-          id: meetup._id.toString(),
-        })),
-      },
-      revalidate: 10, //10秒就重抓資料一次
-    };
-  }
+//     return {
+//       props: {
+//         meetups: meetups.map((meetup) => ({
+//           title: meetup.title,
+//           address: meetup.address,
+//           image: meetup.image,
+//           id: meetup._id.toString(),
+//         })),
+//       },
+//       revalidate: 10, //10秒就重抓資料一次
+//     };
+//   }
 
 export default ChangePasswordPage;

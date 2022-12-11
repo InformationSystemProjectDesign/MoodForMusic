@@ -52,6 +52,8 @@ https://dotblogs.com.tw/yc421206/2019/01/21/swagger_via_api_key_jwt_call_protect
 7. 在瀏覽器搜尋「127.0.0.1」即可
 離開虛擬環境:deactivate
 
+alt + shift + F : 自動排版
+
 
 目前完成:註冊、登入、登出、修改密碼、建立資料庫、放資料進歌手資料表、後台的配置、進行資料庫調整
 

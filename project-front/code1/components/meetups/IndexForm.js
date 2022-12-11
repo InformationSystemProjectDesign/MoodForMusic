@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react";
 import { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import getBaseUrl from "../../pages/const";
+import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
-import Script from 'next/script'
+import Script from 'next/script';
 
 // 一般登入api
 function IndexForm() {
@@ -13,6 +13,8 @@ function IndexForm() {
   const passwordInputRef = useRef(); //和password的input綁起來
 
   const router = useRouter();
+
+  // useEffect(() => {callback()}, []);
 
   // useEffect(() => {
   //   if(sessionStorage.getItem('key') == null){
@@ -29,7 +31,6 @@ function IndexForm() {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-    
 
     const LoginData = {
       email: enteredEmail, //這裡的變數名稱必須跟後端寫的名稱一樣
@@ -46,6 +47,7 @@ function IndexForm() {
         "Content-Type": "application/json",
         Accept: "application/json",
         // "Authorization": 'Bearer' + sessionStorage.getItem('token')
+        //登入才可以使用的頁面功能，權限儲存token
       }),
     })
       .then((res) => {
@@ -59,15 +61,15 @@ function IndexForm() {
       .then((data) => {
         /*接到request data後要做的事情*/
         // console.log("data", data);
-        if (data["result"] == "沒有此使用者，請去註冊"){
+        if (data["result"] == "沒有此使用者，請去註冊") {
           alert('登入失敗 沒有此使用者，請去註冊')
           router.push('/register')
-        }else if(sessionStorage.getItem("token") != null){
+        } else if (sessionStorage.getItem("token") != null) {
           alert('你已登入過，無須再次登入')
           router.push('/personal_space')
-        }else if(data["result"] == "login fail"){
+        } else if (data["result"] == "login fail") {
           alert('帳號或是密碼輸入錯誤')
-        }else{
+        } else {
           sessionStorage.setItem("token", data.token);  //儲存token
           router.push('/personal_space')  //跳轉頁面
           alert('登入成功')
@@ -82,37 +84,8 @@ function IndexForm() {
 
   // google 登入
   function submitHandler_google(event) {
-
     event.preventDefault();
-    // google.accounts.id.prompt();
-
     return
-    // fetch(getBaseUrl + "auth/google_login", {
-    //   method: "POST",
-    //   headers: new Headers({
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     Authorization: "Bearer " + sessionStorage.getItem("token"), //登入才可以使用的頁面功能，權限儲存token
-    //   }),
-    // })
-    // .then((res) => {
-    //   console.log("res", res);
-    //   if (res.ok) {
-    //     return res.json();
-    //   } else {
-    //     throw "登入失敗";
-    //   }
-    // })
-    // .then((data) => {
-    //   /*接到request data後要做的事情*/
-    //   sessionStorage.setItem("token", data.token);  //儲存token
-    //   router.push('/personal_space')  //跳轉頁面
-    // })
-    // .catch((e) => {
-    //   /*發生錯誤時要做的事情*/
-    //   console.log("ee", e);
-    //   alert('登入失敗') //系統頁面提示訊息登入失敗
-    // });
   }
 
   function handleCallbackResponse(response) {
@@ -123,45 +96,46 @@ function IndexForm() {
       googleToken: gt
     }
 
-    console.log("Encoded JWT ID token:" + response.credential);
-    // console.log("response", response)
-    fetch(getBaseUrl + "auth/google_login",{
-      method:"POST",
-      body:JSON.stringify(GoogleData),
-      headers:new Headers({
+    // console.log("Encoded JWT ID token:" + response.credential);
+    fetch(getBaseUrl + "auth/google_login", {
+      method: "POST",
+      body: JSON.stringify(GoogleData),
+      headers: new Headers({
         "Content-Type": "application/json",
         Accept: "application/json",
       })
       // body:{"token":"Bearer " + response}
       // body:{"token": response.credential}
     })
-    .then((res) => {
-      console.log("res", res);
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw "登入失敗";
-      }
-    })
-    .then((data) => {
-      /*接到request data後要做的事情*/
-      // if (sessionStorage.getItem("token") != null){
-      //   alert('你已登入過，無須再次登入')
-      //   router.push('/personal_space')
-      // }
-      sessionStorage.setItem("token", data.token);  //儲存token
-      router.push('/personal_space')  //跳轉頁面
-      alert('登入成功')
-    })
-    .catch((e) => {
-      /*發生錯誤時要做的事情*/
-      console.log("ee", e);
-      alert('登入失敗') //系統頁面提示訊息登入失敗
-    });
+      .then((res) => {
+        console.log("res", res);
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw "登入失敗";
+        }
+      })
+      .then((data) => {
+        /*接到request data後要做的事情*/
+        if (sessionStorage.getItem("token") != null) {
+          alert('你已登入過，無須再次登入')
+          router.push('/personal_space')
+        } else {
+          sessionStorage.setItem("token", data.token);  //儲存token
+          router.push('/personal_space')  //跳轉頁面
+          alert('登入成功')
+        }
+      })
+      .catch((e) => {
+        /*發生錯誤時要做的事情*/
+        console.log("ee", e);
+        alert('登入失敗') //系統頁面提示訊息登入失敗
+      });
   }
 
   useEffect(() => {
     // global google
+    // window.onload = function () {};
     google.accounts.id.initialize({
       client_id: "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
       callback: handleCallbackResponse
@@ -170,25 +144,23 @@ function IndexForm() {
     google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
         document.cookie = `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
-        google.accounts.id.prompt()
       }
     });
+    google.accounts.id.prompt()
+
+
 
     // google.accounts.id.renderButton(
     //   document.getElementById("googlebtn"),
     // )
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
   return (
     <Fragment>
       {/* link */}
       {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
-      {/* <script src="https://accounts.google.com/gsi/client" async defer></script> */}
-      <script src="https://apis.google.com/js/api:client.js" async defer /> {/* https://apis.google.com/js/api:client.js https://apis.google.com/js/platform.js*/}
-      <script src="https://accounts.google.com/gsi/client" async defer/>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"  async defer/>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"  async defer/>
       <Head>
         <title>登入</title>
         <meta
@@ -197,6 +169,16 @@ function IndexForm() {
         />
         {/* <meta name="google-signin-client_id" content="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"></meta> */}
         {/* <div class="g_id_signin" data-type="standard"></div> */}
+        <>
+          <script src="https://apis.google.com/js/api:client.js" async defer /> {/* https://apis.google.com/js/api:client.js https://apis.google.com/js/platform.js*/}
+          <script src="https://accounts.google.com/gsi/client" async defer />
+          <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js" async defer />
+          <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" async defer />
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous" async />
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossOrigin="anonymous" async />
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossOrigin="anonymous" async />
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous" async />
+        </>
       </Head>
 
       {/* <>
@@ -214,11 +196,11 @@ function IndexForm() {
                 onClick={e => {
                   e.preventDefault()
 
-                  if(sessionStorage.getItem("token") == null){
+                  if (sessionStorage.getItem("token") == null) {
                     alert('尚未登入，不能寫信')
-                  }else{
+                  } else {
                     router.push("/personal_space/SendArticle");
-                  }                  
+                  }
                 }}>
                 <a>開始寫信...</a>
               </button>
@@ -283,16 +265,16 @@ function IndexForm() {
           {/* Google登入btn */}
           <div id="g_id_onload"
             data-client_id="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"
-            data-callback="handleCredentialResponse">
+          >
           </div>
           {/* data-login_uri="http://localhost:3000/" data-auto_select="true" // 啟用one top 視窗*/}
-          {/* <div className="g_id_signin" data-type="standard"> className="g-signin2" data-onsuccess="handleCredentialResponse*/}
-          <div className="g-signin2"> 
-          {/*  className="g-signin2" data-onsuccess="onSignIn" */}
+          {/* <div className="g_id_signin" data-type="standard"> data-callback="handleCredentialResponse" className="g-signin2" data-onsuccess="handleCredentialResponse*/}
+          <div className="g-signin2">
+            {/*  className="g-signin2" data-onsuccess="onSignIn" */}
             <div id="googlebtn" ></div>
             <button
-            onClick={submitHandler_google}
-            className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+              onClick={submitHandler_google}
+              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
             >
               以Google帳號登入
             </button>
@@ -306,7 +288,7 @@ function IndexForm() {
 
           {/* 註冊btn */}
           <div>
-            <Link href="register" passHref>
+            <Link href="/register" passHref>
               <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
                 註冊
               </button>
