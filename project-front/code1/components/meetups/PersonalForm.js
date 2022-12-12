@@ -49,7 +49,7 @@ function PersonalForm() {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossOrigin="anonymous" async />
       </>
 
-      <div className="flex flex-row place-content-center">
+      <div className="flex flex-col sm:flex-row place-content-center">
         {/* 我的書桌 */}
         <div className="basis-1/2 border-solid border-2 border-black mb-10 sm:mr-10">
           <div className="flex items-center justify-center p-8 sm:p-12 pt-0">
