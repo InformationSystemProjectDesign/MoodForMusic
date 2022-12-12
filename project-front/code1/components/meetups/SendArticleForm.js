@@ -128,7 +128,7 @@ function ArticleForm() {
                   id="url"
                   placeholder="文章連結"
                   ref={URLInputRef}
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
+                  className="break-words w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
                 />
               </div>
 
@@ -136,7 +136,7 @@ function ArticleForm() {
               <div className="mb-5">
                 <button
                   onClick={submitHandler}
-                  className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                  className="break-words w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                 >
                   Dcard/PTT連結送出
                 </button>
@@ -163,7 +163,7 @@ function ArticleForm() {
               <label
                 htmlFor="name"
                 className="mb-3 block text-center text-base font-bold">
-                <p id="song">{/* song_d */} - {/* singer_d */} - {/* art_mood_d */}</p>
+                <p id="song" className="break-words">{/* song_d */} - {/* singer_d */} - {/* art_mood_d */}</p>
                 <a id="songURL_d" href="#" target={{ target: '_blank' }}>{/* songURL_d */}</a>
               </label>
             </div>

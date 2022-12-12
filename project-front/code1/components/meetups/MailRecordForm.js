@@ -108,7 +108,7 @@ function MailRecordForm() {
                 {/* 歌曲連結 */}
                 <div className="mt-5 mb-5">
                   {/* <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
-                  <a className="max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                  <a className="break-all max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                     id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
                     歌曲連結: {data.link}
                   </a>
@@ -117,7 +117,7 @@ function MailRecordForm() {
                 {/* 文章連結 */}
                 <div className="mb-5">
                   {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button>  */}
-                  <a className="max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                  <a className="break-all max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                     id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
                     文章連結: {data.article_link}
                   </a>
