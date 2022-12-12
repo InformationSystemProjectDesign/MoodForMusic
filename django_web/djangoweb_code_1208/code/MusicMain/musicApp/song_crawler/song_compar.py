@@ -10,7 +10,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-def tfidf_similarity(s1, s2):
+def tfidf_similarity(s1, s2): # tfidf_similarity(歌詞, 文章)
     def add_space(s):
         return ' '.join(list(s))
     # 將字中間加入空格
@@ -153,7 +153,7 @@ def find_song(url):
     
     # print("article: ",article)
     lyrics=train['lyrics']
-    i=0
+    i=0 # 歌曲的編號
     num=0
     highpri=0
     for text in lyrics:

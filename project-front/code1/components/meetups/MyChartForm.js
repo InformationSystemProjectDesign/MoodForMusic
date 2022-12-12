@@ -4,7 +4,7 @@ import Head from "next/head";
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import getBaseUrl from "../../pages/const";
+import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -29,11 +29,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 function MyChartForm() {
   // MyChartHandler();
   const [pie_data, setPieData] = useState({}); // 宣告pie_data和setPieData()，使用react的功能useState()
-  useEffect(() => {MyChartHandler()}, []) // 新增 useEffect的方法，宣告MyChartHandler()，後面[]是指這個方法只會跑一次，不然會無限迴圈
+  useEffect(() => { MyChartHandler() }, []) // 新增 useEffect的方法，宣告MyChartHandler()，後面[]是指這個方法只會跑一次，不然會無限迴圈
   const router = useRouter();
 
   useEffect(() => {
-    if(sessionStorage.getItem('token') == null){
+    if (sessionStorage.getItem('token') == null) {
       alert("尚未登入，請先登入");
       router.push('/');
     }
@@ -97,21 +97,23 @@ function MyChartForm() {
 
     // console.log("pie_data", pie_data);
   }
-  if(Object.keys(pie_data) == 0){
+  if (Object.keys(pie_data) == 0) {
     return (
       <Fragment>
         {/* link */}
         {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossOrigin="anonymous"></link>
-        <script src="https://apis.google.com/js/api:client.js" async defer />
-        <script src="https://accounts.google.com/gsi/client" async defer/>
         <Head>
           <title>我的情緒圖</title>
           <meta
             name="description"
             content="Browse a huge list of active React meetups!"
           />
-          <script src="https://accounts.google.com/gsi/client" async defer></script>
+          <>
+            <script src="https://accounts.google.com/gsi/client" async defer></script>
+            <script src="https://apis.google.com/js/api:client.js" async defer />
+            <script src="https://accounts.google.com/gsi/client" async defer />
+          </>
 
           {/* <script>
             {
@@ -127,7 +129,7 @@ function MyChartForm() {
             }}
           </script> */}
         </Head>
-        <div className="spinner-border text-secondary" role="status" id="loading_icon"> 
+        <div className="spinner-border text-secondary" role="status" id="loading_icon">
           <span className="sr-only">Loading...</span>
         </div>
         <span id="hint_message">系統正在為您取得文章資料，請耐心等待 謝謝您</span>
@@ -147,9 +149,9 @@ function MyChartForm() {
           />
         </Head>
         <div className="pb-12 max-h-full">
-          <Pie data={pie_data} 
+          <Pie data={pie_data}
             height={"420%"}
-            options={{ maintainAspectRatio: false }}/>
+            options={{ maintainAspectRatio: false }} />
         </div>
       </Fragment>
     );

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Fragment } from "react";
 import Head from "next/head";
 import Link from 'next/link';
-import getBaseUrl from "../../pages/const";
+import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
 
 // 爬蟲文章api
@@ -11,7 +11,7 @@ function ArticleForm() {
   const router = useRouter();
 
   useEffect(() => {
-    if(sessionStorage.getItem('token') == null){
+    if (sessionStorage.getItem('token') == null) {
       alert("尚未登入，請先登入");
       router.push('/');
     }
@@ -22,7 +22,7 @@ function ArticleForm() {
   var singer_d = "";
   var song_d = "";
   var art_mood_d = "";
-  var songURL_d = "";  
+  var songURL_d = "";
 
   function submitHandler(event) {
     event.preventDefault(); //當按下送出鍵的function
@@ -64,10 +64,10 @@ function ArticleForm() {
         art_mood_d = data['result']['art_mood'];
         songURL_d = data['result']['songURL'];
 
-        document.getElementById("article_d").innerHTML=article_d;
-        document.getElementById("song").innerHTML=song_d + " - " + singer_d + " - 情緒:" + art_mood_d;
-        document.getElementById("songURL_d").innerHTML=songURL_d;
-        document.getElementById("songURL_d").href=songURL_d; 
+        document.getElementById("article_d").innerHTML = article_d;
+        document.getElementById("song").innerHTML = song_d + " - " + singer_d + " - 情緒:" + art_mood_d;
+        document.getElementById("songURL_d").innerHTML = songURL_d;
+        document.getElementById("songURL_d").href = songURL_d;
 
         // console.log(article_d);
         // console.log(singer_d);
@@ -99,74 +99,77 @@ function ArticleForm() {
           name="description"
           content="Browse a huge list of active React meetups!"
         />
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"  async defer/>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"  async defer/>
-        <script src="https://apis.google.com/js/api:client.js" async defer />
-        <script src="https://accounts.google.com/gsi/client" async defer/>
+        <>
+          <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js" async defer />
+          <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" async defer />
+          <script src="https://apis.google.com/js/api:client.js" async defer />
+          <script src="https://accounts.google.com/gsi/client" async defer />
+        </>
+
       </Head>
-      
+
       {/* 文章送出表單 */}
-      
-        <div className="flex items-center justify-center p-12 pt-0">
-            <div className="mx-auto w-full max-w-[550px]">
-                <form action="https://formbold.com/s/FORM_ID" method="POST">
-                    <label
-                        htmlFor="name"
-                        className="mb-3 block text-left text-1xl font-bold"
-                    >
-                    個人天地 - 寫信
-                    </label>
-                    <div className="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 text-base outline-none focus:border-gray-800  focus:shadow-md">
-                    {/* 文章連結 */}
-                     <div className="mb-5">              
-                        <input
-                            type="text"
-                            name="url"
-                            id="url"
-                            placeholder="文章連結"
-                            ref={URLInputRef}
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
-                        />
-                    </div>
-            
-                    {/* dcard文章送出btn */}
-                    <div className="mb-5">
-                        <button 
-                        onClick={submitHandler}
-                        className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                        >
-                            Dcard/PTT連結送出
-                        </button>
-                    </div>
-                    {/* ptt文章送出btn */}
-                    {/* <div class="mb-5"> */}
-                        {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"> */}
-                            {/* PTT連結送出 */}
-                        {/* </button> */}
-                    {/* </div> */}
 
-                    {/* loading icon */}
-                    <div className="spinner-border text-secondary" role="status" id="loading_icon" style={{display:'none'}}> 
-                      <span className="sr-only">Loading...</span>
-                    </div>
-                    <span id="hint_message" style={{display:'none'}}>系統正在為您產生推薦歌曲，請耐心等待 謝謝您</span>
+      <div className="flex items-center justify-center p-12 pt-0">
+        <div className="mx-auto w-full max-w-[550px]">
+          <form action="https://formbold.com/s/FORM_ID" method="POST">
+            <label
+              htmlFor="name"
+              className="mb-3 block text-left text-1xl font-bold"
+            >
+              個人天地 - 寫信
+            </label>
+            <div className="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 text-base outline-none focus:border-gray-800  focus:shadow-md">
+              {/* 文章連結 */}
+              <div className="mb-5">
+                <input
+                  type="text"
+                  name="url"
+                  id="url"
+                  placeholder="文章連結"
+                  ref={URLInputRef}
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
+                />
+              </div>
 
-                    <label
-                        htmlFor="name"
-                        className="mb-3 block text-left text-base font-bold">
-                        <p id="article_d"></p>
-                    </label>
+              {/* dcard文章送出btn */}
+              <div className="mb-5">
+                <button
+                  onClick={submitHandler}
+                  className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                >
+                  Dcard/PTT連結送出
+                </button>
+              </div>
+              {/* ptt文章送出btn */}
+              {/* <div class="mb-5"> */}
+              {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"> */}
+              {/* PTT連結送出 */}
+              {/* </button> */}
+              {/* </div> */}
 
-                    <label
-                        htmlFor="name"
-                        className="mb-3 block text-center text-base font-bold">
-                        <p id="song">{/* song_d */} - {/* singer_d */} - {/* art_mood_d */}</p>
-                        <a id="songURL_d" href="#" target={{target:'_blank'}}>{/* songURL_d */}</a>                        
-                    </label>
-                    </div>
-                </form>
+              {/* loading icon */}
+              <div className="spinner-border text-secondary" role="status" id="loading_icon" style={{ display: 'none' }}>
+                <span className="sr-only">Loading...</span>
+              </div>
+              <span id="hint_message" style={{ display: 'none' }}>系統正在為您產生推薦歌曲，請耐心等待 謝謝您</span>
+
+              <label
+                htmlFor="name"
+                className="mb-3 block text-left text-base font-bold">
+                <p id="article_d"></p>
+              </label>
+
+              <label
+                htmlFor="name"
+                className="mb-3 block text-center text-base font-bold">
+                <p id="song">{/* song_d */} - {/* singer_d */} - {/* art_mood_d */}</p>
+                <a id="songURL_d" href="#" target={{ target: '_blank' }}>{/* songURL_d */}</a>
+              </label>
             </div>
+          </form>
         </div>
+      </div>
     </Fragment>
   );
 }
