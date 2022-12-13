@@ -122,11 +122,11 @@ function MailRecordForm() {
               <span id="hint_message" style={{ display: 'none' }}>系統正在為您載入信件，請耐心等待 謝謝您</span>
 
               {artLists.map(data => (
-                <><div className="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">
+                <><div className="w-full rounded-md border-[#000000] border-[3px] p-3 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">
                   {/* 歌曲連結 */}
                   <div className="mt-5 mb-5">
                     {/* <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
-                    <a className="break-all max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                    <a className="break-all max-w-full text-center inline-flex justify-center p-3 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 text-base hover:bg-gray-100 focus:outline-none"
                       id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
                       歌曲連結: {data.link}
                     </a>
@@ -135,7 +135,7 @@ function MailRecordForm() {
                   {/* 文章連結 */}
                   <div className="mb-5">
                     {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button>  */}
-                    <a className="break-all max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                    <a className="break-all max-w-full text-center inline-flex justify-center p-3 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800  text-base hover:bg-gray-100 focus:outline-none"
                       id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
                       文章連結: {data.article_link}
                     </a>
@@ -146,7 +146,7 @@ function MailRecordForm() {
                     {/* 時間 */}
                     <div className="mb-5 mr-3">
                       <button
-                        className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
+                        className="cursor-text w-full rounded-md bg-white  border transition duration-150 p-3 ease-in-out focus:outline-none text-base"
                         id="time_d"
                       >
                         文章時間: {data.rectime}
@@ -156,7 +156,7 @@ function MailRecordForm() {
                     {/* 心情 */}
                     <div className="mb-5">
                       <button
-                        className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
+                        className="cursor-text w-full rounded-md bg-white  border transition duration-150 p-3 ease-in-out focus:outline-none text-base"
                         id="art_mood_d"
                       >
                         文章情緒: {data.sencla}
