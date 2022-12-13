@@ -184,9 +184,9 @@ function IndexForm() {
       {/* <>
         <Script src="https://accounts.google.com/gsi/client" async defer />
       </> */}
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid gird-cols-1 sm:grid-cols-2 gap-x-6 m-2">
         {/*歡迎文字區*/}
-        <div className="grid grid-rows-4  gap-y-4 mt-12">
+        <div className="grid grid-rows-4  gap-y-4 sm:mt-12">
           <div className="text-6xl">邀請您</div>
           <div className="text-6xl">一起向未來</div>
           <div className="text-6xl">寄封信。</div>
@@ -209,7 +209,7 @@ function IndexForm() {
         </div>
 
         {/* 登入表單 */}
-        <div className="grid gap-y-3 mx-auto w-full max-w-[550px]">
+        <div className="grid gap-y-1 sm:gap-y-3 mx-auto w-full max-w-[550px]">
           <label htmlFor="name" className="mb-3 block text-center text-3xl font-bold">
             登入
           </label>
@@ -263,7 +263,7 @@ function IndexForm() {
 
           {/* # TODO: google login api 登入功能 */}
           {/* Google登入btn */}
-          <div id="g_id_onload"
+          <div id="g_id_onload" className="hidden"
             data-client_id="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"
           >
           </div>
