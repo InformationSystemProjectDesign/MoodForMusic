@@ -90,7 +90,7 @@ function ChangePasswordForm() {
           <form action="https://formbold.com/s/FORM_ID" method="POST">
             <label
               htmlFor="name"
-              className="mb-3 block text-center text-xl sm:text-3xl font-bold"
+              className="mb-3 block text-center text-3xl font-bold"
             >
               修改密碼
             </label>
@@ -114,7 +114,7 @@ function ChangePasswordForm() {
                 id="password"
                 placeholder="請輸入目前的密碼"
                 ref = {passwordInputRef}
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-1 sm:px-6 text-xs sm:text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
             </div>
 
@@ -126,7 +126,7 @@ function ChangePasswordForm() {
                 id="confirmpassword"
                 placeholder="輸入新的密碼"
                 ref = {confirmPasswordInputRef}
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-1 sm:px-6 text-xs sm:text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
               />
             </div>
 
@@ -134,7 +134,7 @@ function ChangePasswordForm() {
             <div className="mb-5">
                 <button 
                 onClick={submitHandler}
-                className="w-full rounded-md bg-white transition duration-150 ease-in-out text-xs sm:text-base hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-1 sm:px-6 py-2 hover:bg-gray-100 focus:outline-none"
+                className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
                 >
                     儲存修改
                 </button>

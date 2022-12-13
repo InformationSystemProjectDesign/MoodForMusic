@@ -78,7 +78,7 @@ function IndexForm() {
       .catch((e) => {
         /*發生錯誤時要做的事情*/
         console.log("ee", e);
-        alert("登入失敗"); //系統頁面提示訊息登入失敗
+        alert('登入失敗') //系統頁面提示訊息登入失敗
       });
   }
 
@@ -93,8 +93,8 @@ function IndexForm() {
     const gt = response.credential;
 
     const GoogleData = {
-      googleToken: gt,
-    };
+      googleToken: gt
+    }
 
     // console.log("Encoded JWT ID token:" + response.credential);
     fetch(getBaseUrl + "auth/google_login", {
@@ -103,7 +103,7 @@ function IndexForm() {
       headers: new Headers({
         "Content-Type": "application/json",
         Accept: "application/json",
-      }),
+      })
       // body:{"token":"Bearer " + response}
       // body:{"token": response.credential}
     })
@@ -137,9 +137,8 @@ function IndexForm() {
     // global google
     // window.onload = function () {};
     google.accounts.id.initialize({
-      client_id:
-        "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
+      client_id: "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
+      callback: handleCallbackResponse
     });
 
     google.accounts.id.prompt((notification) => {
@@ -181,21 +180,21 @@ function IndexForm() {
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous" async />
         </>
       </Head>
+
       {/* <>
         <Script src="https://accounts.google.com/gsi/client" async defer />
       </> */}
-      <div className="grid m-6 sm:m-0 grid-cols-1 sm:grid-cols-2 gap-x-10">
+      <div className="grid grid-cols-2 gap-x-10">
         {/*歡迎文字區*/}
-        <div className="grid grid-rows-4  gap-y-2 sm:gap-y-4 mb-6 sm:mb-0 sm:mt-12">
-          <div className="text-4xl sm:text-6xl">邀請您</div>
-          <div className="text-4xl sm:text-6xl">一起向未來</div>
-          <div className="text-4xl sm:text-6xl">寄封信。</div>
-          <div className="text-4xl sm:text-6xl">
+        <div className="grid grid-rows-4  gap-y-4 mt-12">
+          <div className="text-6xl">邀請您</div>
+          <div className="text-6xl">一起向未來</div>
+          <div className="text-6xl">寄封信。</div>
+          <div>
             <Link href="">
-              <button
-                className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-2 sm:px-6 py-2 text-xs sm:text-base hover:bg-gray-100 focus:outline-none"
-                onClick={(e) => {
-                  e.preventDefault();
+              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                onClick={e => {
+                  e.preventDefault()
 
                   if (sessionStorage.getItem("token") == null) {
                     alert('尚未登入，不能寫信')
@@ -211,10 +210,7 @@ function IndexForm() {
 
         {/* 登入表單 */}
         <div className="grid gap-y-3 mx-auto w-full max-w-[550px]">
-          <label
-            htmlFor="name"
-            className="sm:mb-3 block text-center text-2xl sm:text-3xl font-bold"
-          >
+          <label htmlFor="name" className="mb-3 block text-center text-3xl font-bold">
             登入
           </label>
 
@@ -226,7 +222,7 @@ function IndexForm() {
               id="email"
               placeholder="帳號（電子郵件）"
               ref={emailInputRef}
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
+              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800 focus:shadow-md"
             />
           </div>
 
@@ -238,7 +234,7 @@ function IndexForm() {
               id="password"
               placeholder="密碼"
               ref={passwordInputRef}
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
+              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-800  focus:shadow-md"
             />
           </div>
 
@@ -251,7 +247,7 @@ function IndexForm() {
             </Link> */}
             <button
               onClick={submitHandler}
-              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base hover:bg-gray-100 focus:outline-none"
+              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
             >
               登入
             </button>
@@ -267,8 +263,7 @@ function IndexForm() {
 
           {/* # TODO: google login api 登入功能 */}
           {/* Google登入btn */}
-          <div
-            id="g_id_onload"
+          <div id="g_id_onload"
             data-client_id="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"
           >
           </div>
@@ -279,16 +274,22 @@ function IndexForm() {
             <div id="googlebtn" ></div>
             <button
               onClick={submitHandler_google}
-              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base hover:bg-gray-100 focus:outline-none"
+              className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
             >
               以Google帳號登入
             </button>
+            <label
+              htmlFor="name"
+              className="mb-3 block text-center text-base font-bold"
+            >
+              還沒註冊?
+            </label>
           </div>
 
           {/* 註冊btn */}
           <div>
             <Link href="/register" passHref>
-              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 py-1 sm:py-3 px-2 sm:px-6 text-xs sm:text-base hover:bg-gray-100 focus:outline-none">
+              <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none">
                 註冊
               </button>
             </Link>

@@ -26,6 +26,8 @@ function MailRecordForm() {
   }, [])
 
   function MyArticleHandler() {
+    $('#loading_icon').show();
+    $('#hint_message').show();
     fetch(getBaseUrl + "article/my_article", {
       method: "GET",
       // body: JSON.stringify(enteredMyChardata),  //GET不用body
@@ -47,6 +49,8 @@ function MailRecordForm() {
         // console.log(result);
         // console.log(result[0]['song_name']);
         setArtLists(result);
+        $('#loading_icon').hide();
+        $('#hint_message').hide();
         // console.log("------artlist----");
         // console.log(artLists);
         // console.log("------artlist----");
@@ -74,84 +78,99 @@ function MailRecordForm() {
         // console.log('artLists:',artLists)
       });
   }
-  return (
-    <Fragment>
-      {/* link */}
-      {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
-      <Head>
-        <base target='_blank'></base>
-        <title>信件紀錄</title>
-        <meta
-          name="description"
-          content="Browse a huge list of active React meetups!"
-        />
-        <>
-          <script src="https://apis.google.com/js/api:client.js" async defer/>
-          <script src="https://accounts.google.com/gsi/client" async defer />
-        </>
 
-      </Head>
+  if (artLists == null) {
+    alert("請先登入");
+    router.push('/');
+  } else {
+    return (
+      <Fragment>
+        {/* link */}
+        {/* <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap" rel="stylesheet"/> */}
+        <Head>
+          <base target='_blank'></base>
+          <title>信件紀錄</title>
+          <meta
+            name="description"
+            content="Browse a huge list of active React meetups!"
+          />
+          <>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js" async defer />
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" async defer />
+            <script src="https://apis.google.com/js/api:client.js" async defer />
+            <script src="https://accounts.google.com/gsi/client" async defer />
+          </>
 
-      {/* 文章送出表單 */}
+        </Head>
 
-      <div className="flex items-center justify-center p-12 pt-0">
-        <div className="mx-auto w-full max-w-[550px]">
-          <form action="https://formbold.com/s/FORM_ID" method="POST">
-            <label
-              htmlFor="name"
-              className="mb-3 block text-left text-1xl font-bold"
-            >
-              個人天地 - 信件紀錄
-            </label>
-            {artLists.map(data => (
-              <><div className="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">
-                {/* 歌曲連結 */}
-                <div className="mt-5 mb-5">
-                  {/* <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
-                  <a className="break-all max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                    id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
-                    歌曲連結: {data.link}
-                  </a>
-                </div>
+        {/* 文章送出表單 */}
 
-                {/* 文章連結 */}
-                <div className="mb-5">
-                  {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button>  */}
-                  <a className="break-all max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
-                    id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
-                    文章連結: {data.article_link}
-                  </a>
-                </div>
+        <div className="flex items-center justify-center p-12 pt-0">
+          <div className="mx-auto w-full max-w-[550px]">
+            <form action="https://formbold.com/s/FORM_ID" method="POST">
+              <label
+                htmlFor="name"
+                className="mb-3 block text-left text-1xl font-bold"
+              >
+                個人天地 - 信件紀錄
+              </label>
 
-                <div className="flex flex-row place-content-center">
+              {/* loading icon */}
+              <div className="spinner-border text-secondary" role="status" id="loading_icon" style={{ display: 'none' }}>
+                <span className="sr-only">Loading...</span>
+              </div>
+              <span id="hint_message" style={{ display: 'none' }}>系統正在為您載入信件，請耐心等待 謝謝您</span>
 
-                  {/* 時間 */}
-                  <div className="mb-5 mr-3">
-                    <button
-                      className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
-                      id="time_d"
-                    >
-                      文章時間: {data.rectime}
-                    </button>
+              {artLists.map(data => (
+                <><div className="w-full rounded-md border-[#000000] border-[3px] py-3 px-6 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">
+                  {/* 歌曲連結 */}
+                  <div className="mt-5 mb-5">
+                    {/* <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
+                    <a className="break-all max-w-full text-center inline-flex justify-center px-8 py-4 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                      id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
+                      歌曲連結: {data.link}
+                    </a>
                   </div>
 
-                  {/* 心情 */}
+                  {/* 文章連結 */}
                   <div className="mb-5">
-                    <button
-                      className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
-                      id="art_mood_d"
-                    >
-                      文章情緒: {data.sencla}
-                    </button>
+                    {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button>  */}
+                    <a className="break-all max-w-full text-center inline-flex justify-center px-12 py-3.5 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"
+                      id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
+                      文章連結: {data.article_link}
+                    </a>
                   </div>
-                </div>
-              </div></>
-            ))}
-          </form>
+
+                  <div className="flex flex-row place-content-center">
+
+                    {/* 時間 */}
+                    <div className="mb-5 mr-3">
+                      <button
+                        className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
+                        id="time_d"
+                      >
+                        文章時間: {data.rectime}
+                      </button>
+                    </div>
+
+                    {/* 心情 */}
+                    <div className="mb-5">
+                      <button
+                        className="cursor-text w-full rounded-md bg-white  border transition duration-150 ease-in-out focus:outline-none px-6 py-2 text-base"
+                        id="art_mood_d"
+                      >
+                        文章情緒: {data.sencla}
+                      </button>
+                    </div>
+                  </div>
+                </div></>
+              ))}
+            </form>
+          </div>
         </div>
-      </div>
-    </Fragment>
-  );
+      </Fragment>
+    );
+  }
 }
 
 export default MailRecordForm;
