@@ -124,7 +124,7 @@ function MailRecordForm() {
               {artLists.map(data => (
                 <><div className="w-full rounded-md border-[#000000] border-[3px] p-3 mb-3 text-base outline-none focus:border-gray-800  focus:shadow-md">
                   {/* 歌曲連結 */}
-                  <div className="mt-5 mb-5">
+                  <div className="mt-5 mb-5 flex flex-row place-content-center">
                     {/* <button className="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button> */}
                     <a className="break-all max-w-full text-center inline-flex justify-center p-3 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 text-base hover:bg-gray-100 focus:outline-none"
                       id="songURL_a" href={data.link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
@@ -133,7 +133,7 @@ function MailRecordForm() {
                   </div>
 
                   {/* 文章連結 */}
-                  <div className="mb-5">
+                  <div className="mb-5 flex flex-row place-content-center">
                     {/* <button class="w-full rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800 px-6 py-2 text-base hover:bg-gray-100 focus:outline-none"></button>  */}
                     <a className="break-all max-w-full text-center inline-flex justify-center p-3 rounded-md bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 border text-gray-800  text-base hover:bg-gray-100 focus:outline-none"
                       id="artURL_a" href={data.article_link} target="_blank" rel="noreferrer noopenner" style={{ textDecoration: 'none' }}>
