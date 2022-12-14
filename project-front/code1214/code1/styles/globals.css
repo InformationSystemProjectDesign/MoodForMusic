@@ -1,0 +1,53 @@
+/* @font-face {
+  font-family: 'NotoSerifTC';
+  src:  url('../fonts/NotoSerifTC-Black.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Bold.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-ExtraLight.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Light.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Medium.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Regular.otf') format("truetype"),
+        url('../fonts/NotoSerifTC-Medium.otf') format("truetype"),
+} */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Simsun';
+  src: url("../fonts/simsun.ttc");
+}
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: Simsun !important;
+  /* font-family: abc !important; */
+  
+  background-repeat:no-repeat;
+  background: radial-gradient(
+        106.18% 350.13% at -1.35% 2.84%,
+        #fade7b 0%,
+        #fee48a 14.59%,
+        rgba(236, 236, 161, 0.809721) 32.26%,
+        rgba(210, 248, 193, 0.546875) 53.21%,
+        rgba(128, 210, 181, 0.293965) 77.26%,
+        rgba(33, 166, 167, 0.15) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    #ffffff;
+    background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
