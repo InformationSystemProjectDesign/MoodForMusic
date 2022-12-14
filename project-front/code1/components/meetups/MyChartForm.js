@@ -6,6 +6,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
+import Script from 'next/script';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -110,7 +111,7 @@ function MyChartForm() {
             content="Browse a huge list of active React meetups!"
           />
           <>
-            <script src="https://accounts.google.com/gsi/client" async defer></script>
+            <script src="https://accounts.google.com/gsi/client" async defer />
             <script src="https://apis.google.com/js/api:client.js" async defer />
             <script src="https://accounts.google.com/gsi/client" async defer />
           </>

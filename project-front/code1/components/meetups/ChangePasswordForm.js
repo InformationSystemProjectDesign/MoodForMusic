@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from 'next/link';
 import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
+import Script from 'next/script';
 
 // 修改密碼的api
 function ChangePasswordForm() {
