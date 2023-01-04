@@ -40,13 +40,13 @@ def dcardCraw(url):
     # 設定Chrome Driver 的執行檔路徑
     options = Options()
     options.add_argument("--incognito") # 啟動進入無痕模式
-    options.add_argument("--window-size=1,1") # 頁面長度寬度調整
+    options.add_argument("--window-size=1000,500") # 頁面長度寬度調整
     # chrome_options.add_argument('--headless')  # 啟動Headless 無頭(隱藏瀏覽器)
 
     # 隱藏"Chrome正在受到自動軟體的控制"
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
-
+ 
     options.add_argument('--disable-gpu') #關閉GPU 避免某些系統或是網頁出錯
     options.add_argument('--hide-scrollbars') # 隱藏滾動條, 應對一些特殊頁面
     options.chrome_executable_path = "./musicApp/song_crawler/chromedriver.exe"

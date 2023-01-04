@@ -140,6 +140,8 @@ function IndexForm() {
       client_id: "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
       callback: handleCallbackResponse
     });
+    {/* 510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com */ }
+    {/* 555568799632-jntldp0q86hjfeao4vqo5s2ouk6oqpdc.apps.googleusercontent.com */ }
 
     google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
@@ -147,8 +149,6 @@ function IndexForm() {
       }
     });
     google.accounts.id.prompt()
-
-
 
     // google.accounts.id.renderButton(
     //   document.getElementById("googlebtn"),
@@ -266,6 +266,8 @@ function IndexForm() {
           <div id="g_id_onload" className="hidden"
             data-client_id="510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com"
           >
+            {/* 510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com */}
+            {/* 555568799632-jntldp0q86hjfeao4vqo5s2ouk6oqpdc.apps.googleusercontent.com */}
           </div>
           {/* data-login_uri="http://localhost:3000/" data-auto_select="true" // 啟用one top 視窗*/}
           {/* <div className="g_id_signin" data-type="standard"> data-callback="handleCredentialResponse" className="g-signin2" data-onsuccess="handleCredentialResponse*/}

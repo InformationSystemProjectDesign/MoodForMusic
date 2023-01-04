@@ -3,9 +3,8 @@ admin
 ntub111202
 
 一般user(展示用這個帳戶)
-mary
-case111202@gmail.com
-case111202
+
+https://mood-for-music.ntub.edu.tw/
 
 email:123wedc@gmail.com
 password:asdf123
@@ -17,6 +16,7 @@ password:asdf123
 23456
 
 https://www.dcard.tw/f/relationship/p/238632575
+https://www.dcard.tw/f/relationship/p/240742192
 
 swagger api 權限:
 https://dotblogs.com.tw/yc421206/2019/01/21/swagger_via_api_key_jwt_call_protect_api
